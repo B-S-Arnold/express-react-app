@@ -1,0 +1,23 @@
+.login-form{
+    margin: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.login-label{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    margin: 10px;
+    justify-content: space-around;
+    
+}
+
+.login-input{
+    margin: 20px;
+    border-radius: 7px;
+}
+
+.login-button{
+    border-radius: 15px;
+    background-color: red;
+}
