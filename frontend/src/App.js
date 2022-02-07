@@ -17,7 +17,7 @@ function App() {
       <Route path={["/login", "/log-in"]}>
         <LoginFormPage />
       </Route>
-      <Route path={["/signup", "sign-up"]}>
+      <Route path={["/signup", "/sign-up"]}>
         <SignupFormPage />
       </Route>
       <Route>
