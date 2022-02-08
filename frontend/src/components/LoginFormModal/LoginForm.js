@@ -19,6 +19,19 @@ function LoginForm() {
         );
     };
 
+    // router.get('/demo-login', asyncHandler(async (req, res) => {
+
+    //     const user = await db.User.findOne({ where: { email: 'demo@demo.com' } });
+
+    //     userLogin(req, res, user);
+    //     return req.session.save(() => res.redirect('/'))
+    // }));
+    const demoLogin = () => {
+        setCredential('Demo-lition');
+        setPassword('password');
+        // history.push(path)
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <ul>
@@ -45,6 +58,7 @@ function LoginForm() {
                 />
             </label>
             <button type="submit">Log In</button>
+            <button onClick={demoLogin}> Demo User</button>
         </form>
     );
 }

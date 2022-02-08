@@ -25,7 +25,8 @@ module.exports = {
        state: "Newest New Hampshire",
        country: "Saturn",
        name: "Beautiful Ledge",
-       price: 10
+       price: 10,
+       description: "Don't fall off..."
      },
      {
        userId: 2,
@@ -34,7 +35,8 @@ module.exports = {
        state: "Hampshire Nuevo",
        country: "Neptatún",
        name: "Pintoresco Lugar de Pesca",
-       price: 15.99
+       price: 15.99,
+       description: "La vista más hermosa de este lado del Mississippi."
      }
    ], {});
   },
