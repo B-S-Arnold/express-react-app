@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './NewSpot.css';
+import './NewListing.css';
 
-function CreateNewSpot() {
+// userId: 1,
+// address: "Upper Left Side",
+// city: "Ring Two",
+// state: "Newest New Hampshire",
+// country: "Saturn",
+// name: "Beautiful Ledge",
+// price: 10,
+// description: "Don't fall off..."
+
+function CreateListing() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
@@ -13,7 +22,7 @@ function CreateNewSpot() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/" />;
+    if (!sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,6 +36,8 @@ function CreateNewSpot() {
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
+
+    
 
     return (
         <form onSubmit={handleSubmit}>
@@ -74,4 +85,4 @@ function CreateNewSpot() {
     );
 }
 
-export default CreateNewSpot;
+export default CreateListing;

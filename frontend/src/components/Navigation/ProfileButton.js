@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { useHistory, Redirect } from 'react-router-dom';
+
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
+
+    const history = useHistory();
+    
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -28,6 +33,11 @@ function ProfileButton({ user }) {
         dispatch(sessionActions.logout());
     };
 
+    const createListing = () => {
+        let path = '/createListing'
+        history.push(path)
+    }
+
     return (
         <>
             <button onClick={openMenu}>
@@ -40,6 +50,9 @@ function ProfileButton({ user }) {
                     <li>{user.email}</li>
                     <li>
                         <button onClick={logout}>Log Out</button>
+                    </li>
+                    <li>
+                        <button onClick={createListing}>Create Listing</button>
                     </li>
                 </ul>
             )}

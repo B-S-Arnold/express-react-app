@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import CreateListing from "./components/CreateListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path={"/spots/:spotId"}>
             Spot page
+          </Route>
+          <Route path={"/createListing"}>
+            <CreateListing />
           </Route>
           <Route>
             404: Page Not Found

@@ -35,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL
     },
+    description: {
+      type: DataTypes.TEXT
+    }
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here
