@@ -17,11 +17,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path={["/", "/home"]}>
+            The Splash Page / Home Page
+          </Route>
           <Route path={["/signup", "/sign-up"]}>
             <SignupFormPage />
           </Route>
+          <Route path={"/spots/:spotId"}>
+            Spot page
+          </Route>
           <Route>
-            Page Not Found
+            404: Page Not Found
           </Route>
         </Switch>
       )}
