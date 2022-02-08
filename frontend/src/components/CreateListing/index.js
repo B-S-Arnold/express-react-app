@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './NewListing.css';
+import { createSpot } from "../../store/spot";
 
 // userId: 1,
 // address: "Upper Left Side",
@@ -16,26 +17,57 @@ import './NewListing.css';
 function CreateListing() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [userId, setUserId] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [country, setCountry] = useState("");
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState("");
+    const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const updateUserId = (e) => setUserId(sessionUser.id);
+    const updateAdress = (e) => setAddress(e.target.value);
+    const updateCity = (e) => setCity(e.target.value);
+    const updateState = (e) => setState(e.target.value);
+    const updateCountry = (e) => setCountry(e.target.value);
+    const updateName = (e) => setName(e.target.value);
+    const updatePrice = (e) => setPrice(e.target.value);
+    const updateDescription = (e) => setDescription(e.target.value);
 
     if (!sessionUser) return <Redirect to="/" />;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (password === confirmPassword) {
-            setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (password === confirmPassword) {
+    //         setErrors([]);
+    //         return dispatch(sessionActions.signup({ email, username, password }))
+    //             .catch(async (res) => {
+    //                 const data = await res.json();
+    //                 if (data && data.errors) setErrors(data.errors);
+    //             });
+    //     }
+    //     return setErrors(['Confirm Password field must be the same as the Password field']);
+    // };
+
+    let payload = {
+            userId,
+            address,
+            city,
+            state,
+            country,
+            name,
+            price,
+            description
     };
+
+    let createdSpot = dispatch(createSpot(payload))
+
+    const handleSubmit = async (e) => {
+        // e.preventDefault();
+        // setUserId(sessionUser.id)
+    }
 
     
 
@@ -45,42 +77,69 @@ function CreateListing() {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <label>
-                Email
+                Address
                 <input
                     type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     required
                 />
             </label>
             <label>
-                Username
+                City
                 <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                     required
                 />
             </label>
             <label>
-                Password
+                State
                 <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
                     required
                 />
             </label>
             <label>
-                Confirm Password
+                Country
                 <input
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
                     required
                 />
             </label>
-            <button type="submit">Sign Up</button>
+            <label>
+                Name
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
+                Price
+                <input
+                    type="text"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
+                Description
+                <input
+                    type="text"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
+            </label>
+            <button type="submit">Create Listing</button>
         </form>
     );
 }
