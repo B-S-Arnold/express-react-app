@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    city:  {
+    city: {
       allowNull: false,
       type: DataTypes.STRING,
     },
@@ -39,12 +39,27 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     }
   }, {});
-  Spot.associate = function(models) {
+  Spot.associate = function (models) {
     // associations can be defined here
     Spot.belongsTo(models.User, { foreignKey: 'userId' })
     Spot.hasMany(models.Image, { foreignKey: 'spotId' })
     Spot.hasMany(models.Review, { foreignKey: 'spotId' })
 
+  };
+
+  Spot.create = async function ({ userId, address, city, state, country, name, price, description }) {
+
+    const spot = await Spot.create({
+      userId,
+      address,
+      city,
+      state,
+      country,
+      name,
+      price,
+      description
+    });
+    return await Spot.findByPk(spot.id);
   };
   return Spot;
 };
