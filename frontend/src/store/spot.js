@@ -8,18 +8,26 @@ const addSpot = spot => ({
     
 });
 
+// const response = await csrfFetch("/api/users", {
+//     method: "POST",
+//     body: JSON.stringify({
+//         username,
+//         email,
+//         password,
+//     }),
+
+// });
 
 
 
 export const createSpot = (spot) => async (dispatch, getState) => {
-    const {userId, address, city, state, country, name, description, price } = spot
+    
 
     // use FETCH for CONSOLE LOGS
 
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userId, address, city, state, country, name, description, price)
+        body: JSON.stringify(spot)
     })
     console.log("PAYLOAD!!!", spot)
     console.log("RESPONSE!!!!", response)
@@ -49,8 +57,8 @@ const spotReducer = (state = initialState, action) => {
         case ADD:
             newState = Object.assign({}, state);
             newState = action.payload;
-            console.log(newState)
-            return [...state, newState];
+            console.log("NEWSTATE!!!!!!", newState)
+            return newState;
         default:
             return state;
     }
