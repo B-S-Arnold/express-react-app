@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './NewListing.css';
 import * as spotActions from "../../store/spot";
+
 
 // userId: 1,
 // address: "Upper Left Side",
@@ -27,6 +28,8 @@ function CreateListing() {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const history = useHistory();
     
 
     // const updateUserId = (e) => setUserId(sessionUser.id);
@@ -70,6 +73,9 @@ function CreateListing() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        let path = `/users/${payload.userId}`
+        history.push(path)
+        console.log("PAYLOAD!!!!!!!!", payload)
         
         
             // setErrors([]);

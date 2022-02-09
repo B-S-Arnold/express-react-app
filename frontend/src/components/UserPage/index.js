@@ -1,10 +1,12 @@
+import './UserPage.css';
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SpotPage.css';
 
-function SpotPage() {
+
+function UserPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
@@ -74,4 +76,4 @@ function SpotPage() {
     );
 }
 
-export default SpotPage;
+export default UserPage;
