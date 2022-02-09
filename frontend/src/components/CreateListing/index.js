@@ -68,15 +68,22 @@ function CreateListing() {
     // let createdSpot =  dispatch(createSpot(payload))
 
 
-    const handleSubmit = async (e) => {
-        // e.preventDefault();
-        // setUserId(sessionUser.id)
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+            // setErrors([]);
+        return dispatch(createSpot(payload))
+                // .catch(async (res) => {
+                //     const data = await res.json();
+                //     if (data && data.errors) setErrors(data.errors);
+                // });
+        
+    };
 
     
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
