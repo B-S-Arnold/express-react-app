@@ -17,7 +17,8 @@ import { createSpot } from "../../store/spot";
 function CreateListing() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const [userId, setUserId] = useState("");
+    
+    const [userId, setUserId] = useState(sessionUser.id);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -26,17 +27,19 @@ function CreateListing() {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
+    
 
-    const updateUserId = (e) => setUserId(sessionUser.id);
+    // const updateUserId = (e) => setUserId(sessionUser.id);
     const updateAdress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
     const updateCountry = (e) => setCountry(e.target.value);
     const updateName = (e) => setName(e.target.value);
-    const updatePrice = (e) => setPrice(e.target.value);
+    const updatePrice = (e) => setPrice(parseInt(e.target.value));
     const updateDescription = (e) => setDescription(e.target.value);
+    
 
-    if (!sessionUser) return <Redirect to="/" />;
+    
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -62,7 +65,8 @@ function CreateListing() {
             description
     };
 
-    let createdSpot = dispatch(createSpot(payload))
+    // let createdSpot =  dispatch(createSpot(payload))
+
 
     const handleSubmit = async (e) => {
         // e.preventDefault();
@@ -72,7 +76,7 @@ function CreateListing() {
     
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -124,9 +128,9 @@ function CreateListing() {
             <label>
                 Price
                 <input
-                    type="text"
+                    type="number"
                     value={price}
-                    onChange={(e) => setPrice(e.target.value)}
+                    onChange={(e) => setPrice(parseInt(e.target.value))}
                     required
                 />
             </label>
@@ -136,12 +140,12 @@ function CreateListing() {
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    required
                 />
             </label>
             <button type="submit">Create Listing</button>
         </form>
     );
 }
+
 
 export default CreateListing;
