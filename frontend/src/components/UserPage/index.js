@@ -2,14 +2,18 @@ import './UserPage.css';
 
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useParams} from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
 
 function UserPage() {
     const dispatch = useDispatch();
+    const {userId} = useParams();
+    console.log("USER ID", userId);
+    
     const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("kjl");
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -36,7 +40,7 @@ function UserPage() {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <label>
-                Email
+                This is user Id {`${userId}`}
                 <input
                     type="text"
                     value={email}
@@ -45,7 +49,7 @@ function UserPage() {
                 />
             </label>
             <label>
-                Username
+                Usme
                 <input
                     type="text"
                     value={username}
