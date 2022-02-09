@@ -29,8 +29,8 @@ export const createSpot = (spot) => async (dispatch, getState) => {
         method: 'POST',
         body: JSON.stringify(spot)
     })
-    console.log("PAYLOAD!!!", spot)
-    console.log("RESPONSE!!!!", response)
+    // console.log("PAYLOAD!!!", spot)
+    // console.log("RESPONSE!!!!", response)
     
     
     let newSpot;
@@ -39,7 +39,7 @@ export const createSpot = (spot) => async (dispatch, getState) => {
         
         const newSpot = await response.json();
         dispatch(addSpot(newSpot))
-        console.log("DATA!!!", newSpot)
+        // console.log("DATA!!!", newSpot)
     }
     
     return newSpot;
@@ -57,7 +57,7 @@ const spotReducer = (state = initialState, action) => {
         case ADD:
             newState = Object.assign({}, state);
             newState = action.payload;
-            console.log("NEWSTATE!!!!!!", newState)
+            // console.log("NEWSTATE!!!!!!", newState)
             return newState;
         default:
             return state;
