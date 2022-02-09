@@ -48,9 +48,9 @@ const spotReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD:
             newState = Object.assign({}, state);
-            newState.spot = action.payload;
+            newState = action.payload;
             console.log(newState)
-            return newState;
+            return [...state, newState];
         default:
             return state;
     }
