@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './NewListing.css';
-import { createSpot } from "../../store/spot";
+import * as spotActions from "../../store/spot";
 
 // userId: 1,
 // address: "Upper Left Side",
@@ -30,7 +30,7 @@ function CreateListing() {
     
 
     // const updateUserId = (e) => setUserId(sessionUser.id);
-    const updateAdress = (e) => setAddress(e.target.value);
+    const updateAddress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
     const updateCountry = (e) => setCountry(e.target.value);
@@ -68,15 +68,27 @@ function CreateListing() {
     // let createdSpot =  dispatch(createSpot(payload))
 
 
-    const handleSubmit = async (e) => {
-        // e.preventDefault();
-        // setUserId(sessionUser.id)
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        
+            // setErrors([]);
+        return dispatch(spotActions.createSpot(payload))
+                // .catch(async (res) => {
+                //     const data = await res.json();
+                //     if (data && data.errors) setErrors(data.errors);
+                // });
+        
+    };
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        
+    };
 
     
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -85,7 +97,7 @@ function CreateListing() {
                 <input
                     type="text"
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={updateAddress}
                     required
                 />
             </label>
@@ -94,7 +106,7 @@ function CreateListing() {
                 <input
                     type="text"
                     value={city}
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={updateCity}
                     required
                 />
             </label>
@@ -103,7 +115,7 @@ function CreateListing() {
                 <input
                     type="text"
                     value={state}
-                    onChange={(e) => setState(e.target.value)}
+                    onChange={updateState}
                     required
                 />
             </label>
@@ -112,7 +124,7 @@ function CreateListing() {
                 <input
                     type="text"
                     value={country}
-                    onChange={(e) => setCountry(e.target.value)}
+                    onChange={updateCountry}
                     required
                 />
             </label>
@@ -121,7 +133,7 @@ function CreateListing() {
                 <input
                     type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={updateName}
                     required
                 />
             </label>
@@ -130,7 +142,7 @@ function CreateListing() {
                 <input
                     type="number"
                     value={price}
-                    onChange={(e) => setPrice(parseInt(e.target.value))}
+                    onChange={updatePrice}
                     required
                 />
             </label>
@@ -139,10 +151,11 @@ function CreateListing() {
                 <input
                     type="text"
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={updateDescription}
                 />
             </label>
             <button type="submit">Create Listing</button>
+            <button type="button" onClick={handleCancelClick}>Cancel</button>
         </form>
     );
 }

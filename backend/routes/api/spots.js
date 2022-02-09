@@ -38,9 +38,13 @@ router.post(
         const spot = await Spot.create({ userId, address, city, state, country, name, price, description});
 
         // await setTokenCookie(res, spot);
+        console.log(spot)
         
         return res.json({
             spot
         });
     })
 );
+
+module.exports = router;
+

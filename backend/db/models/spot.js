@@ -47,19 +47,31 @@ module.exports = (sequelize, DataTypes) => {
 
   };
 
-  Spot.create = async function ({ userId, address, city, state, country, name, price, description }) {
+  // Spot.create = async function ({ userId, address, city, state, country, name, price, description }) {
 
-    const spot = await Spot.create({
-      userId,
-      address,
-      city,
-      state,
-      country,
-      name,
-      price,
-      description
-    });
-    return await Spot.findByPk(spot.id);
-  };
+  //   const spot = await Spot.create({
+  //     userId,
+  //     address,
+  //     city,
+  //     state,
+  //     country,
+  //     name,
+  //     price,
+  //     description
+  //   });
+  //   return await Spot.findByPk(spot.id);
+  // };
+
+
+  // User.signup = async function ({ username, email, password }) {
+//   const hashedPassword = bcrypt.hashSync(password);
+//   const user = await User.create({
+//     username,
+//     email,
+//     hashedPassword
+//   });
+//   return await User.scope('currentUser').findByPk(user.id);
+// };
+
   return Spot;
 };
