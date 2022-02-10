@@ -1,3 +1,4 @@
+// import User from "../../../backend/db/models/user";
 import { csrfFetch } from "./csrf";
 
 const ADD = 'spots/ADD'
@@ -60,10 +61,12 @@ export const createSpot = (spot) => async (dispatch, getState) => {
 //READ
 
 export const getSpot = () => async dispatch => {
-    const response = await csrfFetch(`/api/spots`);
+    
+    const response = await csrfFetch(`/api/users`);
 
     if (response.ok) {
         const list = await response.json();
+        console.log()
         console.log(list)
         dispatch(loadSpot(list));
     }
@@ -108,17 +111,17 @@ const spotReducer = (state = initialState, action) => {
             // console.log("NEWSTATE!!!!!!", newState)
             return newState;
 
-        // case LOAD:
-        //     const allSpots = {};
-        //     console.log(action.list)
-        //     action.list.forEach(spot => {
-        //         allSpots[spot.id] = spot;
-        //     });
-        //     return {
-        //         ...allSpots,
-        //         ...state,
-        //         list: sortList(action.list)
-        //     };
+        case LOAD:
+            const allSpots = {};
+            action.payload.spots.forEach(spot => {
+                allSpots[spot.id] = spot;
+                console.log("SPOT", spot)
+                console.log("All SPOTS!!!!", allSpots)
+            });
+            return {
+                ...allSpots,
+                ...state,
+            };
         // case DEL:
         //     return {
         //         ...state,
