@@ -46,5 +46,17 @@ router.post(
     })
 );
 
+router.get('/:id', asyncHandler(async function (req, res) {
+    const spot = await Spot.findOne(req.params.id);
+    console.log("SPOT from spotsjs", spot)
+    return res.json({spot});
+
+}));
+
+// async function list() {
+//     return await Spot.findAll();
+// }
+
+
 module.exports = router;
 

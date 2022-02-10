@@ -1,13 +1,23 @@
 import './UserPage.css';
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams} from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import * as spotActions from '../../store/spot';
+import { getSpot } from '../../store/spot';
 
 
 function UserPage() {
+
+    
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSpot())
+    }, [dispatch])
+
     const {userId} = useParams();
     // console.log("USER ID", userId);
     
@@ -18,20 +28,13 @@ function UserPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    
 
     // if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (password === confirmPassword) {
-            setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
-        }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
+        
     };
 
     return (
@@ -40,7 +43,9 @@ function UserPage() {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <label>
+                
                 This is user page of number: {`${userId}`}
+
                 
             </label>
             

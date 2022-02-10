@@ -6,6 +6,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { Spot } = require('../../db/models');
 
 const router = express.Router();
 
@@ -44,5 +45,17 @@ router.post(
         });
     }),
 );
+
+router.get('/', asyncHandler(async function (req, res) {
+    const spots = await Spot.findAll(req.params.id)
+    // {
+    //     where: {
+    //         userId = req.params.id
+    //     }
+    // }
+    
+    console.log("SPOTS from usersjs", spots)
+    return res.json({spots});
+}));
 
 module.exports = router;
