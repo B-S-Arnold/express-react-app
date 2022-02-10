@@ -26,10 +26,10 @@ function App() {
           <Route path={["/signup", "/sign-up"]}>
             <SignupFormPage />
           </Route>
-          <Route path={"/users/:userId"}>
+          <Route path={"/spot/:spotId"}>
             <SpotPage />
           </Route>
-          <Route path={"/spots/:spotId"}>
+          <Route path={"/users/:userId"}>
             <UserPage />
           </Route>
           <Route path={"/createListing"}>

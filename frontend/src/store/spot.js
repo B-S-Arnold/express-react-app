@@ -1,12 +1,30 @@
 import { csrfFetch } from "./csrf";
 
-const ADD = 'spots/add'
+const ADD = 'spots/ADD'
+const LOAD = 'spots/LOAD'
+const EDIT = 'spots/EDIT'
+const DEL = 'spots/DEL'
+
+const loadSpot = list => ({
+    type: LOAD,
+    payload: list
+});
 
 const addSpot = spot => ({
     type: ADD,
     payload: spot
     
 });
+
+const editSpot = spot => ({
+    type: EDIT,
+    payload: spot
+})
+
+const delSpot = spot => ({
+    type: DEL,
+    payload: spot
+})
 
 // const response = await csrfFetch("/api/users", {
 //     method: "POST",
@@ -20,30 +38,60 @@ const addSpot = spot => ({
 
 
 
+//CREATE 
 export const createSpot = (spot) => async (dispatch, getState) => {
-    
-
-    // use FETCH for CONSOLE LOGS
 
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         body: JSON.stringify(spot)
     })
-    // console.log("PAYLOAD!!!", spot)
-    // console.log("RESPONSE!!!!", response)
-    
-    
+   
     let newSpot;
     if (response.ok) {
         
         
         const newSpot = await response.json();
         dispatch(addSpot(newSpot))
-        // console.log("DATA!!!", newSpot)
+        
     }
     
     return newSpot;
 }
+//READ
+
+export const getSpot = () => async dispatch => {
+    const response = await csrfFetch(`/api/spots`);
+
+    if (response.ok) {
+        const list = await response.json();
+        console.log(list)
+        dispatch(loadSpot(list));
+    }
+    return response;
+};
+
+//UPDATE
+export const editSpots = (payload) => async (dispatch, getState) => {
+    const response = await fetch(`/api/spots/${payload.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(payload)
+    })
+    console.log('EDIT PAYLOAD', payload)
+    console.log('EDIT RESPONSE', response)
+
+    let newSpot;
+    if (response.ok) {
+        newSpot = await response.json()
+        console.log(newSpot)
+        dispatch(addSpot(newSpot))
+    }
+    return newSpot;
+}
+
+
+
+///SPOT REDUCER
+
 const initialState = { spot: null };
 
 const spotReducer = (state = initialState, action) => {
@@ -59,9 +107,31 @@ const spotReducer = (state = initialState, action) => {
             newState = action.payload;
             // console.log("NEWSTATE!!!!!!", newState)
             return newState;
+
+        // case LOAD:
+        //     const allSpots = {};
+        //     console.log(action.list)
+        //     action.list.forEach(spot => {
+        //         allSpots[spot.id] = spot;
+        //     });
+        //     return {
+        //         ...allSpots,
+        //         ...state,
+        //         list: sortList(action.list)
+        //     };
+        // case DEL:
+        //     return {
+        //         ...state,
+        //         [action.spotId]: {
+        //             ...state[action.spotId],
+        //         }
+        //     };
+
         default:
             return state;
+        
     }
+    
 }
 
 
