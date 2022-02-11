@@ -2,7 +2,7 @@ import './SpotPage.css';
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import * as spotActions from '../../store/spot';
 import { getSpot } from '../../store/spot';
@@ -30,6 +30,10 @@ function SpotPage() {
 
     const { spotId } = useParams();
 
+    const history = useHistory();
+
+    
+
     
 
 
@@ -42,8 +46,32 @@ function SpotPage() {
     const spotsArr = Object.values(spots);
     const spotMapFunc = () => spotsArr.map((spot) => {
         if (spot !== null && parseInt(spotId) === spot.id) {
+            const thisSpot = spot
+
+        const deleteButton = (e) => {
+            e.preventDefault();
+            let path = `/users/${thisSpot.userId}`
+
+            console.log("PAYLOAD!!!!!!!!", thisSpot)
+
+
+            // setErrors([]);
+            return dispatch(spotActions.deleteSpot(thisSpot))
+                .then(() => {
+                    history.push(path)
+                },
+                    async (res) => {
+                        const data = await res.json()
+                        if (data && data.errors) setErrors(data.errors);
+                    }
+                );
+
+        };
+
+
+        
             return (
-                <div key={spot.id}>
+                <div key={thisSpot.id}>
                     <div>
                         Name is {spot.name}
                     </div>
@@ -60,11 +88,16 @@ function SpotPage() {
                     <div>
                         Param spotID is {spotId}
                     </div>
+                    <button onClick={deleteButton}>
+                        Delete Spot
+                    </button>
                 </div >
             )
         }
 
     })
+
+    
 
     // console.log("SPOTTTS ARRRR", spotsArr)
 
@@ -77,10 +110,10 @@ function SpotPage() {
 
     // if (sessionUser) return <Redirect to="/" />;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-    };
+    // };
 
     return (
         <>

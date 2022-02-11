@@ -86,6 +86,28 @@ export const getSpotPage = () => async dispatch => {
     return response;
 };
 
+export const deleteSpot = (spot) => async (dispatch, getState) => {
+
+    console.log(spot)
+
+    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+        method: 'DELETE',
+        body: JSON.stringify(spot)
+    })
+    console.log(response)
+
+    let oldSpot;
+    if (response.ok) {
+
+
+        const oldSpot = await response.json();
+        dispatch(delSpot(oldSpot))
+
+    }
+
+    return oldSpot;
+}
+
 //UPDATE
 export const editSpots = (payload) => async (dispatch, getState) => {
     const response = await fetch(`/api/spots/${payload.id}`, {
@@ -136,13 +158,17 @@ const spotReducer = (state = initialState, action) => {
                 ...allSpots,
                 ...state,
             };
-        // case DEL:
-        //     return {
-        //         ...state,
-        //         [action.spotId]: {
-        //             ...state[action.spotId],
-        //         }
-        //     };
+        case DEL:
+
+            return {
+                ...state,
+               [action.payload]: {
+                   ...state[action.payload].spots.filter(
+                       (spotId) => spotId !== action.id
+                   )
+               }
+
+            };
 
         default:
             return state;
