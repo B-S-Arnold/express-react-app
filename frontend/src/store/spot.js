@@ -88,11 +88,12 @@ export const getSpotPage = () => async dispatch => {
 
 export const deleteSpot = (spot) => async (dispatch, getState) => {
 
-    console.log(spot)
+    console.log("SPOT IN DEL SPOT!",spot)
+    console.log("SPOT id IN DEL SPOT!", spot.id)
 
     const response = await csrfFetch(`/api/spots/${spot.id}`, {
         method: 'DELETE',
-        body: JSON.stringify(spot)
+        
     })
     console.log(response)
 

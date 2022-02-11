@@ -55,13 +55,13 @@ function SpotPage() {
             console.log("PAYLOAD!!!!!!!!", thisSpot)
 
 
-            // setErrors([]);
+            setErrors([]);
             return dispatch(spotActions.deleteSpot(thisSpot))
                 .then(() => {
                     history.push(path)
                 },
                     async (res) => {
-                        const data = await res.json()
+                        const data = await res.json
                         if (data && data.errors) setErrors(data.errors);
                     }
                 );
