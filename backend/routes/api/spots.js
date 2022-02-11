@@ -66,9 +66,13 @@ router.post(
 // }));
 
 router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
-    const spot = await Spot.findByPK(req.params.id);
+    const spot = await Spot.findByPk(req.params.id);
+    if (spot) {
+        await spot.destroy();
+    }
     spot.destroy()
     return res.json(spot);
+    
 
 }));
 
