@@ -65,12 +65,12 @@ router.post(
 
 // }));
 
-// router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
-//     const spot = await Spot.findOne(req.params.id);
-//     spot.destroy()
-//     return res.json(spot);
+router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
+    const spot = await Spot.findOne(req.params.id);
+    spot.destroy()
+    return res.json(spot);
 
-// }));
+}));
 
 // async function list() {
 //     return await Spot.findAll();
