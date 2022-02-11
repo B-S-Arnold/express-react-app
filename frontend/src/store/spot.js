@@ -73,6 +73,19 @@ export const getSpot = () => async dispatch => {
     return response;
 };
 
+export const getSpotPage = () => async dispatch => {
+    
+    const response = await csrfFetch(`/api/spots`);
+
+    if (response.ok) {
+        const list = await response.json();
+        
+        console.log(list)
+        dispatch(loadSpot(list));
+    }
+    return response;
+};
+
 //UPDATE
 export const editSpots = (payload) => async (dispatch, getState) => {
     const response = await fetch(`/api/spots/${payload.id}`, {

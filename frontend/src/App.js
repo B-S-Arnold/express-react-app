@@ -26,7 +26,7 @@ function App() {
           <Route path={["/signup", "/sign-up"]}>
             <SignupFormPage />
           </Route>
-          <Route path={"/spot/:spotId"}>
+          <Route path={"/spots/:spotId"}>
             <SpotPage />
           </Route>
           <Route path={"/users/:userId"}>
