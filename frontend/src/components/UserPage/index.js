@@ -10,15 +10,53 @@ import { getSpot } from '../../store/spot';
 
 function UserPage() {
 
+    const { userId } = useParams();
+
+   
+
+    const spots = useSelector(state => {
+        console.log("STATE",state)
+        return state.spot;
+    });
+    console.log("SPOTTTSSS", spots)
+
+    const spotsArr = Object.values(spots);
+    const spotMapFunc = () => spotsArr.map((spot) => {
+        if (spot !== null && parseInt(userId) === spot.userId){
+        return (
+            <>
+                <div>
+                    Name is {spot.name}
+                </div>
+                <div>
+                    Id is {spot.id}
+                </div>
+                <div>
+                    userId is {spot.userId}
+                </div>
+                <div>
+                    Param userid is {userId}
+                </div>
+            </>
+        )}
+
+    })
+
+    // console.log("SPOTTTS ARRRR", spotsArr)
+
+    
+    
     
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getSpot())
+        // console.log("DISPAPAAP SPOT",dispatch(getSpot()))
     }, [dispatch])
+    // console.log("DISPATCH",dispatch.spots)
 
-    const {userId} = useParams();
+    
     // console.log("USER ID", userId);
     
     const sessionUser = useSelector((state) => state.session.user);
@@ -38,18 +76,13 @@ function UserPage() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        <>
+            <h2>All spots</h2>
+            {!spotsArr.length && <span>No produce available right now.</span>}
+            <ul className="produce-list">
+                {spotMapFunc()}
             </ul>
-            <label>
-                
-                This is user page of number: {`${userId}`}
-
-                
-            </label>
-            
-        </form>
+        </>
     );
 }
 
