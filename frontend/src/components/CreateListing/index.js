@@ -74,16 +74,19 @@ function CreateListing() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let path = `/users/${payload.userId}`
-        history.push(path)
+        
         console.log("PAYLOAD!!!!!!!!", payload)
         
         
             // setErrors([]);
         return dispatch(spotActions.createSpot(payload))
-                // .catch(async (res) => {
-                //     const data = await res.json();
-                //     if (data && data.errors) setErrors(data.errors);
-                // });
+                .then( () => {
+                    history.push(path)},
+                    async (res) => {
+                        const data = await res.json() 
+                        if (data && data.errors) setErrors(data.errors);
+                    } 
+                );
         
     };
     const handleCancelClick = (e) => {

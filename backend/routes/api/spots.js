@@ -45,13 +45,32 @@ router.post(
         });
     })
 );
+// router.get('/', asyncHandler(async (req, res, next) => {
+//     const spots = await Spot.findAll(req.params.id)
+//     // {
+//     //     where: {
+//     //         userId = req.params.id
+//     //     }
+//     // }
 
-router.get('/:id', asyncHandler(async function (req, res) {
-    const spot = await Spot.findOne(req.params.id);
-    console.log("SPOT from spotsjs", spot)
-    return res.json({spot});
+//     console.log("SPOTS from usersjs", spots)
+//     return res.json( spots );
+// }));
 
-}));
+// router.get('/:id', asyncHandler(async function (req, res) {
+//     console.log("WERE IN SPOTS ID")
+//     const spot = await Spot.findOne(req.params.id);
+//     console.log("SPOT from spotsjs", spot)
+//     return res.json(spot);
+
+// }));
+
+// router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
+//     const spot = await Spot.findOne(req.params.id);
+//     spot.destroy()
+//     return res.json(spot);
+
+// }));
 
 // async function list() {
 //     return await Spot.findAll();
