@@ -76,6 +76,22 @@ router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 }));
 
+router.put(
+    "/:id(\\d+)", asyncHandler(async function (req, res) {
+        const spot = await Spot.findByPk(req.body);
+        return res.json(spot);
+    })
+);
+
+// router.put(
+//     '/:id(\\d+)',
+    
+//     asyncHandler(async function (req, res) {
+//         const id = await Spot.update(req.body);
+//         const spot = await Spot.one(id);
+//         return res.json(spot);
+//     })
+// );
 // async function list() {
 //     return await Spot.findAll();
 // }
