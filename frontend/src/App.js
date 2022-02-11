@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import CreateListingForm from "./components/CreateListing";
 import SpotPage from "./components/SpotPage";
 import UserPage from "./components/UserPage";
+import EditListing from "./components/EditListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function App() {
           <Route path={["/signup", "/sign-up"]}>
             <SignupFormPage />
           </Route>
-          <Route path={"/spots/:spotId"}>
+          <Route exact path={"/spots/:spotId"}>
             <SpotPage />
           </Route>
           <Route path={"/users/:userId"}>
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path={"/createListing"}>
             <CreateListingForm />
+          </Route>
+          <Route path={"/spots/:spotId/edit"}>
+            <EditListing />
           </Route>
           <Route>
             404: Page Not Found

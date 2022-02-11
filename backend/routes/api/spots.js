@@ -78,7 +78,11 @@ router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 router.put(
     "/:id(\\d+)", asyncHandler(async function (req, res) {
-        const spot = await Spot.findByPk(req.body);
+        const { userId, address, city, state, country, name, price, description } = req.body;
+        const spot = await Spot.update({ userId, address, city, state, country, name, price, description });
+    if (spot) {
+        await Spot.update({ userId, address, city, state, country, name, price, description });
+    }
         return res.json(spot);
     })
 );
