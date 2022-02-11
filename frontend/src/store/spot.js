@@ -17,10 +17,10 @@ const addSpot = spot => ({
     
 });
 
-const editSpot = spot => ({
-    type: EDIT,
-    payload: spot
-})
+// const edit = spot => ({
+//     type: EDIT,
+//     payload: spot
+// })
 
 const delSpot = spot => ({
     type: DEL,
@@ -73,18 +73,31 @@ export const getSpot = () => async dispatch => {
     return response;
 };
 
-export const getSpotPage = () => async dispatch => {
+// export const getSpotPage = () => async dispatch => {
     
-    const response = await csrfFetch(`/api/spots`);
+//     const response = await csrfFetch(`/api/spots`);
 
-    if (response.ok) {
-        const list = await response.json();
+//     if (response.ok) {
+//         const list = await response.json();
         
-        console.log(list)
-        dispatch(loadSpot(list));
-    }
-    return response;
-};
+//         console.log(list)
+//         dispatch(loadSpot(list));
+//     }
+//     return response;
+// };
+
+// export const getEditSpotPage = (spot) => async dispatch => {
+
+//     const response = await csrfFetch(`/api/spots/${spot.id}`);
+
+//     if (response.ok) {
+//         const list = await response.json();
+
+//         console.log(list)
+//         dispatch(loadSpot(list));
+//     }
+//     return response;
+// };
 
 export const deleteSpot = (spot) => async (dispatch, getState) => {
 
@@ -110,7 +123,7 @@ export const deleteSpot = (spot) => async (dispatch, getState) => {
 }
 
 //UPDATE
-export const editSpots = (payload) => async (dispatch, getState) => {
+export const editSpot = (payload) => async (dispatch, getState) => {
     const response = await fetch(`/api/spots/${payload.id}`, {
         method: 'PUT',
         body: JSON.stringify(payload)

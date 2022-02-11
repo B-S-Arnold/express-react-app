@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     spotId: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      onDelete: 'CASCADE'
     },
     review: {
       allowNull: false,
@@ -17,7 +18,10 @@ module.exports = (sequelize, DataTypes) => {
   Review.associate = function(models) {
     // associations can be defined here
     Review.belongsTo(models.User, { foreignKey: 'userId' })
-    Review.belongsTo(models.Spot, { foreignKey: 'spotId' })
+    Review.belongsTo(models.Spot, { 
+      foreignKey: 'spotId',
+      onDelete: 'CASCADE'
+     })
     
   };
   return Review;
