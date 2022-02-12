@@ -149,7 +149,7 @@ function EditListing() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let path = `/users/${sessionUser.id}`
+        let path = `/spots/${spotId}`
 
         console.log("PAYLOAD!!!!!!!!", payload)
 

@@ -6,6 +6,7 @@ import { Redirect, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import * as spotActions from '../../store/spot';
 import { getSpot } from '../../store/spot';
+import ReviewFormModal from '../ReviewModal';
 
 
 function SpotPage() {
@@ -31,6 +32,7 @@ function SpotPage() {
     const { spotId } = useParams();
 
     const history = useHistory();
+    // const sessionUser = useSelector(state => state.session.user);
 
     
 
@@ -68,9 +70,33 @@ function SpotPage() {
 
         };
 
+            let links
+            console.log("SPOT LINK",sessionUser)
+            if (sessionUser && sessionUser.id === spot.userId){
+                links =
+                    <>
+                    < button onClick={(e) => {
+                        e.preventDefault()
+                        history.push(`${spot.id}/edit`)
+                    }}>
+                            Edit Listing
+                        </button>
+                        < button onClick={deleteButton} >
+                            Delete Listing
+                        </button >
+                    </>
+            }
+            if (sessionUser && sessionUser.id !== spot.userId){
+                links = (<ReviewFormModal />)
+            }
+            
+           
+
+
 
         
             return (
+                
                 <div key={thisSpot.id}>
                     <div>
                         Name is {spot.name}
@@ -88,9 +114,10 @@ function SpotPage() {
                     <div>
                         Param spotID is {spotId}
                     </div>
-                    <button onClick={deleteButton}>
-                        Delete Spot
-                    </button>
+                    <div>
+                        {links}
+                    </div>
+                    
                 </div >
             )
         }
