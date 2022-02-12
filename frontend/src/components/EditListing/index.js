@@ -28,37 +28,44 @@ function EditListing() {
     }, [dispatch])
 
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser)
+    const userId = sessionUser.id;
+    console.log("SessionUser",sessionUser)
+
+    let hello = async (res) => {
+        const data = await res.json()
+
+    }
     
-    
+    const spot = useSelector(state => Object.values(state.spot).find(spot => spot && spot.id === parseInt(spotId)));
+
+    console.log("SPOT!!!!", spot)
 
    
     // console.log("SPOTS",spots)
 
-    const spots = useSelector(state => {
-        console.log("STATE", state)
-        return state.spot;
-    });
-    console.log("SPOTTTSSS", spots)
+    // const spots = useSelector(state => {
+    //     console.log("STATE", state)
+    //     return state.spot;
+    // });
+    // console.log("SPOTTTSSS", spots)
 
-    const spotsArr = Object.values(spots);
+    // const spotsArr = Object.values(spots);
 
-    function filterById(spot) {
+    // function filterById(spot) {
         
-        if (spot && spot.id === parseInt(spotId)){
-            return true
-        }
+    //     if (spot && spot.id === parseInt(spotId)){
+    //         return true
+    //     }
         
-        return false;
-    }
-    const spot = spotsArr.filter(filterById)[0]
+    //     return false;
+    // }
+    // const spot = spotsArr.filter(filterById)[0]
 
-        // return null
+    //     // return null
 
     
-    console.log("spotTo Edit", spot)
-
-
+    // console.log("spotTo Edit", spot)
+    
     
 
             
@@ -108,8 +115,11 @@ function EditListing() {
     //     return setErrors(['Confirm Password field must be the same as the Password field']);
     // };
 
+    const id = spotId;
+
     let payload = {
-        // userId,
+        id,
+        userId,
         address,
         city,
         state,
@@ -124,13 +134,13 @@ function EditListing() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let path = `/users/${payload.sessionUser.id}`
+        let path = `/users/${sessionUser.id}`
 
         console.log("PAYLOAD!!!!!!!!", payload)
 
 
         // setErrors([]);
-        return dispatch(spotActions.createSpot(payload))
+        return dispatch(spotActions.editSpot(payload))
             .then(() => {
                 history.push(path)
             },
