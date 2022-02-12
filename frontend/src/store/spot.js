@@ -17,10 +17,10 @@ const addSpot = spot => ({
     
 });
 
-// const edit = spot => ({
-//     type: EDIT,
-//     payload: spot
-// })
+const edit = spot => ({
+    type: EDIT,
+    payload: spot
+})
 
 const delSpot = spot => ({
     type: DEL,
@@ -124,7 +124,8 @@ export const deleteSpot = (spot) => async (dispatch, getState) => {
 
 //UPDATE
 export const editSpot = (payload) => async (dispatch, getState) => {
-    const response = await fetch(`/api/spots/${payload.id}`, {
+    console.log("EDIT PAYLOAD!!!!!!",payload)
+    const response = await csrfFetch(`/api/spots/${payload.id}`, {
         method: 'PUT',
         body: JSON.stringify(payload)
     })
@@ -135,7 +136,7 @@ export const editSpot = (payload) => async (dispatch, getState) => {
     if (response.ok) {
         newSpot = await response.json()
         console.log(newSpot)
-        dispatch(addSpot(newSpot))
+        dispatch(edit(newSpot))
     }
     return newSpot;
 }
