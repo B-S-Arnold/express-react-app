@@ -49,6 +49,7 @@ function UserPage() {
     // console.log("SPOTTTSSS", spots)
 
     const spotsArr = Object.values(spots);
+    console.log("SPOTS ARR",spotsArr)
     const spotMapFunc = () => spotsArr.map((spot) => {
         if (spot !== null && parseInt(userId) === spot.userId){
         return (

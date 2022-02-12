@@ -172,7 +172,7 @@ const spotReducer = (state = initialState, action) => {
             return {
                 
                 ...allSpots,
-                ...state,
+                // ...state,
             };
         case DEL:
 
