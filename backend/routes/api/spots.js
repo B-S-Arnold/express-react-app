@@ -76,14 +76,16 @@ router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 }));
 
-router.put(
-    "/:id(\\d+)", asyncHandler(async function (req, res) {
-        const { userId, address, city, state, country, name, price, description } = req.body;
-        const spot = await Spot.update({ userId, address, city, state, country, name, price, description });
+router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
+        const spot = await Spot.findByPk(req.params.id);
+        let payload = req.body
+        console.log("PAYLOAD IN ROUTER PUT!", payload)
+        // const { userId, address, city, state, country, name, price, description } = req.body;
+        // const spot = await Spot.update({ userId, address, city, state, country, name, price, description });
     if (spot) {
-        await Spot.update({ userId, address, city, state, country, name, price, description });
+        await spot.update(payload);
     }
-        return res.json(spot);
+        return res.json({spot});
     })
 );
 

@@ -115,7 +115,7 @@ function EditListing() {
     //     return setErrors(['Confirm Password field must be the same as the Password field']);
     // };
 
-    const id = spotId;
+    const id = parseInt(spotId);
 
     let payload = {
         id,
@@ -132,14 +132,29 @@ function EditListing() {
     // let createdSpot =  dispatch(createSpot(payload))
 
 
+
+    // setErrors([]);
+    // return dispatch(spotActions.deleteSpot(thisSpot))
+    //     .then(() => {
+    //         history.push(path)
+    //     },
+    //         async (res) => {
+    //             const data = await res.json
+    //             if (data && data.errors) setErrors(data.errors);
+    //         }
+    //     );
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        let path = `/users/${sessionUser.id}`
+        let path = `/spots/${spotId}`
 
         console.log("PAYLOAD!!!!!!!!", payload)
 
 
-        // setErrors([]);
+        setErrors([]);
         return dispatch(spotActions.editSpot(payload))
             .then(() => {
                 history.push(path)

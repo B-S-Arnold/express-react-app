@@ -49,6 +49,7 @@ function UserPage() {
     // console.log("SPOTTTSSS", spots)
 
     const spotsArr = Object.values(spots);
+    console.log("SPOTS ARR",spotsArr)
     const spotMapFunc = () => spotsArr.map((spot) => {
         if (spot !== null && parseInt(userId) === spot.userId){
         return (
@@ -97,7 +98,7 @@ function UserPage() {
     return (
         <>
             <h2>All spots</h2>
-            {!spotsArr.length && <span>No produce available right now.</span>}
+            {!spotsArr.length && <span>No listings.</span>}
             <ul className="spot">
                 {spotMapFunc()}
             </ul>
