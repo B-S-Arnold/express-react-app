@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE'
     },
-    review: {
+    content: {
       allowNull: false,
       type: DataTypes.TEXT
     }

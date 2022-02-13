@@ -40,29 +40,29 @@ const delReview = review => ({
 
 
 //CREATE 
-export const createreview = (review) => async (dispatch, getState) => {
+export const createReview = (review) => async (dispatch, getState) => {
 
-    const response = await csrfFetch('/api/reviews', {
+    const response = await csrfFetch(`/api/spots/${review.spotId}`, {
         method: 'POST',
         body: JSON.stringify(review)
     })
 
-    let newreview;
+    let newReview;
     if (response.ok) {
 
 
-        const newreview = await response.json();
-        dispatch(addReview(newreview))
+        const newReview = await response.json();
+        dispatch(addReview(newReview))
 
     }
 
-    return newreview;
+    return newReview;
 }
 //READ
 
-export const getreview = () => async dispatch => {
+export const getReview = () => async dispatch => {
 
-    const response = await csrfFetch(`/api/users`);
+    const response = await csrfFetch(`/api/spots`);
 
     if (response.ok) {
         const list = await response.json();
@@ -73,33 +73,8 @@ export const getreview = () => async dispatch => {
     return response;
 };
 
-// export const getreviewPage = () => async dispatch => {
 
-//     const response = await csrfFetch(`/api/reviews`);
-
-//     if (response.ok) {
-//         const list = await response.json();
-
-//         console.log(list)
-//         dispatch(loadreview(list));
-//     }
-//     return response;
-// };
-
-// export const getEditreviewPage = (review) => async dispatch => {
-
-//     const response = await csrfFetch(`/api/reviews/${review.id}`);
-
-//     if (response.ok) {
-//         const list = await response.json();
-
-//         console.log(list)
-//         dispatch(loadreview(list));
-//     }
-//     return response;
-// };
-
-export const deletereview = (review) => async (dispatch, getState) => {
+export const deleteReview = (review) => async (dispatch, getState) => {
 
     console.log("review IN DEL review!", review)
     console.log("review id IN DEL review!", review.id)
@@ -123,7 +98,7 @@ export const deletereview = (review) => async (dispatch, getState) => {
 }
 
 //UPDATE
-export const editreview = (payload) => async (dispatch, getState) => {
+export const editReview = (payload) => async (dispatch, getState) => {
 
     const response = await csrfFetch(`/api/reviews/${payload.id}`, {
         method: 'PUT',

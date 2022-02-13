@@ -21,7 +21,7 @@ const delImage = image => ({
 })
 
 //CREATE 
-export const createimage = (image) => async (dispatch, getState) => {
+export const createImage = (image) => async (dispatch, getState) => {
 
     const response = await csrfFetch('/api/images', {
         method: 'POST',
@@ -41,9 +41,9 @@ export const createimage = (image) => async (dispatch, getState) => {
 }
 //READ
 
-export const getimage = () => async dispatch => {
+export const getImage = () => async dispatch => {
 
-    const response = await csrfFetch(`/api/users`);
+    const response = await csrfFetch(`/api/spots`);
 
     if (response.ok) {
         const list = await response.json();
@@ -56,7 +56,7 @@ export const getimage = () => async dispatch => {
 
 //DESTROY
 
-export const deleteimage = (image) => async (dispatch, getState) => {
+export const deleteImage = (image) => async (dispatch, getState) => {
 
     console.log("image IN DEL image!", image)
     console.log("image id IN DEL image!", image.id)

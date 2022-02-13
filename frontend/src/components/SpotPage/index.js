@@ -7,6 +7,8 @@ import * as sessionActions from "../../store/session";
 import * as spotActions from '../../store/spot';
 import { getSpot } from '../../store/spot';
 import ReviewFormModal from '../ReviewModal';
+import { getReview } from '../../store/review';
+import { getImage } from '../../store/image';
 
 
 function SpotPage() {
@@ -14,6 +16,8 @@ function SpotPage() {
 
     useEffect(() => {
         dispatch(getSpot())
+        dispatch(getReview())
+        dispatch(getImage())
         // console.log("DISPAPAAP SPOT",dispatch(getSpot()))
     }, [dispatch])
     // console.log("DISPATCH",dispatch.spots)
@@ -40,12 +44,28 @@ function SpotPage() {
 
 
     const spots = useSelector(state => {
-        console.log("STATE", state)
+        // console.log("STATE", state)
         return state.spot;
     });
-    console.log("SPOTTTSSS", spots)
+
+    const images = useSelector(state => {
+        // console.log("STATE", state)
+        return state.image;
+    });
+
+    const reviews = useSelector(state => {
+        // console.log("STATE", state)
+        return state.review;
+    });
 
     const spotsArr = Object.values(spots);
+    const imgArr = Object.values(images)
+    const rvwArr = Object.values(reviews)
+
+    
+    console.log("SPOTTTSSS", spots)
+
+    
     const spotMapFunc = () => spotsArr.map((spot) => {
         if (spot !== null && parseInt(spotId) === spot.id) {
             const thisSpot = spot
@@ -54,7 +74,7 @@ function SpotPage() {
             e.preventDefault();
             let path = `/users/${thisSpot.userId}`
 
-            console.log("PAYLOAD!!!!!!!!", thisSpot)
+            // console.log("PAYLOAD!!!!!!!!", thisSpot)
 
 
             setErrors([]);
@@ -69,6 +89,25 @@ function SpotPage() {
                 );
 
         };
+
+            // let allReviews = () => {
+                
+            // }
+
+            let allReviews = () => rvwArr.map((review) => {
+                if (review !== null && parseInt(spotId) === review.spotId){
+                        return (
+                            
+                            <div key={review.id}>
+                                    <div>
+                                        Review: {review.content}
+                                    </div>
+                            </div>
+                            
+                        )
+                    }
+                })
+                
 
             let links
             console.log("SPOT LINK",sessionUser)
@@ -98,9 +137,9 @@ function SpotPage() {
             return (
                 
                 <div key={thisSpot.id}>
-                    <div>
-                        Name is {spot.name}
-                    </div>
+                    <h2>
+                        {spot.name}
+                    </h2>
                     <div>
                         User Id is {spot.UserId}
                     </div>
@@ -114,8 +153,12 @@ function SpotPage() {
                     <div>
                         Param spotID is {spotId}
                     </div>
+                    
                     <div>
                         {links}
+                    </div>
+                    <div>
+                        {allReviews()}
                     </div>
                     
                 </div >
@@ -144,7 +187,7 @@ function SpotPage() {
 
     return (
         <>
-            <h2>Particular Spot</h2>
+            
             {!spotsArr.length && <span>No produce available right now.</span>}
             <ul className="spot">
                 {spotMapFunc()}

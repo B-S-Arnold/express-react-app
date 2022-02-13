@@ -3,6 +3,8 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { Spot } = require('../../db/models');
+const { Review } = require('../../db/models');
+const { Image } = require('../../db/models')
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -42,6 +44,25 @@ router.post(
         
         return res.json({
             spot
+        });
+    })
+);
+
+router.post(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        
+        const { userId, spotId, content } = req.body;
+        
+        
+        const review = await Review.create({ userId, spotId, content });
+        // const reviews = await Review.findAll(req.params.id)
+        // await setTokenCookie(res, review);
+        console.log("REVIEW!!!!", review)
+        // console.log("REVIEWS", reviews)
+
+        return res.json({
+            review
         });
     })
 );
@@ -88,6 +109,38 @@ router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
         return res.json({spot});
     })
 );
+
+router.get('/', asyncHandler(async function (req, res) {
+    // const spotId = req.params.id;
+    const reviews = await Review.findAll(req.params.id)
+    const images = await Image.findAll(req.params.id)
+    // const request = await (req.params)
+    // const images = await Image.findAll(req.params.id)
+    
+    // {
+    //     where: {
+    //         userId = req.params.id
+    //     }
+    // }
+
+    console.log("reviewS from usersjs", reviews)
+    return res.json({ reviews, images});
+}));
+
+// router.get('/', asyncHandler(async function (req, res) {
+//     // const spotId = req.params.id;
+//     // const reviews = await Review.findAll(req.params.id)
+//     const images = await Image.findAll(req.params.id)
+
+//     // {
+//     //     where: {
+//     //         userId = req.params.id
+//     //     }
+//     // }
+
+    
+//     return res.json({ images });
+// }));
 
 // router.put(
 //     '/:id(\\d+)',
