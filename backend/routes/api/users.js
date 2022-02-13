@@ -48,6 +48,7 @@ router.post(
 
 router.get('/', asyncHandler(async function (req, res) {
     const spots = await Spot.findAll(req.params.id)
+    
     // {
     //     where: {
     //         userId = req.params.id
@@ -57,5 +58,7 @@ router.get('/', asyncHandler(async function (req, res) {
     console.log("SPOTS from usersjs", spots)
     return res.json({spots});
 }));
+
+
 
 module.exports = router;

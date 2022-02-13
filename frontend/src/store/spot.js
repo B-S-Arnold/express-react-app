@@ -73,31 +73,6 @@ export const getSpot = () => async dispatch => {
     return response;
 };
 
-// export const getSpotPage = () => async dispatch => {
-    
-//     const response = await csrfFetch(`/api/spots`);
-
-//     if (response.ok) {
-//         const list = await response.json();
-        
-//         console.log(list)
-//         dispatch(loadSpot(list));
-//     }
-//     return response;
-// };
-
-// export const getEditSpotPage = (spot) => async dispatch => {
-
-//     const response = await csrfFetch(`/api/spots/${spot.id}`);
-
-//     if (response.ok) {
-//         const list = await response.json();
-
-//         console.log(list)
-//         dispatch(loadSpot(list));
-//     }
-//     return response;
-// };
 
 export const deleteSpot = (spot) => async (dispatch, getState) => {
 

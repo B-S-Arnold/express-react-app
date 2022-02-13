@@ -10,7 +10,7 @@ module.exports = {
       */
    return queryInterface.bulkInsert('Spots', [
      {
-       userId: 1,
+       userId: 2,
        address: "Red Rock Canyon",
        city: "Jacksonville",
        state: "New New Hampshire",
@@ -19,7 +19,7 @@ module.exports = {
        price: 5
      },
      {
-       userId: 1,
+       userId: 2,
        address: "Upper Left Side",
        city: "Ring Two",
        state: "Newest New Hampshire",
@@ -29,7 +29,7 @@ module.exports = {
        description: "Don't fall off..."
      },
      {
-       userId: 2,
+       userId: 3,
        address: "152 Scottdale Ave.",
        city: "Casazul",
        state: "Hampshire Nuevo",
