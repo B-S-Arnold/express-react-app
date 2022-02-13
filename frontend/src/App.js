@@ -8,6 +8,9 @@ import CreateListingForm from "./components/CreateListing";
 import SpotPage from "./components/SpotPage";
 import UserPage from "./components/UserPage";
 import EditListing from "./components/EditListing";
+import SplashPage from "./components/SplashPage"
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +25,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path={["/", "/home"]}>
-            The Splash Page / Home Page
+            <SplashPage />
           </Route>
           <Route path={["/signup", "/sign-up"]}>
             <SignupFormPage />
