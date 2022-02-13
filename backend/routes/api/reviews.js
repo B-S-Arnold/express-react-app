@@ -9,20 +9,20 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-router.post(
-    '/',
-    asyncHandler(async (req, res) => {
-        const { userId, spotId, comment } = req.body;
-        const review = await Review.create({ userId, spotId, comment });
+// router.post(
+//     '/',
+//     asyncHandler(async (req, res) => {
+//         const { userId, spotId, content } = req.body;
+//         const review = await Review.create({ userId, spotId, content });
 
-        // await setTokenCookie(res, review);
-        console.log(review)
+//         // await setTokenCookie(res, review);
+//         console.log(review)
 
-        return res.json({
-            review
-        });
-    })
-);
+//         return res.json({
+//             review
+//         });
+//     })
+// );
 
 // router.get('/', asyncHandler(async function (req, res) {
 //     const reviews = await Review.findAll(req.params.id)

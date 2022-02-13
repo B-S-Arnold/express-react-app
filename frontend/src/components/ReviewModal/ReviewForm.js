@@ -1,21 +1,42 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import * as reviewActions from "../../store/review"
+import { useHistory, useParams } from "react-router-dom";
+
+
 
 function ReviewForm() {
+
+    
     const dispatch = useDispatch();
-    const [credential, setCredential] = useState("");
-    const [password, setPassword] = useState("");
+    const userId = useSelector((state) => state.session.user.id);
+    const { spotId } = useParams();
+    const history = useHistory();
+    
+    const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
+
+    let payload = {
+        userId,
+        spotId,
+        content
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(sessionActions.login({ credential, password })).catch(
-            async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            }
+        let path = `/users/${payload.userId}`
+        console.log("PAYLOAD!!!!!!!!", payload)
+        // setErrors([]);
+        return dispatch(reviewActions.createReview(payload))
+        .then( () => {
+            window.location.reload();
+        },
+                async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) setErrors(data.errors);
+                }
+                
         );
     };
 
@@ -27,23 +48,15 @@ function ReviewForm() {
                 ))}
             </ul>
             <label>
-                Username or Email
+                Review
                 <input
                     type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                     required
                 />
             </label>
-            <label>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
+            
             <button type="submit">Submit Review</button>
             
         </form>

@@ -42,21 +42,21 @@ const delReview = review => ({
 //CREATE 
 export const createReview = (review) => async (dispatch, getState) => {
 
-    const response = await csrfFetch('/api/reviews', {
+    const response = await csrfFetch(`/api/spots/${review.spotId}`, {
         method: 'POST',
         body: JSON.stringify(review)
     })
 
-    let newreview;
+    let newReview;
     if (response.ok) {
 
 
-        const newreview = await response.json();
-        dispatch(addReview(newreview))
+        const newReview = await response.json();
+        dispatch(addReview(newReview))
 
     }
 
-    return newreview;
+    return newReview;
 }
 //READ
 

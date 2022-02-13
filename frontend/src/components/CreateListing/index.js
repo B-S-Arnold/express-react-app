@@ -81,7 +81,8 @@ function CreateListing() {
             // setErrors([]);
         return dispatch(spotActions.createSpot(payload))
                 .then( () => {
-                    history.push(path)},
+                    history.push(path)
+                },
                     async (res) => {
                         const data = await res.json() 
                         if (data && data.errors) setErrors(data.errors);

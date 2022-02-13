@@ -47,6 +47,25 @@ router.post(
         });
     })
 );
+
+router.post(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        
+        const { userId, spotId, content } = req.body;
+        
+        
+        const review = await Review.create({ userId, spotId, content });
+        // const reviews = await Review.findAll(req.params.id)
+        // await setTokenCookie(res, review);
+        console.log("REVIEW!!!!", review)
+        // console.log("REVIEWS", reviews)
+
+        return res.json({
+            review
+        });
+    })
+);
 // router.get('/', asyncHandler(async (req, res, next) => {
 //     const spots = await Spot.findAll(req.params.id)
 //     // {
@@ -95,7 +114,7 @@ router.get('/', asyncHandler(async function (req, res) {
     // const spotId = req.params.id;
     const reviews = await Review.findAll(req.params.id)
     const images = await Image.findAll(req.params.id)
-    const request = await (req.params)
+    // const request = await (req.params)
     // const images = await Image.findAll(req.params.id)
     
     // {
@@ -105,7 +124,7 @@ router.get('/', asyncHandler(async function (req, res) {
     // }
 
     console.log("reviewS from usersjs", reviews)
-    return res.json({ reviews, images, request });
+    return res.json({ reviews, images});
 }));
 
 // router.get('/', asyncHandler(async function (req, res) {
