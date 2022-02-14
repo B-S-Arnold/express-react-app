@@ -160,13 +160,13 @@ function SpotPage() {
             if (sessionUser && sessionUser.id === spot.userId){
                 links =
                     <>
-                    < button onClick={(e) => {
+                    < button className="revbtn" onClick={(e) => {
                         e.preventDefault()
                         history.push(`${spot.id}/edit`)
                     }}>
                             Edit Listing
                         </button>
-                        < button onClick={deleteButton} >
+                        < button className='revbtn' onClick={deleteButton} >
                             Delete Listing
                         </button >
                     </>

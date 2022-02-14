@@ -43,21 +43,6 @@ module.exports = {
         userId: 2,
         spotId: 1,
         content: "Hello???"
-      },
-      {
-        userId: 2,
-        spotId: 4,
-        content: "Comment example"
-      },
-      {
-        userId: 2,
-        spotId: 6,
-        content: "This is another comment example"
-      },
-      {
-        userId: 2,
-        spotId: 5,
-        content: "It was fun, but overpriced."
       }
     ], {});
   },

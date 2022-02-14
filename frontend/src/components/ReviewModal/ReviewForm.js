@@ -56,7 +56,7 @@ function ReviewForm() {
                 />
             </label>
             
-            <button type="submit">Submit Review</button>
+            <button className="revbtn" type="submit">Submit Review</button>
             
         </form>
     );
