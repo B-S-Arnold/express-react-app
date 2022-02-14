@@ -43,7 +43,7 @@ export const createImage = (image) => async (dispatch, getState) => {
 
 export const getImage = () => async dispatch => {
 
-    const response = await csrfFetch(`/api/spots`);
+    const response = await csrfFetch(`/api/spots/images`);
 
     if (response.ok) {
         const list = await response.json();

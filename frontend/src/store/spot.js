@@ -143,19 +143,23 @@ const spotReducer = (state = initialState, action) => {
             };
         case DEL:
 
-            
+
+            newState = { ...state }
+           
+            delete newState.action
+            return newState
             
             
 
-            return {
-                ...state,
-               [action.payload]: {
-                   ...state[action.payload].spots.filter(
-                       (spotId) => spotId !== action.id
-                   )
-               }
+            // return {
+            //     ...state,
+            //    [action.payload]: {
+            //        ...state[action.payload].spots.filter(
+            //            (spotId) => spotId !== action.id
+            //        )
+            //    }
 
-            };
+            // };
         
 
 

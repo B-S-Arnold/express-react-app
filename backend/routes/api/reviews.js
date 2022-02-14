@@ -10,16 +10,16 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 
-router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
-    const review = await Review.findByPk(req.params.id);
-    if (review) {
-        await review.destroy();
-    }
-    review.destroy()
-    return res.json(review);
+// router.delete('/reviews/:id(\\d+)', asyncHandler(async function (req, res) {
+//     const review = await Review.findByPk(req.params.id);
+//     if (review) {
+//         await review.destroy();
+//     }
+//     review.destroy()
+//     return res.json(review);
 
 
-}));
+// }));
 
 router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
     const review = await Review.findByPk(req.params.id);

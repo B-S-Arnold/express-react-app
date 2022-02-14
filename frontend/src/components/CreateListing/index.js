@@ -75,16 +75,15 @@ function CreateListing() {
         e.preventDefault();
         let path = `/users/${payload.userId}`
         
-      
+        console.log("PAYLOAD!!!!!!!!", payload)
         
         
             // setErrors([]);
         return dispatch(spotActions.createSpot(payload))
                 .then( () => {
-                    history.push(path)
-                },
+                    history.push(path)},
                     async (res) => {
-                        const data = await res.json() 
+                        const data = await res.json 
                         if (data && data.errors) setErrors(data.errors);
                     } 
                 );

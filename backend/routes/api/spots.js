@@ -77,6 +77,17 @@ router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 }));
 
+router.delete('/:id(\\d+)/reviews/:id(\\d+)', asyncHandler(async function (req, res) {
+    const review = await Review.findByPk(req.params.id);
+    if (review) {
+        await review.destroy();
+    }
+    review.destroy()
+    return res.json(review);
+
+
+}));
+
 router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
         const spot = await Spot.findByPk(req.params.id);
         let payload = req.body
@@ -89,12 +100,20 @@ router.put('/:id(\\d+)', asyncHandler(async function (req, res) {
     })
 );
 
-router.get('/', asyncHandler(async function (req, res) {
+router.get('/reviews', asyncHandler(async function (req, res) {
    
     const reviews = await Review.findAll(req.params.id)
-    const images = await Image.findAll(req.params.id)
+    
    
-    return res.json({ reviews, images});
+    return res.json({ reviews });
+}));
+
+router.get('/images', asyncHandler(async function (req, res) {
+
+    
+    const images = await Image.findAll(req.params.id)
+
+    return res.json({ images });
 }));
 
 

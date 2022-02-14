@@ -9,6 +9,7 @@ import { getSpot } from '../../store/spot';
 import ReviewFormModal from '../ReviewModal';
 import { getReview } from '../../store/review';
 import { getImage } from '../../store/image';
+import * as reviewActions from "../../store/review"
 
 
 function SpotPage() {
@@ -62,10 +63,6 @@ function SpotPage() {
             
             let path = `/users/${thisSpot.userId}`
             // history.push(path)
-            console.log("THIS SPOT USER ID", thisSpot.userId)
-            
-            
-
             // setErrors([]);
             return dispatch(spotActions.deleteSpot(spot))
                 .then(() => {
@@ -78,6 +75,9 @@ function SpotPage() {
                 );
 
         };
+        
+            
+        
 
             let allImages = () => imgArr.map((image) => {
                 if (image !== null && parseInt(thisSpot.id) === image.spotId) {
@@ -100,14 +100,53 @@ function SpotPage() {
             })
 
             let allReviews = () => rvwArr.map((review) => {
-                if (review !== null && parseInt(spotId) === review.spotId){
-                        return (
+                if (review !== null && parseInt(spotId) === review.spotId) {
+
+
+                const deleteReviewButton = (e) => {
+                    e.preventDefault();
+
+                    // let path = `/users/${thisSpot.userId}`
+                    // history.push(path)
+                    // setErrors([]);
+                    return dispatch(reviewActions.deleteReview(review))
+                        .then(() => {
+                            window.location.reload()
+                        },
+                            async (res) => {
+                                // const data = await res.json
+                                // if (data && data.errors) setErrors(data.errors);
+                            }
+                        );
+
+                };
+
+
+                let deleteReview
+                if (sessionUser && sessionUser.id === review.userId) {
+                    deleteReview =
+                        <>
                             
-                            <div key={review.id}>
-                                    <div>
-                                        Review: {review.content}
-                                    </div>
-                            </div>
+                            < button onClick={deleteReviewButton} >
+                                Delete
+                            </button >
+                        </>
+                } else {
+                    deleteReview =
+                        <>
+                        </>
+                }
+
+                
+                        return (
+                        
+                                <div key={review.id}>
+                                        <div>
+                                            Review: {review.content} {deleteReview}
+                                        </div>
+                                </div>
+                                
+                            
                             
                         )
                     }
@@ -115,7 +154,7 @@ function SpotPage() {
                 
 
             let links
-            console.log("SPOT LINK",sessionUser)
+            
             if (sessionUser && sessionUser.id === spot.userId){
                 links =
                     <>
