@@ -15,20 +15,32 @@ function Navigation({ isLoaded }) {
         );
     } else {
         sessionLinks = (
-            <>
-                <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
-            </>
+            <div className = "sesh-wrapper">
+                <div>
+                    <LoginFormModal />
+                </div>
+                <div>
+                    <NavLink className = "link" to="/signup">Sign Up</NavLink>
+                </div >
+            </div>
         );
     }
 
     return (
-        <ul>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
+        <div className = "wrapper">
+            <div>
+                <NavLink className="link" exact to="/">Home</NavLink>
+            </div>
+            <div>
+                <NavLink className="link" exact to="/allCurrentListings">Available Listings</NavLink>
+            </div>
+            <div>
                 {isLoaded && sessionLinks}
-            </li>
-        </ul>
+            </div>
+            
+            
+        </div>
+        
     );
 }
 

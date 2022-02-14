@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ReviewForm from './ReviewForm';
+import "./ReviewForm.css"
 
 
 function ReviewFormModal() {
@@ -9,7 +10,7 @@ function ReviewFormModal() {
     
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Leave a Review</button>
+            <button className="rvwbtn" onClick={() => setShowModal(true)}>Leave a Review</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <ReviewForm />

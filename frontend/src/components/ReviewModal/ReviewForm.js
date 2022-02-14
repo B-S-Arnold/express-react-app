@@ -47,7 +47,7 @@ function ReviewForm() {
                 ))}
             </ul>
             <label>
-                Review
+                
                 <input
                     type="text"
                     value={content}

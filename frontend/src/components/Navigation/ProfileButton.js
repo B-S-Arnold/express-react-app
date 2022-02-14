@@ -15,6 +15,7 @@ function ProfileButton({ user }) {
         if (showMenu) return;
         setShowMenu(true);
     };
+    
 
     useEffect(() => {
         if (!showMenu) return;
@@ -38,23 +39,30 @@ function ProfileButton({ user }) {
         history.push(path)
     }
 
+    const myListings = () => {
+        let path = `/users/${user.id}`
+        history.push(path)
+    }
+
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-hiking" />
+            <button className = 'link' onClick={openMenu}>
+                <i className="fas fa-hiking" >  ~ {user.username} ~ </i>
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
+                <div className="profile-dropdown">
                     
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                    <li>
-                        <button onClick={createListing}>Create Listing</button>
-                    </li>
-                </ul>
+                    
+                    <div className="dropdiv">
+                        <button className = "dropbtn" onClick={createListing}>Create Listing</button>
+                    </div>
+                    <div className="dropdiv">
+                        <button className="dropbtn" onClick={myListings}>My Listings</button>
+                    </div>
+                    <div className="dropdiv">
+                        <button className="dropbtn" onClick={logout}>Log Out</button>
+                    </div>
+                </div>
             )}
         </>
     );

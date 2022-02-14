@@ -38,11 +38,36 @@ function SplashPage() {
 
 
     return (
-        <>
-            <h1>
+        <div className="blurb">
+            <h1 className ="title">
                 Welcome to PopPilgrim
             </h1>
-        </>
+            <div className ="par">
+                <h2>
+                    PopPilgrim is a site to book your next
+                </h2>
+                <h2>
+                    dream trip. You can even list your own
+                </h2>
+                <h2>
+                    property to rent. PopPilgrim is a great
+                </h2>
+                <h2>
+                    way to travel the world, and also a great
+                </h2>
+                <h2>
+                    way to make some extra income. So set sail
+                </h2>
+                <h2>
+                    to you next destination, or host your own
+                </h2>
+                <h2>
+                    property to be someone elses.
+                </h2>
+            </div>
+
+
+        </div>
     );
 }
 

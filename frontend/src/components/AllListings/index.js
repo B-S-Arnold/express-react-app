@@ -73,6 +73,8 @@ function AllListingsPage() {
 
                         <div key={image.id}>
                             <img
+                                height="350px"
+                                width= "350px"
                                 src={image.url}
                                 alt="new"
                             />
@@ -95,14 +97,24 @@ function AllListingsPage() {
 
             return (
 
-                <button onClick={handleClick} key={thisSpot.id}>
+                <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
                     <h2>
                         {spot.name}
                     </h2>
+                    <p>
+                        ${spot.price} per Night
+                    </p>
+                    <p>
+                        {spot.city}, {spot.state}, {spot.country}
+                    </p>
 
                     <div>
                         {allImages()}
                     </div>
+
+                    <p>
+                        {spot.description}
+                    </p>
 
                 </button >
             )
@@ -117,9 +129,9 @@ function AllListingsPage() {
         <>
 
             {!spotsArr.length && <span>No spots available right now.</span>}
-            <ul className="spot">
+            <div className="spot-list">
                 {spotMapFunc()}
-            </ul>
+            </div>
         </>
     );
 }

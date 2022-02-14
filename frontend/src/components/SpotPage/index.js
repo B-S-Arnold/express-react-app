@@ -88,6 +88,8 @@ function SpotPage() {
 
                         <div key={image.id}>
                             <img
+                                height = "500px"
+                                width = "500px"
                                 src={image.url}
                                 alt="new"
                             />
@@ -141,8 +143,8 @@ function SpotPage() {
                         return (
                         
                                 <div key={review.id}>
-                                        <div>
-                                            Review: {review.content} {deleteReview}
+                                        <div className = "indrev">
+                                            {review.content} {deleteReview}
                                         </div>
                                 </div>
                                 
@@ -176,31 +178,48 @@ function SpotPage() {
             return (
                 
                 <div key={thisSpot.id}>
-                    <h2>
-                        {spot.name}
-                    </h2>
-                    <div>
-                        {allImages()}
-                    </div>
-                    <div>
-                        User Id is {spot.UserId}
-                    </div>
-                    <div>
-                        spotId is {spot.id}
-                    </div>
-                    <div>
-                        {spot.description ? `Description is ${spot.description}` : ``}
-
-                    </div>
-                    <div>
-                        Param spotID is {spotId}
-                    </div>
                     
-                    <div>
-                        {links}
+                    <div className = "imgandinfo">
+                        <div className = "imgdiv">
+                            {allImages()}
+                        </div>
+                        <div className = "infodiv">
+                            <h2>
+                                {spot.name}
+                            </h2>
+                            <p>
+                                {spot.description}
+                            </p>
+                            <h3>
+                                ${spot.price} per Night
+                            </h3>
+                            <h3>
+                                Address:
+                            </h3>
+                            <h3>
+                                {spot.address}, {spot.city}
+                            </h3>
+                            <h3>
+                                 {spot.state}, {spot.country}
+                            </h3>
+                            
+                        </div>
                     </div>
-                    <div>
-                        {allReviews()}
+
+                    <div className = "revtotaldiv">
+                        <div className = "revbtndiv">
+                            {links}
+                        </div>
+                        <div className="revdiv">
+                            <div className="revtitle">
+                                Reviews
+                            </div>
+                            <div className="reviews">
+                            
+                                {allReviews()}
+                            </div>
+                        </div>
+                        
                     </div>
                     
                 </div >

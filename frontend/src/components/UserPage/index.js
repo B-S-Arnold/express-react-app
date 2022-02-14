@@ -67,6 +67,8 @@ function UserPage() {
 
                         <div key={image.id}>
                             <img
+                            height="350px"
+                            width="350px"
                                 src={image.url}
                                 alt="new"
                             />
@@ -92,14 +94,24 @@ function UserPage() {
         return (
             <div key={spot.id}>
 
-                <button onClick={handleClick} key={thisSpot.id}>
+                <button className="spotbtn" onClick={handleClick} key={thisSpot.id}>
                     <h2>
                         {spot.name}
                     </h2>
+                    <p>
+                        ${spot.price} per Night
+                    </p>
+                    <p>
+                        {spot.city}, {spot.state}, {spot.country}
+                    </p>
 
                     <div>
                         {allImages()}
                     </div>
+
+                    <p>
+                        {spot.description}
+                    </p>
 
                 </button >
             </div >
@@ -116,9 +128,9 @@ function UserPage() {
 
     return (
         <>
-            <h2>All spots</h2>
+            <h2 className = "title">My Listings</h2>
             {!spotsArr.length && <span>No listings.</span>}
-            <ul className="spot">
+            <ul className="spot-list">
                 {spotMapFunc()}
             </ul>
         </>

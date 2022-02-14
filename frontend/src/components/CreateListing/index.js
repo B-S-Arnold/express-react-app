@@ -91,13 +91,16 @@ function CreateListing() {
     };
     const handleCancelClick = (e) => {
         e.preventDefault();
+        let path = `/`
+        history.push(path)
         
     };
 
     
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className = "form" onSubmit={handleSubmit}>
+            <div className = "formdiv">
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -165,8 +168,11 @@ function CreateListing() {
                     onChange={updateDescription}
                 />
             </label>
-            <button type="submit">Create Listing</button>
-            <button type="button" onClick={handleCancelClick}>Cancel</button>
+            <div className = "btndiv">
+                <button className = 'btn' type="submit">Create Listing</button>
+                <button className='btn' type="button" onClick={handleCancelClick}>Cancel</button>
+            </div>
+            </div>
         </form>
     );
 }
