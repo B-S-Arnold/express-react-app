@@ -9,38 +9,102 @@ It is currently featuring:
 * Reviews for Listings
 * Images for Listings
 
+## Steps to run this app
 
-## 1. Clone this repo.
+### 1. Clone this repo
 
 ```sh
 https://github.com/B-S-Arnold/poppilgrim
 ```
-## 2. Install dependencies from root directory
+### 2. Install dependencies from root directory
 
-## 3. Create a POSTGRESQL user with CREATEDB and PASSWORD in PSQL.
+```sh
+npm install
+```
 
-## 4. Create a .env file in the backend directory based on the .env.example found wihtin 
+### 3. Create a POSTGRESQL user with CREATEDB and PASSWORD in PSQL
 
-## 5. Install dependencies from root directory
+```sh
+CREATE USER <name> WITH CREATEDB PASSWORD <'password'>
+```
 
-## 6. Install dependencies from root directory
+### 4. Create a .env file in the backend directory based on the .env.example found wihtin said directory
 
-## 7. Install dependencies from root directory
+### 5. Enter your username and password information in your .env file along with a secure set of characters for your JWT_SECRET, and set the PORT (preferably 5000)
 
-## 8. Install dependencies from root directory
+### 6. Add the following proxy to your package.json file within your frontend directory, to match your PORT in the .env file
 
-## 9. Install dependencies from root directory
+```sh
+"proxy": "http://localhost:5000"
+```
 
-## 10. Install dependencies from root directory
+### 7. Crate Database, Migrate, and Seed models based on .env file
+
+```sh
+npx dotenv sequelize db:create
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all
+```
+
+* NOTE - if at any moment, you wish to undo seeds and migrations perform the following:
+
+```sh
+npx dotenv sequelize db:seed:undo:all
+npx dotenv sequelize db:migrate:undo:all
+```
+
+* then to run migration and seed files again, run:
+
+```sh
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all
+```
+
+## 8. Start services in the backend directory
+
+```sh
+npm start
+```
+
+## 9. Start the services in the frontend directory, which should open in the browser
+
+```sh
+npm start
+```
+
+* if the browser does not automatically open, navigate to http://localhost:3000
+
+## 10. Once on the home page, you click the "Log In" button, which can will give you the option to log in as a "Demo User"
+
+* alternatively you can sign up, and will automatically be logged in as an authenticated user with your specified information
+
+## 11. The nav bar will remain on the top of the window at all times, so if you are ever lost you will have access to:
+
+* The Home Page
+* The Traveler Icon with dropdown menu for "Log Out" and "Create Listing"
+
+* NOTE - the app is full navigable to an unauthenticated/unregistered user, but the nav bar will have "Log In" and "Sign Up", instead of the traveler icon
 
 
-### WITHOUT w
+## 12. As a logged in user, you can do the following:
 
-### `npm start`
+* Create a unique listing
+* Update a listing you created
+* Delete your listings
+* Review listings from other users
+* Delete those reviews
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 13. To Log Out or Create a Listing, click the traveler icon
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* you can log back in with any credentials you used to sign up
+
+## 14. To view a list of the listing, click the "Current Listings" link
+
+## 15. When looking at a list of listings, you can navigate to that particular listing page by clicking it
+
+## 16. On the individual listing page:
+
+* if the listing is yours, you can edit or delete the listing
+* if the listing belongs to another user, you can leave a review and delete said review
+
 
