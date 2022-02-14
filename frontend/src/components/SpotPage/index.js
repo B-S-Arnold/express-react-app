@@ -129,7 +129,7 @@ function SpotPage() {
                     deleteReview =
                         <>
                             
-                            < button onClick={deleteReviewButton} >
+                            < button className ="btn" onClick={deleteReviewButton} >
                                 Delete
                             </button >
                         </>
