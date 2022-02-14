@@ -37,6 +37,36 @@ module.exports = {
        name: "Pintoresco Lugar de Pesca",
        price: 15.99,
        description: "La vista más hermosa de este lado del Mississippi."
+     },
+     {
+       userId: 1,
+       address: "Jupiter",
+       city: "Jupitown",
+       state: "Zuesland",
+       country: "Jupitonia",
+       name: "This is the name",
+       price: 5,
+       description: "This is a planet. I'm not sure why they are all planets."
+     },
+     {
+       userId: 2,
+       address: "1 Pluto Lane",
+       city: "Plutoland",
+       state: "Plutopia",
+       country: "Plutocracy",
+       name: "Pluto",
+       price: 10,
+       description: "It's Pluto"
+     },
+     {
+       userId: 1,
+       address: "My house",
+       city: "App Academy",
+       state: "Online",
+       country: "World Wide Web",
+       name: "Earth",
+       price: 15.99,
+       description: "Its an NFT"
      }
    ], {});
   },
