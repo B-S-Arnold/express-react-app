@@ -18,12 +18,8 @@ function SpotPage() {
         dispatch(getSpot())
         dispatch(getReview())
         dispatch(getImage())
-        // console.log("DISPAPAAP SPOT",dispatch(getSpot()))
+        
     }, [dispatch])
-    // console.log("DISPATCH",dispatch.spots)
-
-
-    // console.log("USER ID", userId);
 
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("kjl");
@@ -36,25 +32,16 @@ function SpotPage() {
     const { spotId } = useParams();
 
     const history = useHistory();
-    // const sessionUser = useSelector(state => state.session.user);
-
-    
-
-    
-
 
     const spots = useSelector(state => {
-        // console.log("STATE", state)
-        return state.spot;
+            return state.spot;
     });
 
     const images = useSelector(state => {
-        // console.log("STATE", state)
         return state.image;
     });
 
     const reviews = useSelector(state => {
-        // console.log("STATE", state)
         return state.review;
     });
 
@@ -72,27 +59,45 @@ function SpotPage() {
 
         const deleteButton = (e) => {
             e.preventDefault();
+            
             let path = `/users/${thisSpot.userId}`
+            // history.push(path)
+            console.log("THIS SPOT USER ID", thisSpot.userId)
+            
+            
 
-            // console.log("PAYLOAD!!!!!!!!", thisSpot)
-
-
-            setErrors([]);
-            return dispatch(spotActions.deleteSpot(thisSpot))
+            // setErrors([]);
+            return dispatch(spotActions.deleteSpot(spot))
                 .then(() => {
                     history.push(path)
                 },
                     async (res) => {
-                        const data = await res.json
-                        if (data && data.errors) setErrors(data.errors);
+                        // const data = await res.json
+                        // if (data && data.errors) setErrors(data.errors);
                     }
                 );
 
         };
 
-            // let allReviews = () => {
-                
-            // }
+            let allImages = () => imgArr.map((image) => {
+                if (image !== null && parseInt(thisSpot.id) === image.spotId) {
+
+
+
+                    return (
+
+                        <div key={image.id}>
+                            <img
+                                src={image.url}
+                                alt="new"
+                            />
+
+
+                        </div>
+
+                    )
+                }
+            })
 
             let allReviews = () => rvwArr.map((review) => {
                 if (review !== null && parseInt(spotId) === review.spotId){
@@ -128,18 +133,16 @@ function SpotPage() {
             if (sessionUser && sessionUser.id !== spot.userId){
                 links = (<ReviewFormModal />)
             }
-            
-           
-
-
-
-        
+                    
             return (
                 
                 <div key={thisSpot.id}>
                     <h2>
                         {spot.name}
                     </h2>
+                    <div>
+                        {allImages()}
+                    </div>
                     <div>
                         User Id is {spot.UserId}
                     </div>
@@ -167,23 +170,6 @@ function SpotPage() {
 
     })
 
-    
-
-    // console.log("SPOTTTS ARRRR", spotsArr)
-
-
-
-
-
-
-
-
-    // if (sessionUser) return <Redirect to="/" />;
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-
-    // };
 
     return (
         <>

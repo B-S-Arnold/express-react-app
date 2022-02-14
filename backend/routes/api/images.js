@@ -16,7 +16,7 @@ router.post(
         const image = await Image.create({ spotId, url});
 
         // await setTokenCookie(res, spot);
-        console.log(image)
+        
 
         return res.json({
             image
@@ -37,17 +37,6 @@ router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 
 
-// router.get('/', asyncHandler(async function (req, res) {
-//     const images = await Image.findAll(req.params.id)
-//     // {
-//     //     where: {
-//     //         userId = req.params.id
-//     //     }
-//     // }
-
-//     console.log("SPOTS from usersjs", images)
-//     return res.json({ images });
-// }));
 
 
 

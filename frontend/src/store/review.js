@@ -67,7 +67,6 @@ export const getReview = () => async dispatch => {
     if (response.ok) {
         const list = await response.json();
 
-        console.log(list)
         dispatch(loadReview(list));
     }
     return response;
@@ -76,14 +75,12 @@ export const getReview = () => async dispatch => {
 
 export const deleteReview = (review) => async (dispatch, getState) => {
 
-    console.log("review IN DEL review!", review)
-    console.log("review id IN DEL review!", review.id)
+
 
     const response = await csrfFetch(`/api/reviews/${review.id}`, {
         method: 'DELETE',
 
     })
-    console.log(response)
 
     let oldreview;
     if (response.ok) {
@@ -105,13 +102,11 @@ export const editReview = (payload) => async (dispatch, getState) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
-    console.log('EDIT PAYLOAD', payload)
-    console.log('EDIT RESPONSE', response)
+
 
     let newreview;
     if (response.ok) {
         newreview = await response.json()
-        console.log("NEWWW reviewTT!!!!", newreview)
         dispatch(edit(newreview))
     }
     return newreview;
@@ -124,30 +119,25 @@ export const editReview = (payload) => async (dispatch, getState) => {
 const initialState = { review: null };
 
 const reviewReducer = (state = initialState, action) => {
-    // if (!state[action.review]) {
-    //     let newState = {
-    //         ...state,
-    //         [action.review]: action.review
-    //     };
+
     let newState
     switch (action.type) {
         case ADD:
             newState = Object.assign({}, state);
             newState = action.payload;
-            // console.log("NEWSTATE!!!!!!", newState)
+
             return newState;
 
         case LOAD:
             const allreviews = {};
             action.payload.reviews.forEach(review => {
                 allreviews[review.id] = review;
-                // console.log("review", review)
-                // console.log("All reviewS!!!!", allreviews)
+              
             });
             return {
 
                 ...allreviews,
-                // ...state,
+            
             };
         case DEL:
 

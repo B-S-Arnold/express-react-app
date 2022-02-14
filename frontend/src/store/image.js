@@ -48,7 +48,6 @@ export const getImage = () => async dispatch => {
     if (response.ok) {
         const list = await response.json();
 
-        console.log(list)
         dispatch(loadImage(list));
     }
     return response;
@@ -58,14 +57,11 @@ export const getImage = () => async dispatch => {
 
 export const deleteImage = (image) => async (dispatch, getState) => {
 
-    console.log("image IN DEL image!", image)
-    console.log("image id IN DEL image!", image.id)
 
     const response = await csrfFetch(`/api/images/${image.id}`, {
         method: 'DELETE',
 
     })
-    console.log(response)
 
     let oldimage;
     if (response.ok) {

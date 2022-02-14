@@ -26,7 +26,6 @@ function ReviewForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         let path = `/users/${payload.userId}`
-        console.log("PAYLOAD!!!!!!!!", payload)
         // setErrors([]);
         return dispatch(reviewActions.createReview(payload))
         .then( () => {

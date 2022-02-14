@@ -66,8 +66,7 @@ export const getSpot = () => async dispatch => {
 
     if (response.ok) {
         const list = await response.json();
-        
-        console.log(list)
+     
         dispatch(loadSpot(list));
     }
     return response;
@@ -76,14 +75,13 @@ export const getSpot = () => async dispatch => {
 
 export const deleteSpot = (spot) => async (dispatch, getState) => {
 
-    console.log("SPOT IN DEL SPOT!",spot)
-    console.log("SPOT id IN DEL SPOT!", spot.id)
+ 
 
     const response = await csrfFetch(`/api/spots/${spot.id}`, {
         method: 'DELETE',
         
     })
-    console.log(response)
+    
 
     let oldSpot;
     if (response.ok) {
@@ -105,13 +103,12 @@ export const editSpot = (payload) => async (dispatch, getState) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
-    console.log('EDIT PAYLOAD', payload)
-    console.log('EDIT RESPONSE', response)
+    
 
     let newSpot;
     if (response.ok) {
         newSpot = await response.json()
-        console.log("NEWWW SPOTTT!!!!",newSpot)
+        
         dispatch(edit(newSpot))
     }
     return newSpot;
@@ -124,32 +121,31 @@ export const editSpot = (payload) => async (dispatch, getState) => {
 const initialState = { spot: null };
 
 const spotReducer = (state = initialState, action) => {
-    // if (!state[action.spot]) {
-    //     let newState = {
-    //         ...state,
-    //         [action.spot]: action.spot
-    //     };
+    
     let newState
     switch (action.type) {
         case ADD:
             newState = Object.assign({}, state);
             newState = action.payload;
-            // console.log("NEWSTATE!!!!!!", newState)
+            
             return newState;
 
         case LOAD:
             const allSpots = {};
             action.payload.spots.forEach(spot => {
                 allSpots[spot.id] = spot;
-                // console.log("SPOT", spot)
-                // console.log("All SPOTS!!!!", allSpots)
+                
             });
             return {
                 
                 ...allSpots,
-                // ...state,
+                
             };
         case DEL:
+
+            
+            
+            
 
             return {
                 ...state,
@@ -160,6 +156,8 @@ const spotReducer = (state = initialState, action) => {
                }
 
             };
+        
+
 
         default:
             return state;

@@ -20,16 +20,15 @@ import * as spotActions from "../../store/spot";
 function EditListing() {
     const dispatch = useDispatch();
     const { spotId } = useParams();
-    // console.log("SPOT ID!!!!!",spotId)
+   
 
     useEffect(() => {
         dispatch(spotActions.getSpot())
-        // console.log("DISPAPAAP SPOT",dispatch(getSpot()))
+        
     }, [dispatch])
 
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id;
-    console.log("SessionUser",sessionUser)
 
     let hello = async (res) => {
         const data = await res.json()
@@ -38,46 +37,12 @@ function EditListing() {
     
     const spot = useSelector(state => Object.values(state.spot).find(spot => spot && spot.id === parseInt(spotId)));
 
-    console.log("SPOT!!!!", spot)
-
    
-    // console.log("SPOTS",spots)
-
-    // const spots = useSelector(state => {
-    //     console.log("STATE", state)
-    //     return state.spot;
-    // });
-    // console.log("SPOTTTSSS", spots)
-
-    // const spotsArr = Object.values(spots);
-
-    // function filterById(spot) {
-        
-    //     if (spot && spot.id === parseInt(spotId)){
-    //         return true
-    //     }
-        
-    //     return false;
-    // }
-    // const spot = spotsArr.filter(filterById)[0]
-
-    //     // return null
-
-    
-    // console.log("spotTo Edit", spot)
-    
-    
-
-            
 
 
-    
-        
-
-        
 
 
-    // const [userId, setUserId] = useState(sessionUser.id);
+  
     const [address, setAddress] = useState(spot ? spot.address : "");
     const [city, setCity] = useState(spot ? spot.city : "");
     const [state, setState] = useState(spot ? spot.state : "");
@@ -90,7 +55,7 @@ function EditListing() {
     const history = useHistory();
 
 
-    // const updateUserId = (e) => setUserId(sessionUser.id);
+   
     const updateAddress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
@@ -99,21 +64,6 @@ function EditListing() {
     const updatePrice = (e) => setPrice(parseInt(e.target.value));
     const updateDescription = (e) => setDescription(e.target.value);
 
-
-
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (password === confirmPassword) {
-    //         setErrors([]);
-    //         return dispatch(sessionActions.signup({ email, username, password }))
-    //             .catch(async (res) => {
-    //                 const data = await res.json();
-    //                 if (data && data.errors) setErrors(data.errors);
-    //             });
-    //     }
-    //     return setErrors(['Confirm Password field must be the same as the Password field']);
-    // };
 
     const id = parseInt(spotId);
 
@@ -129,29 +79,11 @@ function EditListing() {
         description
     };
 
-    // let createdSpot =  dispatch(createSpot(payload))
-
-
-
-    // setErrors([]);
-    // return dispatch(spotActions.deleteSpot(thisSpot))
-    //     .then(() => {
-    //         history.push(path)
-    //     },
-    //         async (res) => {
-    //             const data = await res.json
-    //             if (data && data.errors) setErrors(data.errors);
-    //         }
-    //     );
-
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
         let path = `/spots/${spotId}`
 
-        console.log("PAYLOAD!!!!!!!!", payload)
 
 
         setErrors([]);

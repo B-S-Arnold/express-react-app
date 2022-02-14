@@ -75,7 +75,7 @@ function CreateListing() {
         e.preventDefault();
         let path = `/users/${payload.userId}`
         
-        console.log("PAYLOAD!!!!!!!!", payload)
+      
         
         
             // setErrors([]);

@@ -6,6 +6,7 @@ import { Redirect, useHistory, useParams} from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import * as spotActions from '../../store/spot';
 import { getSpot } from '../../store/spot';
+import { getImage } from '../../store/image';
 
 
 
@@ -14,12 +15,10 @@ function UserPage() {
 
     useEffect(() => {
         dispatch(getSpot())
-        // console.log("DISPAPAAP SPOT",dispatch(getSpot()))
+        dispatch(getImage())
+        
     }, [dispatch])
-    // console.log("DISPATCH",dispatch.spots)
-
-
-    // console.log("USER ID", userId);
+    
 
     const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("kjl");
@@ -33,62 +32,82 @@ function UserPage() {
 
     const history = useHistory();
 
-    // const linkToPage = (e) => {
-    //     e.preventDefault();
-    //     let path = `/spots/${spot.id}`
-    //             history.push(path)
-            
-    // }
+    
 
    
 
     const spots = useSelector(state => {
-        // console.log("STATE",state)
+       
         return state.spot;
     });
-    // console.log("SPOTTTSSS", spots)
 
+    const images = useSelector(state => {
+       
+        return state.image;
+    });
+  
+
+    const imgArr = Object.values(images)
     const spotsArr = Object.values(spots);
-    console.log("SPOTS ARR",spotsArr)
+
+    
     const spotMapFunc = () => spotsArr.map((spot) => {
         if (spot !== null && parseInt(userId) === spot.userId){
+            const thisSpot = spot
+
+
+
+
+            let allImages = () => imgArr.map((image) => {
+                if (image !== null && parseInt(thisSpot.id) === image.spotId) {
+
+
+
+                    return (
+
+                        <div key={image.id}>
+                            <img
+                                src={image.url}
+                                alt="new"
+                            />
+
+
+                        </div>
+
+                    )
+                }
+            })
+
+            let path = `/spots/${thisSpot.id}`
+
+            const handleClick = (e) => {
+                e.preventDefault();
+                history.push(path);
+            };
+
+
+
+
+
         return (
             <div key={spot.id}>
 
-                <button onClick={(e) => {
-                    e.preventDefault()
-                    history.push(`/spots/${spot.id}`)}}>
+                <button onClick={handleClick} key={thisSpot.id}>
+                    <h2>
                         {spot.name}
-                </button>
-                    
-                
-                <div>
-                    Id is {spot.id}
-                </div>
-                <div>
-                    userId is {spot.userId}
-                </div>
-                <div>
-                    {spot.description ? `Description is ${spot.description}` : ``}
-                </div>
-                <div>
-                    Param userid is {userId}
-                </div>
+                    </h2>
+
+                    <div>
+                        {allImages()}
+                    </div>
+
+                </button >
             </div >
         )}
 
     })
 
-    // console.log("SPOTTTS ARRRR", spotsArr)
-
-    
-    
-    
-
-
-    
-
-    // if (sessionUser) return <Redirect to="/" />;
+ 
 
     const handleSubmit = (e) => {
         e.preventDefault();
