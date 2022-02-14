@@ -100,7 +100,8 @@ function EditListing() {
     };
     const handleCancelClick = (e) => {
         e.preventDefault();
-
+        let path = `/`
+        history.push(path)
     };
 
 
