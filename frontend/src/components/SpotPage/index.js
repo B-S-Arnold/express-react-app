@@ -213,7 +213,7 @@ function SpotPage() {
     return (
         <>
             
-            {!spotsArr.length && <span>No produce available right now.</span>}
+            {!spotsArr.length && <span>No spots available right now.</span>}
             <ul className="spot">
                 {spotMapFunc()}
             </ul>

@@ -9,6 +9,7 @@ import SpotPage from "./components/SpotPage";
 import UserPage from "./components/UserPage";
 import EditListing from "./components/EditListing";
 import SplashPage from "./components/SplashPage"
+import AllListingsPage from "./components/AllListings";
 
 
 
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path={"/spots/:spotId/edit"}>
             <EditListing />
+          </Route>
+          <Route path={"/allCurrentListings"}>
+            <AllListingsPage />
           </Route>
           <Route>
             404: Page Not Found

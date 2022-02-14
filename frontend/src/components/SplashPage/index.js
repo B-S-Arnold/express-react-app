@@ -16,6 +16,7 @@ function SplashPage() {
 
     useEffect(() => {
         dispatch(getSpot())
+
         dispatch(getImage())
     }, [dispatch])
 
@@ -36,90 +37,11 @@ function SplashPage() {
 
 
 
-
-
-    const spots = useSelector(state => {
-        
-        return state.spot;
-    });
-
-    const images = useSelector(state => {
-        
-        return state.image;
-    });
-
-    const reviews = useSelector(state => {
-       
-        return state.review;
-    });
-
-    const spotsArr = Object.values(spots);
-    const imgArr = Object.values(images)
-   
-
-
-    const spotMapFunc = () => spotsArr.map((spot) => {
-        if (spot !== null) {
-            const thisSpot = spot
-
-            
-
-    let allImages = () => imgArr.map((image) => {
-        if (image !== null && parseInt(thisSpot.id) === image.spotId) {
-
-            
-
-            return (
-
-                <div key={image.id}>
-                    <img 
-                        src= {image.url}
-                        alt="new"
-                    />
-                        
-                    
-                </div>
-
-            )
-        }
-    })
-
-    let path = `/spots/${thisSpot.id}`
-
-    const handleClick = (e) => {
-        e.preventDefault();
-        history.push(path);
-    };
-
-
-
-            return (
-
-                <button onClick={handleClick} key={thisSpot.id}>
-                    <h2>
-                        {spot.name}
-                    </h2>
-
-                    <div>
-                        {allImages()}
-                    </div>
-                    
-                </button >
-            )
-        }
-
-    })
-
-
-
-
     return (
         <>
-
-            {!spotsArr.length && <span>No produce available right now.</span>}
-            <ul className="spot">
-                {spotMapFunc()}
-            </ul>
+            <h1>
+                Welcome to PopPilgrim
+            </h1>
         </>
     );
 }
