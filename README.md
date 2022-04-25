@@ -1,13 +1,20 @@
 
 # PopPilgrim
 
-PopPilgrim is an application meant for users to share and review listings,based on HipCamp and AirBnB.
+### PopPilgrim is an booking app based on HipCamp and AirBnB.
 
-It is currently featuring:
+### The app currently featuring:
+
 * Authenticated Users
 * Listings by Users
 * Reviews for Listings
 * Images for Listings
+
+### You can visit the live website at
+
+```sh
+https://poppilgrim.herokuapp.com/
+```
 
 ## Steps to run this app
 
@@ -130,3 +137,45 @@ DROP USER <name>;
 ```
 
 ### The tables, database, and user should all be dropped from your local machine
+
+# Contact me for any job offers
+
+Bryan Arnold
+bryanscottarnold@gmail.com
+
+LinkedIn: 'https://www.linkedin.com/in/bryan-arnold-882378215/'
+
+GitHub: https://github.com/B-S-Arnold
+
+Live Site Hosted on Heroku: https://poppilgrim.herokuapp.com/
+
+This project was made in 2022 as a part of the App Academy curriculum
+
+https://www.appacademy.io/
+
+2022 PopPilgrim by Bryan Arnold
+
+# Thank you for using PopPilgrim!
+
+### Technologies used
+
+* GitHub (git repository)
+  * planned the website, created blueprints, and kept track of my progress using utilities offered by GitHub
+  * used GitHub to create, push to, and branch on a repository
+* ReactJS (frontend)
+  * installed dependencies using npm and ran the front end server on localhost
+  * made use of JavaScript's ability to create modals, params, use scoping, and error handling
+  * made use of React libary's UseEffect, Redirect, UseState, useDispatch, etc.
+  * created and updated State, and updated pages seamlessly with React
+  * used frontend stores, api fetches, and reducers to send CRUD data to the backend
+* ExpressJS (backend)
+  * created forms and routes for CRUD features in the backend
+  * used sequelize to migrate, update, and seed the database
+  * created a relational database, with table dependency and cascading delete
+* HTML and CSS (layout and styling)
+  * implemented a vast majority of HTML in JS files
+  * used HTML element wrapping and css positiong to manipulate the size, location, and appearance of HTML elements
+  * used HTML to source images from urls, and JavaScript to check the sources legitimacy
+* Heroku (hosting online)
+  * used Heroku commands to push the app, and manage the live database
+  * deployed the website on Heroku, allowing remote access to the website
