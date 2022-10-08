@@ -39,45 +39,46 @@ function SplashPage() {
 
     return (
         <div className="blurb">
-            <h2 className ="title">
+            <div className ="title">
                 Find places to stay on PopPilgrim
-            </h2>
-            <p className='btext'>
+            </div>
+            <div className='desc'>
                 Discover entire homes and private rooms perfect for any trip.
-            </p>
-            <div className='sindiv'>
-                <label>LOCATION</label>
-                <input
-                placeholder='Anywhere'
-                className='sin'>
-                </input>
             </div>
             <div className='sindiv'>
-                <div>
-                    <label for='cin'>CHECK IN</label>
+                <label className='sinlab' for='loc' >LOCATION</label>
+                <input
+                id='loc'
+                placeholder='Anywhere'
+                className='inloc'>
+                </input>
+            </div>
+            <div className='sindiv2'>
+                <div className='insindiv'>
+                    <label className='sinlab' for='cin'>CHECK IN</label>
                     <input
                     // placeholder='Add Date'
                     id='cin'
                     type='date'
-                    className='sin'>
+                    className='indate'>
                     </input>
                 </div>
-                <div>
-                    <label for='cout'>CHECKOUT</label>
+                <div className='insindiv'>
+                    <label className='sinlab' for='cout'>CHECKOUT</label>
                     <input
                         id='cout'
                         type='date'
-                        className='sin'>
+                        className='indate'>
                     </input>
                 </div>
             </div>
-            <div className='sindiv'>
-                <div>
-                    <label for='ads'>ADULTS</label>
+            <div className='sindiv2'>
+                <div className='insindiv'>
+                    <label className='sinlab' for='ads'>ADULTS</label>
                     <select
                         id='ads'
                         type='select'
-                        className='sin'>
+                        className='insel'>
                             <option value='1'>1</option>
                             <option value='2' selected>2</option>
                             <option value='3'>3</option>
@@ -96,12 +97,12 @@ function SplashPage() {
                             <option value='16'>16</option>
                     </select>
                 </div>
-                <div>
-                    <label for='kids'>CHILDREN</label>
+                <div className='insindiv'>
+                    <label className='sinlab' for='kids'>CHILDREN</label>
                     <select
                         id='kids'
                         type='select'
-                        className='sin'>
+                        className='insel'>
                             <option value='0'>0</option>
                             <option value='1'>1</option>
                             <option value='2'>2</option>
@@ -112,7 +113,15 @@ function SplashPage() {
                     </select>
                 </div>
             </div>
-            <button>Search</button>
+            <div className='amdiv'>
+                <label className='sinlab' for='ambtns' lab>AMENITIES</label>
+                <div id='ambtns' className='ambtndiv'>
+                    <button className='ambtn'>Hot tub</button>
+                    <button className='ambtn'>Pool</button>
+                    <button className='ambtn'>Wifi</button>
+                </div>
+            </div>
+            <button className='sbtn'>Search</button>
 
 
         </div>
