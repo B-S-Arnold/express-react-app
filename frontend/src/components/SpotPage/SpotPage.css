@@ -1,34 +1,30 @@
-.imgandinfo{
+.imgandinfo {
     display: flex;
-    justify-content:space-evenly;
-    
-}
-
-.imgdiv{
+    justify-content: space-evenly;
 
 }
 
-.infodiv{
-    
-}
+.imgdiv {}
 
-.revtotaldiv{
+.infodiv {}
+
+.revtotaldiv {
     display: grid;
     justify-content: center;
 
 }
 
-.revbtndiv{
+.revbtndiv {
     margin-top: 50px;
     display: flex;
     justify-content: center;
 
-    
+
 }
 
-.revbtn{
-    
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.revbtn {
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* text-shadow: 0 1px #fff; */
     color: rgb(255, 255, 255);
     font-weight: 1px;
@@ -43,45 +39,45 @@
 
 
 
-.revdiv{
+.revdiv {
     margin: 20px;
     display: grid;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* text-shadow: 0 1px #fff; */
     color: rgb(0, 0, 0);
     font-weight: 1px;
     border: rgb(125, 25, 25) solid;
-    
+
     text-decoration: none;
     border-radius: 17px;
     padding: 7px 10px;
     text-align: center;
     background-color: rgb(216, 216, 216);
-    
+
 }
 
-.revtitle{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+.revtitle {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* text-shadow: 0 1px #fff; */
     color: rgb(0, 0, 0);
     font-weight: 1px;
-    
+
     font-size: 20px;
     text-decoration: none;
     border-radius: 17px;
     padding: 7px 10px;
     text-align: center;
     margin-bottom: 10px;
-    
+
 }
 
-.reviews{
-    
+.reviews {
+
     font-size: 15px;
     display: grid;
     justify-self: left;
 }
 
-.indrev{
+.indrev {
     margin-bottom: 15px;
 }

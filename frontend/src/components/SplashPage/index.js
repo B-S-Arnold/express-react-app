@@ -39,32 +39,82 @@ function SplashPage() {
 
     return (
         <div className="blurb">
-            <h1 className ="title">
-                Welcome to PopPilgrim
-            </h1>
-            <div className ="par">
-                <h2>
-                    PopPilgrim is a site to book your next
-                </h2>
-                <h2>
-                    dream trip. You can even list your own
-                </h2>
-                <h2>
-                    property to rent. PopPilgrim is a great
-                </h2>
-                <h2>
-                    way to travel the world, and also a great
-                </h2>
-                <h2>
-                    way to make some extra income. So set sail
-                </h2>
-                <h2>
-                    to you next destination, or host your own
-                </h2>
-                <h2>
-                    property to be someone elses.
-                </h2>
+            <h2 className ="title">
+                Find places to stay on PopPilgrim
+            </h2>
+            <p className='btext'>
+                Discover entire homes and private rooms perfect for any trip.
+            </p>
+            <div className='sindiv'>
+                <label>LOCATION</label>
+                <input
+                placeholder='Anywhere'
+                className='sin'>
+                </input>
             </div>
+            <div className='sindiv'>
+                <div>
+                    <label for='cin'>CHECK IN</label>
+                    <input
+                    // placeholder='Add Date'
+                    id='cin'
+                    type='date'
+                    className='sin'>
+                    </input>
+                </div>
+                <div>
+                    <label for='cout'>CHECKOUT</label>
+                    <input
+                        id='cout'
+                        type='date'
+                        className='sin'>
+                    </input>
+                </div>
+            </div>
+            <div className='sindiv'>
+                <div>
+                    <label for='ads'>ADULTS</label>
+                    <select
+                        id='ads'
+                        type='select'
+                        // placeholder='2'
+                        s
+                        className='sin'>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='6'>6</option>
+                            <option value='7'>7</option>
+                            <option value='8'>8</option>
+                            <option value='9'>9</option>
+                            <option value='10'>10</option>
+                            <option value='11'>11</option>
+                            <option value='12'>12</option>
+                            <option value='13'>13</option>
+                            <option value='14'>14</option>
+                            <option value='15'>15</option>
+                            <option value='16'>16</option>
+                    </select>
+                </div>
+                <div>
+                    <label for='kids'>CHILDREN</label>
+                    <select
+                        id='kids'
+                        type='select'
+                        className='sin'>
+                            <option value='0'>0</option>
+                            <option value='1'>1</option>
+                            <option value='2'>2</option>
+                            <option value='3'>3</option>
+                            <option value='4'>4</option>
+                            <option value='5'>5</option>
+                            <option value='6'>6</option>
+                    </select>
+                </div>
+            </div>
+            <button>Search</button>
 
 
         </div>
