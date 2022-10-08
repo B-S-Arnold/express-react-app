@@ -110,11 +110,12 @@
     /* margin: 10px 0 0 5px; */
     margin-top: 10px;
     margin-right: 5px;
-    margin-left: o;
+    /* margin-left: 0; */
 }
 
 .ambtn:hover{
     cursor: pointer;
+    border: black solid 1px;
 }
 
 .sbtn {
