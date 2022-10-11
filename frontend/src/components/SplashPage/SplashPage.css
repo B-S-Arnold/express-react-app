@@ -3,7 +3,7 @@
 } */
 
 .blurb {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@
     font-size: 20px;
     text-decoration: none;
     border-radius: 10px;
-    padding:32px;
+    padding: 32px;
 
     /* padding: 5px 10px; */
     /* text-align: center; */
@@ -28,38 +28,86 @@
     /* padding-bottom: 50px; */
 
     justify-content: space-between;
-    left: 35px;
+    left: 15%;
+    z-index: 2;
 
 
 }
-.inloc{
+
+.inloc {
     border: none;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 30px;
     font-size: 16px;
     font-weight: 300;
 }
-.inloc:focus{
+
+.inloc:focus {
     outline: none;
 }
 
 /* .inloc:focus .sindiv{
     border: 3px solid black;
 } */
-.indate{
+.indate {
     border: none;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 40px;
     font-size: 16px;
     font-weight: 300;
 }
-.insel{
-   
+
+.insel {
+
     border: none;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 40px;
     font-size: 16px;
     font-weight: 300;
+}
+
+.bkdImageCon {
+    /* display:inline; */
+    
+    height: 610px;
+    width: 50%;
+    left: 33%;
+    top: 60px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 10px;
+
+}
+
+.bkdImage {
+    background-image: url("../../../images/homebkd.jpeg");
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-position: center;
+    background-size:auto 610px;
+    /* object-fit:fill; */
+    max-height: fit-content;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+@media (max-width:1000px) {
+
+
+    .bkdImageCon{
+        display: none;
+    }
+
+    .blurb{
+        /* left: 0; */
+        position:relative;
+        left: auto;
+        align-self: center;
+        justify-self: center;        
+    }
 }
 
 

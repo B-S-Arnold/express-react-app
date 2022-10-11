@@ -26,10 +26,18 @@ function Navigation({ isLoaded }) {
         );
     }
 
+    function changeCSS() {
+        // var bodyElement = document.querySelector("body");
+        var nav = document.querySelector("nav");
+        this.scrollY > 0 ? nav.className= 'navScroll' : nav.className = 'nav';
+    }
+
+    window.addEventListener("scroll", changeCSS, false);
+
     return (
-        <div className = "wrapper">
+        <nav className = "nav">
             <div>
-                <NavLink className="link" exact to="/">Home</NavLink>
+                <NavLink className="home" exact to="/"></NavLink>
             </div>
             <div>
                 <NavLink className="link" exact to="/allCurrentListings">Available Listings</NavLink>
@@ -38,8 +46,7 @@ function Navigation({ isLoaded }) {
                 {isLoaded && sessionLinks}
             </div>
             
-            
-        </div>
+        </nav>
         
     );
 }
