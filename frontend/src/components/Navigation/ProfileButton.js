@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory, Redirect, NavLink } from 'react-router-dom';
 import DemoUser from "../auth/DemoUser";
-import LoginFormModal from "../LoginFormModal";
-import LoginForm from "../LoginFormModal/LoginForm";
+import LoginFormModal from "../../modals/LoginFormModal";
+import LoginForm from "../auth/LoginForm";
+import './Dropdown.css'
 
 
 function ProfileButton() {
@@ -13,26 +14,26 @@ function ProfileButton() {
 
     const history = useHistory();
     
-    const [showMenu, setShowMenu] = useState(false);
+    // const [showMenu, setShowMenu] = useState(false);
     
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // };
     
 
-    useEffect(() => {
-        if (!showMenu) return;
+    // useEffect(() => {
+    //     if (!showMenu) return;
 
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
+    //     const closeMenu = () => {
+    //         setShowMenu(false);
+    //     };
 
-        document.addEventListener('click', closeMenu);
+    //     document.addEventListener('click', closeMenu);
 
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    //     return () => document.removeEventListener("click", closeMenu);
+    // }, [showMenu]);
 
     const logout = (e) => {
         e.preventDefault();
@@ -51,10 +52,10 @@ function ProfileButton() {
 
     if (user) {return (
         <>
-            <button className = 'link' onClick={openMenu}>
+            <button className = 'link' >
                 <i className="fas fa-hiking" >  ~ {user.username} ~ </i>
             </button>
-            {showMenu && (
+            {/* {showMenu && ( */}
                 <div className="profile-dropdown">
                     
                     
@@ -68,30 +69,32 @@ function ProfileButton() {
                         <button className="dropbtn" onClick={logout}>Log Out</button>
                     </div>
                 </div>
-            )}
+            {/* )} */}
         </>
     )
     } else {
         return(
-            <>
-                <button className='link' onClick={openMenu}>
-                    <i className="fas fa-hiking" ></i>
-                </button>
-                {showMenu && (
-                    <div className="profile-dropdown">
-                        <div >
+            <div className="buttondiv">
+                <div id='focus' tabIndex='1' className='userbtn' >
+                  
+
+                    {/* <i className="fas fa-hiking" ></i> */}
+                </div>
+                {/* {showMenu && ( */}
+                    <div className="dropdown">
+                        <div className="">
                             <LoginFormModal  />
                         </div>
-                        <div className='dropdiv'>
+                        <div className='dropdownbtn'>
                             <NavLink className="dropbtn" to="/signup">Sign Up</NavLink>
                         </div >
-                        <div className='dropdiv'>
+                        <div className='dropdownbtn'>
                             <DemoUser />
                         </div>
                     </div>
                     
-                )}
-            </>
+                {/* )} */}
+            </div>
         )
 
     }

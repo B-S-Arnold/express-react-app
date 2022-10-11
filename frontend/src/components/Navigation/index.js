@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+import LoginFormModal from '../../modals/LoginFormModal';
 import './Navigation.css';
 import DemoUser from '../auth/DemoUser';
 
