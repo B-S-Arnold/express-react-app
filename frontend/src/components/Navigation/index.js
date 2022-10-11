@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import DemoUser from '../auth/DemoUser';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -16,6 +17,7 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <div className = "sesh-wrapper">
+                <DemoUser />
                 <div>
                     <LoginFormModal />
                 </div>

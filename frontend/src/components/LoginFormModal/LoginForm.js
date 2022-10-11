@@ -39,7 +39,7 @@ function LoginForm() {
     }
 
     return (
-        <div>
+        
         <form className='loginform'onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => (
@@ -67,8 +67,6 @@ function LoginForm() {
             <button className="btn" type="submit">Log In</button>
             
         </form>
-            <DemoUser />
-        </div>
 
     );
 }
