@@ -1,0 +1,14 @@
+.loginform{
+    display: flex;
+    flex-direction: column;
+    width: 568px;
+    height: 618px;
+}
+
+@media (max-height:830px) {
+
+    .loginform{
+        height: 300px;
+    }
+
+}
