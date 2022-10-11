@@ -7,7 +7,7 @@ const LoginModal = () => {
 
     return (
         <>
-            <button className='loginbtn' onClick={() => setRenderModal(true)} />
+            {/* <button className='dropbtn' onClick={() => setRenderModal(true)} /> */}
             {renderModal ? (
                 <Modal onClose={() => setRenderModal(false)}>
                     <LoginForm />

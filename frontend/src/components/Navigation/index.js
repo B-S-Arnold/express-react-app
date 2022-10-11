@@ -9,24 +9,26 @@ import DemoUser from '../auth/DemoUser';
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
 
-    let sessionLinks;
-    if (sessionUser) {
-        sessionLinks = (
+    // let sessionLinks;
+    // if (sessionUser) {
+       let sessionLinks = (
             <ProfileButton user={sessionUser} />
         );
-    } else {
-        sessionLinks = (
-            <div className = "sesh-wrapper">
-                <DemoUser />
-                <div>
-                    <LoginFormModal />
-                </div>
-                <div>
-                    <NavLink className = "link" to="/signup">Sign Up</NavLink>
-                </div >
-            </div>
-        );
-    }
+    // } else {
+    //     sessionLinks = (
+    //         <div className="profile-dropdown">
+    //             <div className='dropdiv'>
+    //                 <LoginFormModal />
+    //             </div>
+    //             <div className='dropdiv'>
+    //                 <NavLink className="dropbtn" to="/signup">Sign Up</NavLink>
+    //             </div >
+    //             <div className='dropdiv'>
+    //                 <DemoUser />
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
     function changeCSS() {
         // var bodyElement = document.querySelector("body");

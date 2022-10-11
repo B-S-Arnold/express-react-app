@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect, NavLink } from 'react-router-dom';
+import DemoUser from "../auth/DemoUser";
+import LoginFormModal from "../LoginFormModal";
+import LoginForm from "../LoginFormModal/LoginForm";
 
 
-function ProfileButton({ user }) {
+function ProfileButton() {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
 
     const history = useHistory();
     
     const [showMenu, setShowMenu] = useState(false);
+    
 
     const openMenu = () => {
         if (showMenu) return;
@@ -44,7 +49,7 @@ function ProfileButton({ user }) {
         history.push(path)
     }
 
-    return (
+    if (user) {return (
         <>
             <button className = 'link' onClick={openMenu}>
                 <i className="fas fa-hiking" >  ~ {user.username} ~ </i>
@@ -65,7 +70,31 @@ function ProfileButton({ user }) {
                 </div>
             )}
         </>
-    );
+    )
+    } else {
+        return(
+            <>
+                <button className='link' onClick={openMenu}>
+                    <i className="fas fa-hiking" ></i>
+                </button>
+                {showMenu && (
+                    <div className="profile-dropdown">
+                        <div >
+                            <LoginFormModal  />
+                        </div>
+                        <div className='dropdiv'>
+                            <NavLink className="dropbtn" to="/signup">Sign Up</NavLink>
+                        </div >
+                        <div className='dropdiv'>
+                            <DemoUser />
+                        </div>
+                    </div>
+                    
+                )}
+            </>
+        )
+
+    }
 }
 
 export default ProfileButton;
