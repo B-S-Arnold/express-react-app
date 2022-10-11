@@ -33,7 +33,7 @@ function LoginForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='loginform'onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>

@@ -7,22 +7,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 
 #modal-background {
   position: fixed;
-  
+
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
 }
 
 #modal-content {
-  
+
   padding: 30px 50px;
   position: absolute;
-  background-color:white;
+  background-color: white;
   border-radius: 17px;
+  z-index: 5;
 }
