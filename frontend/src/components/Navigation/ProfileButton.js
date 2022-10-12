@@ -7,6 +7,7 @@ import LoginFormModal from "../../modals/LoginFormModal";
 import LoginForm from "../auth/LoginForm";
 import './Dropdown.css'
 import { Modal } from "../../context/Modal";
+import SignupFormPage from "../SignupFormPage";
 
 
 function ProfileButton() {
@@ -86,6 +87,11 @@ function ProfileButton() {
                         <LoginForm />
                     </Modal>
                 )}
+                {renderModalTwo && (
+                    <Modal onClose={() => setRenderModalTwo(false)}>
+                        <SignupFormPage />
+                    </Modal>
+                )}
                   
 
                     {/* <i className="fas fa-hiking" ></i> */}
@@ -95,15 +101,22 @@ function ProfileButton() {
                         {/* <div className="dropdiv">
                             <LoginFormModal  />
                         </div> */}
-                        <button className='dropbtn btn' onClick={() => {
-                            // e.preventDefault()
-                            setRenderModal(true)
-                            
-                        }}>Log In</button>
-                        
+                        <div className="dropdiv">
+                            <button className='dropbtn btn' onClick={() => {
+                                // e.preventDefault()
+                                setRenderModal(true)
+                                
+                            }}>Log In</button>
+                        </div>
                         <div className='dropdiv'>
-                            <NavLink className="dropbtn" to="/signup">Sign Up</NavLink>
-                        </div >
+                            <button className='dropbtn btn' onClick={() => {
+                                // e.preventDefault()
+                                setRenderModalTwo(true)
+
+                            }}>Sign Up</button>
+                        </div>
+                        
+                        
                         <div className='dropdiv'>
                             <DemoUser />
                         </div>
