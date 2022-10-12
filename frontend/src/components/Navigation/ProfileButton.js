@@ -6,6 +6,7 @@ import DemoUser from "../auth/DemoUser";
 import LoginFormModal from "../../modals/LoginFormModal";
 import LoginForm from "../auth/LoginForm";
 import './Dropdown.css'
+import { Modal } from "../../context/Modal";
 
 
 function ProfileButton() {
@@ -14,26 +15,29 @@ function ProfileButton() {
 
     const history = useHistory();
     
-    // const [showMenu, setShowMenu] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+    const [renderModal, setRenderModal] = useState(false);
+    const [renderModalTwo, setRenderModalTwo] = useState(false);
+
     
 
-    // const openMenu = () => {
-    //     if (showMenu) return;
-    //     setShowMenu(true);
-    // };
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
     
 
-    // useEffect(() => {
-    //     if (!showMenu) return;
+    useEffect(() => {
+        if (!showMenu) return;
 
-    //     const closeMenu = () => {
-    //         setShowMenu(false);
-    //     };
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
 
-    //     document.addEventListener('click', closeMenu);
+        document.addEventListener('click', closeMenu);
 
-    //     return () => document.removeEventListener("click", closeMenu);
-    // }, [showMenu]);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
 
     const logout = (e) => {
         e.preventDefault();
@@ -49,13 +53,14 @@ function ProfileButton() {
         let path = `/users/${user.id}`
         history.push(path)
     }
+    
 
     if (user) {return (
         <>
-            <button className = 'link' >
+            <button className ='link' onClick={openMenu}>
                 <i className="fas fa-hiking" >  ~ {user.username} ~ </i>
             </button>
-            {/* {showMenu && ( */}
+            {showMenu && (
                 <div className="profile-dropdown">
                     
                     
@@ -69,32 +74,43 @@ function ProfileButton() {
                         <button className="dropbtn" onClick={logout}>Log Out</button>
                     </div>
                 </div>
-            {/* )} */}
+             )} 
         </>
     )
     } else {
         return(
-            <div className="buttondiv">
-                <div id='focus' tabIndex='1' className='userbtn' >
+            <>
+                <button className='userbtn' onClick={openMenu}>
+                {renderModal && (
+                    <Modal onClose={() => setRenderModal(false)}>
+                        <LoginForm />
+                    </Modal>
+                )}
                   
 
                     {/* <i className="fas fa-hiking" ></i> */}
-                </div>
-                {/* {showMenu && ( */}
-                    <div className="dropdown">
-                        <div className="">
+                </button>
+                {showMenu && (
+                    <div className="profile-dropdown">
+                        {/* <div className="dropdiv">
                             <LoginFormModal  />
-                        </div>
-                        <div className='dropdownbtn'>
+                        </div> */}
+                        <button className='dropbtn btn' onClick={() => {
+                            // e.preventDefault()
+                            setRenderModal(true)
+                            
+                        }}>Log In</button>
+                        
+                        <div className='dropdiv'>
                             <NavLink className="dropbtn" to="/signup">Sign Up</NavLink>
                         </div >
-                        <div className='dropdownbtn'>
+                        <div className='dropdiv'>
                             <DemoUser />
                         </div>
                     </div>
                     
-                {/* )} */}
-            </div>
+                 )} 
+            </>
         )
 
     }
