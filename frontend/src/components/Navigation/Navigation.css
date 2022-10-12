@@ -128,3 +128,26 @@
     /* margin: 50px; */
     padding: 25px;
 }
+
+.navbtn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 100px;
+    padding: 2px;
+    color: grey;
+    background-color: white;
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.icondiv1{
+    padding-left: 10px;
+    padding-right: 5px;
+}
+.icondiv2 {
+    /* padding: 0px 2px */
+}
+
+.navbtn:hover{
+    cursor: pointer;
+}

@@ -18,7 +18,15 @@ import * as spotActions from "../../store/spot";
 function CreateListing() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const history = useHistory();
+
+    if (!sessionUser){
+        history.push('/')
+        window.location.reload()
+    }
+
     
+
     const [userId, setUserId] = useState(sessionUser.id);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
@@ -29,7 +37,6 @@ function CreateListing() {
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const history = useHistory();
     
 
     // const updateUserId = (e) => setUserId(sessionUser.id);
@@ -69,7 +76,10 @@ function CreateListing() {
     };
 
     // let createdSpot =  dispatch(createSpot(payload))
+    
+    
 
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();

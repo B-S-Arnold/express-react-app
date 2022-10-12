@@ -43,6 +43,8 @@ function ProfileButton() {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
+        history.push('/')
+        // window.location.reload()
     };
 
     const createListing = () => {
@@ -58,21 +60,28 @@ function ProfileButton() {
 
     if (user) {return (
         <>
-            <button className ='link' onClick={openMenu}>
-                <i className="fas fa-hiking" >  ~ {user.username} ~ </i>
+            <button className ='navbtn' onClick={openMenu}>
+                <div className="icondiv1">
+                    <i className="fas fa-bars" />
+                </div>
+                <div className="icondiv2">
+                    <div className="userbtn"></div>
+                </div>
+                
+                
             </button>
             {showMenu && (
                 <div className="profile-dropdown">
                     
                     
                     <div className="dropdiv">
-                        <button className = "dropbtn" onClick={createListing}>Create Listing</button>
+                        <button className = "dropbtn btn" onClick={createListing}>Create Listing</button>
                     </div>
                     <div className="dropdiv">
-                        <button className="dropbtn" onClick={myListings}>My Listings</button>
+                        <button className="dropbtn btn" onClick={myListings}>My Listings</button>
                     </div>
                     <div className="dropdiv">
-                        <button className="dropbtn" onClick={logout}>Log Out</button>
+                        <button className="dropbtn btn" onClick={logout}>Log Out</button>
                     </div>
                 </div>
              )} 
@@ -81,7 +90,14 @@ function ProfileButton() {
     } else {
         return(
             <>
-                <button className='userbtn' onClick={openMenu}>
+                <button className='navbtn' onClick={openMenu}>
+                    <div className="icondiv1">
+                        <i className="fas fa-bars" />
+                    </div>
+                    <div className="icondiv2">
+                        <div className="userbtn"></div>
+                    </div>
+                    
                 {renderModal && (
                     <Modal onClose={() => setRenderModal(false)}>
                         <LoginForm />
@@ -93,8 +109,6 @@ function ProfileButton() {
                     </Modal>
                 )}
                   
-
-                    {/* <i className="fas fa-hiking" ></i> */}
                 </button>
                 {showMenu && (
                     <div className="profile-dropdown">
