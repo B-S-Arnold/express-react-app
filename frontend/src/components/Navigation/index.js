@@ -44,7 +44,7 @@ function Navigation({ isLoaded }) {
                 <NavLink className="home" exact to="/"></NavLink>
             </div>
             <div>
-                <NavLink className="link" exact to="/allCurrentListings">Available Listings</NavLink>
+                <NavLink className="link" exact to="/allCurrentListings">available listings</NavLink>
             </div>
             <div>
                 {isLoaded && sessionLinks}
