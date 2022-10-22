@@ -75,13 +75,13 @@ function ProfileButton() {
                     
                     
                     <div className="dropdiv">
-                        <button className = "dropbtn" onClick={createListing}>Create Listing</button>
+                        <button className = "dropbtn topdrop" onClick={createListing}>Create listing</button>
                     </div>
                     <div className="dropdiv">
-                        <button className="dropbtn" onClick={myListings}>My Listings</button>
+                        <button className="dropbtn middrop" onClick={myListings}>My listings</button>
                     </div>
                     <div className="dropdiv">
-                        <button className="dropbtn" onClick={logout}>Log Out</button>
+                        <button className="dropbtn btmdrop" onClick={logout}>Log out</button>
                     </div>
                 </div>
              )} 
@@ -116,18 +116,18 @@ function ProfileButton() {
                             <LoginFormModal  />
                         </div> */}
                         <div className="dropdiv">
-                            <button className='dropbtn' onClick={() => {
+                            <button className='dropbtn topdrop' onClick={() => {
                                 // e.preventDefault()
                                 setRenderModal(true)
                                 
-                            }}>Log In</button>
+                            }}>Log in</button>
                         </div>
                         <div className='dropdiv'>
-                            <button className='dropbtn' onClick={() => {
+                            <button className='dropbtn middrop' onClick={() => {
                                 // e.preventDefault()
                                 setRenderModalTwo(true)
 
-                            }}>Sign Up</button>
+                            }}>Sign up</button>
                         </div>
                         
                         

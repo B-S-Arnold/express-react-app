@@ -11,7 +11,7 @@ const DemoUser = () => {
         await dispatch(login({credential, password}));
     };
 
-    return <button className='dropbtn' onClick={onClick}>Log in as a Demo User</button>;
+    return <button className='dropbtn btmdrop' onClick={onClick}>Log in as Demo User</button>;
 };
 
 export default DemoUser;
