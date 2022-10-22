@@ -97,7 +97,7 @@ function AllListingsPage() {
 
             return (
 
-                <button className= "spotbtn btn" onClick={handleClick} key={thisSpot.id}>
+                <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
                     <h2>
                         {spot.name}
                     </h2>
