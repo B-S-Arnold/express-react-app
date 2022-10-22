@@ -73,8 +73,7 @@ function AllListingsPage() {
 
                         <div key={image.id}>
                             <img
-                                height="350px"
-                                width= "350px"
+                                className='foto'
                                 src={image.url}
                                 alt="new"
                             />
@@ -98,23 +97,18 @@ function AllListingsPage() {
             return (
 
                 <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
-                    <h2>
-                        {spot.name}
-                    </h2>
-                    <p>
-                        ${spot.price} per Night
-                    </p>
-                    <p>
-                        {spot.city}, {spot.state}, {spot.country}
-                    </p>
-
-                    <div>
+                    
+                    <div className='imgdiv'>
                         {allImages()}
                     </div>
 
-                    <p>
-                        {spot.description}
-                    </p>
+                    <div className='citydiv'>
+                        {spot.city}, {spot.state}
+                    </div>
+                    <div className='pricediv'>
+                        <div className='price'>${spot.price} </div>
+                         night
+                    </div>
 
                 </button >
             )
