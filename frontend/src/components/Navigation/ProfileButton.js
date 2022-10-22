@@ -71,17 +71,17 @@ function ProfileButton() {
                 
             </button>
             {showMenu && (
-                <div className="profile-dropdown">
+                <div className="dropdown">
                     
                     
                     <div className="dropdiv">
-                        <button className = "dropbtn btn" onClick={createListing}>Create Listing</button>
+                        <button className = "dropbtn" onClick={createListing}>Create Listing</button>
                     </div>
                     <div className="dropdiv">
-                        <button className="dropbtn btn" onClick={myListings}>My Listings</button>
+                        <button className="dropbtn" onClick={myListings}>My Listings</button>
                     </div>
                     <div className="dropdiv">
-                        <button className="dropbtn btn" onClick={logout}>Log Out</button>
+                        <button className="dropbtn" onClick={logout}>Log Out</button>
                     </div>
                 </div>
              )} 
@@ -111,19 +111,19 @@ function ProfileButton() {
                   
                 </button>
                 {showMenu && (
-                    <div className="profile-dropdown">
+                    <div className="dropdown">
                         {/* <div className="dropdiv">
                             <LoginFormModal  />
                         </div> */}
                         <div className="dropdiv">
-                            <button className='dropbtn btn' onClick={() => {
+                            <button className='dropbtn' onClick={() => {
                                 // e.preventDefault()
                                 setRenderModal(true)
                                 
                             }}>Log In</button>
                         </div>
                         <div className='dropdiv'>
-                            <button className='dropbtn btn' onClick={() => {
+                            <button className='dropbtn' onClick={() => {
                                 // e.preventDefault()
                                 setRenderModalTwo(true)
 
