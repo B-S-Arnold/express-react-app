@@ -184,21 +184,25 @@ function SpotPage() {
                             {allImages()}
                         </div>
                         <div className = "infodiv">
-                            <h2>
+                            <div className='citydiv'>
                                 {spot.name}
-                            </h2>
-                            <p>
+                            </div>
+                            <div className='pricediv'>
+                                <div className='spnum'>
+                                    ${spot.price}</div> night
+                            </div>
+                            <div className='sploc'>
+                                <div className='citydiv'>
+                                    {spot.address}, {spot.city}
+                                </div>
+                                <div className='citydiv'>
+                                    {spot.state}, {spot.country}
+                                </div>
+                            </div>
+                            <div className='pricediv'> 
                                 {spot.description}
-                            </p>
-                            <h3>
-                                ${spot.price} night
-                            </h3>
-                            <h3>
-                                {spot.address}, {spot.city}
-                            </h3>
-                            <h3>
-                                 {spot.state}, {spot.country}
-                            </h3>
+                            </div>
+                            
                             
                         </div>
                     </div>
