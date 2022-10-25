@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import * as reviewActions from "../../store/review"
 import { useHistory, useParams } from "react-router-dom";
+import './ReviewForm.css'
 
 
 
@@ -40,23 +41,26 @@ function ReviewForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => (
+        <form onSubmit={handleSubmit} className='revform'>
+            {errors?.length ?
+            < ul >
+            {
+                errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
-                ))}
-            </ul>
-            <label>
+                ))
+            }
+            </ul> : <></>}
                 
-                <input
-                    type="text"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    required
-                />
-            </label>
+            <textarea
+                className="revin"
+                type="text"
+                placeholder="Add a review..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+            />
             
-            <button className="revbtn" type="submit">Submit Review</button>
+            <button className="subbtn" type="submit">Submit</button>
             
         </form>
     );

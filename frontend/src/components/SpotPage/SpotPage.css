@@ -1,5 +1,12 @@
+.spotpage{
+    margin-top:100px;
+    height: 100%;
+    width: 100%;
+}
+
 .imgandinfo {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 
 }

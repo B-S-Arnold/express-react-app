@@ -191,10 +191,7 @@ function SpotPage() {
                                 {spot.description}
                             </p>
                             <h3>
-                                ${spot.price} per Night
-                            </h3>
-                            <h3>
-                                Address:
+                                ${spot.price} night
                             </h3>
                             <h3>
                                 {spot.address}, {spot.city}
@@ -233,9 +230,9 @@ function SpotPage() {
         <>
             
             {!spotsArr.length && <span>No spots available right now.</span>}
-            <ul className="spot">
+            <div className="spotpage">
                 {spotMapFunc()}
-            </ul>
+            </div>
         </>
     );
 }
