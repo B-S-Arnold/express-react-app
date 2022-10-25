@@ -193,6 +193,7 @@ function SpotPage() {
                     
             const anyrevs = rvwArr?.filter(rvw => rvw?.spotId === thisSpot.id)
             console.log(anyrevs)
+            const spotOwner = users?.filter(usr => usr?.id === thisSpot.userId)[0]
             return (
                 
                 <div key={thisSpot.id}>
@@ -204,7 +205,7 @@ function SpotPage() {
                         
                         <div className = "infodiv">
                             <div className='citydiv'>
-                                {spot.name}
+                                {spot.name} by {spotOwner?.username}
                             </div>
                             <hr className='line' />
                             <div className='pricediv'>
