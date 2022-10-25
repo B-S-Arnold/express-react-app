@@ -95,22 +95,23 @@ function AllListingsPage() {
 
 
             return (
+                <div className='spotbtndiv'>
+                    <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
+                        
+                        <div className='imgdiv'>
+                            {allImages()}
+                        </div>
 
-                <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
-                    
-                    <div className='imgdiv'>
-                        {allImages()}
-                    </div>
+                        <div className='citydiv'>
+                            {spot.city}, {spot.state}
+                        </div>
+                        <div className='pricediv'>
+                            <div className='price'>${spot.price} </div>
+                            night
+                        </div>
 
-                    <div className='citydiv'>
-                        {spot.city}, {spot.state}
-                    </div>
-                    <div className='pricediv'>
-                        <div className='price'>${spot.price} </div>
-                         night
-                    </div>
-
-                </button >
+                    </button >
+                </div>
             )
         }
 
