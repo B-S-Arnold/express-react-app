@@ -120,6 +120,16 @@
 
 }
 
+.spfoto{
+    margin: 0;
+    padding: 0;
+    height: 560px;
+    max-width: 100%;
+    object-fit: cover;
+    display: inline;
+    border-radius: 20px;
+}
+
 .reviews {
 
     font-size: 15px;

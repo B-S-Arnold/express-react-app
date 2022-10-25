@@ -99,8 +99,7 @@ function SpotPage() {
 
                         <div key={image.id}>
                             <img
-                                height = "500px"
-                                width = "500px"
+                                className='spfoto'
                                 src={image.url}
                                 alt="new"
                             />
