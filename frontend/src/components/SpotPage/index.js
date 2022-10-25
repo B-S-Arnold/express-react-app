@@ -14,8 +14,16 @@ import * as reviewActions from "../../store/review"
 
 function SpotPage() {
     const dispatch = useDispatch();
+    const [users, setUsers] = useState([]);
+
 
     useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('/api/users/users');
+            const responseData = await response.json();
+            setUsers(responseData.users);
+        }
+        fetchData()
         dispatch(getSpot())
         dispatch(getReview())
         dispatch(getImage())
@@ -42,6 +50,8 @@ function SpotPage() {
         return state.image;
     });
 
+   
+
     const reviews = useSelector(state => {
         return state.review;
     });
@@ -49,6 +59,7 @@ function SpotPage() {
     const spotsArr = Object.values(spots);
     const imgArr = Object.values(images)
     const rvwArr = Object.values(reviews)
+    
 
     
     console.log("SPOTTTSSS", spots)
@@ -80,7 +91,7 @@ function SpotPage() {
         
 
             let allImages = () => imgArr.map((image) => {
-                if (image !== null && parseInt(thisSpot.id) === image.spotId) {
+                if (image !== null && parseInt(thisSpot.id) === image?.spotId) {
 
 
 
@@ -103,7 +114,7 @@ function SpotPage() {
 
             let allReviews = () => rvwArr.map((review) => {
                 if (review !== null && parseInt(spotId) === review.spotId) {
-
+                    const commenter = users?.filter(user => user.id === review.userId)[0]
 
                 const deleteReviewButton = (e) => {
                     e.preventDefault();
@@ -139,12 +150,17 @@ function SpotPage() {
                         </>
                 }
 
-                
+                        // console.log(commenter)
                         return (
-                        
+                            
                                 <div key={review.id}>
                                         <div className = "indrev">
+                                            <div className='revname'>
+                                            {commenter?.username}
+                                            </div>
+                                            <div className='review'>
                                             {review.content} {deleteReview}
+                                            </div>
                                         </div>
                                 </div>
                                 
@@ -175,6 +191,8 @@ function SpotPage() {
                 links = (<ReviewFormModal />)
             }
                     
+            const anyrevs = rvwArr?.filter(rvw => rvw?.spotId === thisSpot.id)
+            console.log(anyrevs)
             return (
                 
                 <div key={thisSpot.id}>
@@ -213,15 +231,20 @@ function SpotPage() {
                         <div className = "revbtndiv">
                             {links}
                         </div>
-                        <div className="revdiv">
-                            <div className="revtitle">
-                                Reviews
+                        {anyrevs.length ?
+                            <div className="revdiv">
+
+                                
+                                <div className="revtitle">
+                                    Reviews
+                                </div>
+                                
+                                <div className="reviews">
+                                
+                                    {allReviews()}
+                                </div>
                             </div>
-                            <div className="reviews">
-                            
-                                {allReviews()}
-                            </div>
-                        </div>
+                        : <></>}
                         
                     </div>
                     

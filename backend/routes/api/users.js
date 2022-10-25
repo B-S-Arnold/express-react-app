@@ -59,6 +59,19 @@ router.get('/', asyncHandler(async function (req, res) {
     return res.json({spots});
 }));
 
+router.get('/users', asyncHandler(async function (req, res) {
+    const users = await User.findAll(req.params.id)
+
+    // {
+    //     where: {
+    //         userId = req.params.id
+    //     }
+    // }
+
+
+    return res.json({ users });
+}));
+
 
 
 module.exports = router;
