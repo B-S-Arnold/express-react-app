@@ -159,17 +159,17 @@ function SpotPage() {
             
             if (sessionUser && sessionUser.id === spot.userId){
                 links =
-                    <>
-                    < button className="revbtn" onClick={(e) => {
+                    <div>
+                    < button className="link eddel" onClick={(e) => {
                         e.preventDefault()
                         history.push(`${spot.id}/edit`)
                     }}>
                             Edit Listing
                         </button>
-                        < button className='revbtn' onClick={deleteButton} >
+                        < button className='link eddel' onClick={deleteButton} >
                             Delete Listing
                         </button >
-                    </>
+                    </div>
             }
             if (sessionUser && sessionUser.id !== spot.userId){
                 links = (<ReviewFormModal />)

@@ -21,7 +21,7 @@ function UserPage() {
     
 
     const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("kjl");
+    const [email, setEmail] = useState("");
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -67,8 +67,7 @@ function UserPage() {
 
                         <div key={image.id}>
                             <img
-                            height="350px"
-                            width="350px"
+                                className='foto'
                                 src={image.url}
                                 alt="new"
                             />
@@ -92,26 +91,21 @@ function UserPage() {
 
 
         return (
-            <div key={spot.id}>
+            <div key={spot.id} className='spotbtndiv'>
 
                 <button className="spotbtn" onClick={handleClick} key={thisSpot.id}>
-                    <h2>
-                        {spot.name}
-                    </h2>
-                    <p>
-                        ${spot.price} per Night
-                    </p>
-                    <p>
-                        {spot.city}, {spot.state}, {spot.country}
-                    </p>
-
-                    <div>
+                    
+                    <div className='imgdiv'>
                         {allImages()}
                     </div>
-
-                    <p>
-                        {spot.description}
-                    </p>
+                    
+                    <div className='pricediv'>
+                        <div className='price'> ${spot.price} </div>
+                         night
+                    </div>
+                    <div className='citydiv'>
+                        {spot.city}, {spot.state}
+                    </div>
 
                 </button >
             </div >
@@ -128,7 +122,7 @@ function UserPage() {
 
     return (
         <>
-            <h2 className = "title">My Listings</h2>
+            {/* <h2 className = "title">My Listings</h2> */}
             {!spotsArr.length && <span>No listings.</span>}
             <ul className="spot-list">
                 {spotMapFunc()}
