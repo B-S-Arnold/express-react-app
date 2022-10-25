@@ -183,10 +183,12 @@ function SpotPage() {
                         <div className = "imgdiv">
                             {allImages()}
                         </div>
+                        
                         <div className = "infodiv">
                             <div className='citydiv'>
                                 {spot.name}
                             </div>
+                            <hr className='line' />
                             <div className='pricediv'>
                                 <div className='spnum'>
                                     ${spot.price}</div> night

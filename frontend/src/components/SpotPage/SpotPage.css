@@ -33,6 +33,14 @@
     font-weight: 500;
     margin-right: 4px;
 }
+.line{
+    width: 500px;
+    border-color: #8e8e8e;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-top: solid .1px #dbdbdbad;
+}
 
 .revtotaldiv {
     display: grid;
