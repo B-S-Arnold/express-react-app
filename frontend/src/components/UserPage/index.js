@@ -65,7 +65,7 @@ function UserPage() {
 
                     return (
 
-                        <div key={image.id}>
+                        <div className='fotodiv' key={image.id}>
                             <img
                                 className='foto'
                                 src={image.url}

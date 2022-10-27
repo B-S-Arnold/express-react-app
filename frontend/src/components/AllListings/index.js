@@ -62,16 +62,19 @@ function AllListingsPage() {
         if (spot !== null) {
             const thisSpot = spot
 
-
+            // const spotImgDisplay = 
 
             let allImages = () => imgArr.map((image) => {
-                if (image !== null && parseInt(thisSpot.id) === image.spotId) {
 
+                // const first = users?.filter(usr => usr?.id === thisSpot.userId)[0]
+
+                if (image !== null && parseInt(thisSpot.id) === image.spotId) {
+                
 
 
                     return (
 
-                        <div key={image.id}>
+                        <div className ='fotodiv' key={image.id}>
                             <img
                                 className='foto'
                                 src={image.url}

@@ -94,7 +94,7 @@ function SpotPage() {
                 if (image !== null && parseInt(thisSpot.id) === image?.spotId) {
 
 
-
+                
                     return (
 
                         <div key={image.id}>

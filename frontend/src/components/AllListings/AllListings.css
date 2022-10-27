@@ -89,9 +89,38 @@
 
 }
 
+.fotodiv{
+    
+        margin: 0;
+        margin-right: 20px;
+        padding: 0;
+        
+        height: 293px;
+        width: 293px;
+        /* object-fit: cover; */
+        /* display:flex; */
+        border-radius: 20px;
+}
 
 
-.imgdiv {}
+
+.imgdiv {
+display:grid;
+grid-auto-flow: column;
+height: 320px;
+width: 320px;
+overflow:auto;
+/* margin: 0;
+    padding: 0;
+    min-height: 293px;
+    min-width: 100%;
+    max-height: 293px;
+    max-width: 100%;
+    object-fit: cover;
+    display: inline;
+    border-radius: 20px; */
+
+}
 
 .citydiv {
     font-size: 15px;

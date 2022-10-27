@@ -32,6 +32,22 @@ module.exports = {
      {
        spotId: 6,
        url: "https://cdn.vox-cdn.com/thumbor/aGqpkHoX_oBxCT0tBKNU3mZaLSg=/36x0:983x631/1200x800/filters:focal(36x0:983x631)/cdn.vox-cdn.com/assets/1114614/earth-russia.jpg"
+     },
+     {
+       spotId: 6,
+       url: "https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274__480.jpg"
+     },
+     {
+       spotId: 6,
+       url: "https://scied.ucar.edu/sites/default/files/styles/half_width/public/2021-10/Earth_system_sum_parts.jpg?itok=NRs3YKiK"
+     },
+     {
+       spotId: 6,
+       url: "http://www.nasa.gov/sites/default/files/thumbnails/image/187_1003705_americas_dxm.png"
+     },
+     {
+       spotId: 6,
+       url: "https://physicsworld.com/wp-content/uploads/2020/07/Flat_Earth_illustration.jpg"
      }
    ], {});
   },
