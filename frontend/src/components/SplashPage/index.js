@@ -38,7 +38,7 @@ function SplashPage() {
 
 
     return (
-        <div>
+        <div className='splashpage'>
             <div className="blurb">
                 <div className ="title">
                     Find places to stay on PopPilgrim

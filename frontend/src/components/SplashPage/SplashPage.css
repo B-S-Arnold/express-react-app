@@ -2,6 +2,12 @@
     background-image: url("./pilgrimhat.png");
 } */
 
+.splashpage{
+    margin-top: 100px;
+    height: 100%;
+    width: 100%;
+}
+
 .blurb {
     position: fixed;
     display: flex;

@@ -171,6 +171,7 @@
 }
 
 .icondiv1 {
+    /* position:absolute; */
     padding-left: 10px;
     padding-right: 5px;
 }
