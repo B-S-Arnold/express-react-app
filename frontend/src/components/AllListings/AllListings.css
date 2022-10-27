@@ -10,6 +10,36 @@
 
 }
 
+@media (max-width:1590px){
+    .spot-list{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
+
+@media (max-width:1280px) {
+    .spot-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width:960px) {
+    .spot-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width:660px) {
+    .spot-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+
+
 .spotbtndiv{
     margin: 12px;
 }
