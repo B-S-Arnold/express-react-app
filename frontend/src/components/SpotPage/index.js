@@ -88,7 +88,66 @@ function SpotPage() {
         };
         
             
-        
+            const displayImages = () => {
+                const spotImgArr = imgArr?.filter(img => img?.spotId === thisSpot?.id)
+                if (spotImgArr?.length){
+                    const firstImg = spotImgArr.shift()
+                    const restImgArr = spotImgArr
+
+                    if (restImgArr.length===0){
+
+                        return (
+
+                            <div key={firstImg.id}>
+                                <img
+                                    className='spfoto'
+                                    src={firstImg.url}
+                                    alt="new"
+                                />
+                            </div>
+
+                        )
+                    } else {
+
+                        const gridImages = () => restImgArr.map((image)=>{
+
+                            return(
+                                <div key={image.id} className='gridfotodiv'>
+                                    <img
+                                        className='gridfoto'
+                                        src={image.url}
+                                        alt="new"
+                                    />
+                                </div>
+                            )
+
+
+                        })
+
+                        return (
+                            <div className='spimgdiv'>
+                                <div className='firstimgdiv'
+                                    key={firstImg.id}>
+                                    <img
+                                        className='spfoto'
+                                        src={firstImg.url}
+                                        alt="new"
+                                    />
+                                </div>
+                                <div className='gridimgdiv'>
+                                    {gridImages()}
+                                </div>
+
+                            </div>
+                        )
+
+
+                    }
+
+                }
+
+
+            }
 
             let allImages = () => imgArr.map((image) => {
                 if (image !== null && parseInt(thisSpot.id) === image?.spotId) {
@@ -112,7 +171,7 @@ function SpotPage() {
             })
 
             let allReviews = () => rvwArr.map((review) => {
-                if (review !== null && parseInt(spotId) === review.spotId) {
+                if (review !== null && parseInt(spotId) === review?.spotId) {
                     const commenter = users?.filter(user => user.id === review.userId)[0]
 
                 const deleteReviewButton = (e) => {
@@ -198,8 +257,8 @@ function SpotPage() {
                 <div key={thisSpot.id}>
                     
                     <div className = "imgandinfo">
-                        <div className = "imgdiv">
-                            {allImages()}
+                        <div className = "spimgdiv">
+                            {displayImages()}
                         </div>
                         
                         <div className = "infodiv">
