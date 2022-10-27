@@ -97,13 +97,15 @@ function SpotPage() {
                     if (restImgArr.length===0){
 
                         return (
-
-                            <div key={firstImg.id}>
-                                <img
-                                    className='spfoto'
-                                    src={firstImg.url}
-                                    alt="new"
-                                />
+                            <div className='spimgdiv'>
+                                {/* <div className='oneimagediv' */}
+                                    {/* key={firstImg.id}> */}
+                                    <img
+                                        className='spfoto'
+                                        src={firstImg.url}
+                                        alt="new"
+                                    />
+                                {/* </div> */}
                             </div>
 
                         )
@@ -255,35 +257,37 @@ function SpotPage() {
             return (
                 
                 <div key={thisSpot.id}>
-                    
-                    <div className = "imgandinfo">
-                        <div className = "spimgdiv">
-                            {displayImages()}
-                        </div>
-                        
+
+                    {displayImages()}
+
                         <div className = "infodiv">
-                            <div className='citydiv'>
-                                {spot.name} by {spotOwner?.username}
-                            </div>
-                            <hr className='line' />
-                            <div className='pricediv'>
-                                <div className='spnum'>
-                                    ${spot.price}</div> night
-                            </div>
-                            <div className='sploc'>
+                            <div>
                                 <div className='citydiv'>
-                                    {spot.address}, {spot.city}
+                                    {spot.name} by {spotOwner?.username}
                                 </div>
-                                <div className='citydiv'>
-                                    {spot.state}, {spot.country}
+                                <hr className='line' />
+                                <div className='pricediv'>
+                                    <div className='spnum'>
+                                        ${spot.price}</div> night
+                                </div>
+                                <div className='sploc'>
+                                    <div className='citydiv'>
+                                        {spot.address}, {spot.city}
+                                    </div>
+                                    <div className='citydiv'>
+                                        {spot.state}, {spot.country}
+                                    </div>
+                                </div>
+                                <div className='pricediv'> 
+                                    {spot.description}
                                 </div>
                             </div>
-                            <div className='pricediv'> 
-                                {spot.description}
+                            <div>
+                                
                             </div>
                             
                             
-                        </div>
+                        
                     </div>
 
                     <div className = "revtotaldiv">
