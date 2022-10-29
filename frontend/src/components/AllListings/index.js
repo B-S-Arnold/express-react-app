@@ -62,7 +62,23 @@ function AllListingsPage() {
         if (spot !== null) {
             const thisSpot = spot
 
-            // const spotImgDisplay = 
+            // function to display image at array position
+
+            const thisSpotArr = imgArr?.filter(img => img?.spotId === thisSpot?.id)
+            let i = 0
+            let thisImage = thisSpotArr[i]
+            let conditionalBtns = (<></>)
+            if (thisSpotArr.length > 1){
+
+                if (i !== thisSpotArr.length -1){
+                    let leftbtn = 
+                }
+
+                if (i !== 0) {
+
+                }
+
+            }
 
             let allImages = () => imgArr.map((image) => {
 
