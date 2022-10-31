@@ -54,7 +54,7 @@ function AllListingsPage() {
     });
 
     const spotsArr = Object.values(spots);
-    const imgArr = Object.values(images)
+    let imgArr = Object.values(images)
 
 
 
@@ -65,36 +65,21 @@ function AllListingsPage() {
             
             
             
-            let theseImages = imgArr?.filter(img => img?.spotId === thisSpot.id)
 
-            if (theseImages.length < 2){
-                return (
-                    <div className='fotodiv' >
-                        
-                        <img
-                            className='foto'
-                            src={theseImages[0]?.url}
-                            alt="new"
-                        />
-
-
-                    </div>
-                )
-            }
             let allImages = () => imgArr.map((image) => {
 
                 // const first = users?.filter(usr => usr?.id === thisSpot.userId)[0]
 
-                function clickToNext() {
-                    // document.getElementsByTagName('img')[0].scrollIntoView();
-                    imgArr.push(imgArr.shift())
+                // function clickToNext() {
+                //     // document.getElementsByTagName('img')[0].scrollIntoView();
+                //     imgArr.push(imgArr.shift())
 
-                }
+                // }
 
-                function clickToPrev() {
-                    // document.getElementsByTagName('img')[2].scrollIntoView();
-                    imgArr.unshift(imgArr.pop())
-                }
+                // function clickToPrev() {
+                //     // document.getElementsByTagName('img')[2].scrollIntoView();
+                //     imgArr.unshift(imgArr.pop())
+                // }
 
                 if (image !== null && parseInt(thisSpot.id) === image.spotId) {
                 
@@ -102,8 +87,8 @@ function AllListingsPage() {
                     return (
                         
                         <div className ='fotodiv' key={image.id}>
-                            <button onClick={clickToPrev} >To Prev</button>
-                            <button onClick={clickToNext} >To Next</button>
+                            {/* <button onClick={clickToPrev} >To Prev</button>
+                            <button onClick={clickToNext} >To Next</button> */}
                             <img
                                 className='foto'
                                 src={image.url}
@@ -129,7 +114,7 @@ function AllListingsPage() {
             return (
                 <div className='spotbtndiv' key={thisSpot.id}>
                     
-                    {/* <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}> */}
+                    <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
                         
                         <div className='imgdiv'>
                             {allImages()}
@@ -143,7 +128,7 @@ function AllListingsPage() {
                             night
                         </div>
 
-                    {/* </button > */}
+                    </button >
                 </div>
             )
         }
