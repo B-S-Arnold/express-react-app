@@ -35,35 +35,35 @@ function AllListingsPage() {
 
     const history = useHistory();
 
-    
+    const toPrev = document?.getElementsByClassName('toPrev')[0]
+    const toNext = document?.getElementsByClassName('toNext')[0]
     // const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
-        const toPrev = document.getElementsByClassName('toPrev')[0]
-        const toNext = document.getElementsByClassName('toNext')[0]
+        
 
-        const onNext = (e) => {
-            e.preventDefault()
-            setIndex(index+1)
-            // setyVal(pointerY)
+        // const onNext = (e) => {
+        //     e.preventDefault()
+        //     setIndex(index+1)
+        //     // setyVal(pointerY)
 
-        }
+        // }
 
-        const onPrev = (e) => {
-            e.preventDefault()
-            setIndex(index-1)
-            // setyVal(pointerY)
+        // const onPrev = (e) => {
+        //     e.preventDefault()
+        //     setIndex(index-1)
+        //     // setyVal(pointerY)
 
-        }
+        // }
 
         
-        toPrev.addEventListener('click', onPrev)
-        toNext.addEventListener('click', onNext)
+        // toPrev.addEventListener('click', onPrev)
+        // toNext.addEventListener('click', onNext)
 
-        return (
-            toPrev.removeEventListener('click', onPrev),
-            toNext.removeEventListener('click', onNext)
-        )
+        // return (
+        //     toPrev.removeEventListener('click', onPrev),
+        //     toNext.removeEventListener('click', onNext)
+        // )
 
     }, []);
 
@@ -95,7 +95,7 @@ function AllListingsPage() {
             const thisSpot = spot
 
             
-            
+            console.log(index)
             let thisImageArr = imgArr?.filter(img => img?.spotId === thisSpot.id)
             let thisImage = thisImageArr[index]
 
@@ -122,11 +122,27 @@ function AllListingsPage() {
             //         )
             //     }
             // })
+
+            const onNext = (e) => {
+                e.preventDefault()
+                setIndex(index + 1)
+                // setyVal(pointerY)
+
+            }
+
+            const onPrev = (e) => {
+                e.preventDefault()
+                setIndex(index - 1)
+                // setyVal(pointerY)
+
+            }
             const prevNextDiv = () => {
                 return (
                     <div>
-                        <div className='toPrev'>Previous</div>
-                        <div className='toNext'>Next</div>
+                        {index === 0 ? <></> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
+                        {index === thisImageArr.length - 1 ? <></> : <><button onClick={onNext} className='toNext'>&#62;</button></>}
+                        
+                        
                     </div>
                 )
             }
