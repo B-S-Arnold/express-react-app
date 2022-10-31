@@ -28,12 +28,29 @@ function AllListingsPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
+    const [xVal, setxVal] = useState('')
+    const [yVal, setyVal] = useState('')
+
     const { spotId } = useParams();
 
     const history = useHistory();
     // const sessionUser = useSelector(state => state.session.user);
 
+    useEffect(() => {
 
+        const changeXY = (e) => {
+            
+            let pointerX = e.pageX;
+            let pointerY = e.pageY;
+            setxVal(pointerX)
+            setyVal(pointerY)
+
+        }
+
+        document.addEventListener('click', changeXY);
+
+        return () => document.removeEventListener("click", changeXY);
+    }, []);
 
 
 
