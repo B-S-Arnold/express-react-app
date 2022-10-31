@@ -28,28 +28,43 @@ function AllListingsPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const [xVal, setxVal] = useState('')
-    const [yVal, setyVal] = useState('')
+    const [index, setIndex] = useState(0)
+    // const [yVal, setyVal] = useState('')
 
     const { spotId } = useParams();
 
     const history = useHistory();
+
+    
     // const sessionUser = useSelector(state => state.session.user);
 
     useEffect(() => {
+        const toPrev = document.getElementsByClassName('toPrev')[0]
+        const toNext = document.getElementsByClassName('toNext')[0]
 
-        const changeXY = (e) => {
-            
-            let pointerX = e.pageX;
-            let pointerY = e.pageY;
-            setxVal(pointerX)
-            setyVal(pointerY)
+        const onNext = (e) => {
+            e.preventDefault()
+            setIndex(index+1)
+            // setyVal(pointerY)
 
         }
 
-        document.addEventListener('click', changeXY);
+        const onPrev = (e) => {
+            e.preventDefault()
+            setIndex(index-1)
+            // setyVal(pointerY)
 
-        return () => document.removeEventListener("click", changeXY);
+        }
+
+        
+        toPrev.addEventListener('click', onPrev)
+        toNext.addEventListener('click', onNext)
+
+        return (
+            toPrev.removeEventListener('click', onPrev),
+            toNext.removeEventListener('click', onNext)
+        )
+
     }, []);
 
 
@@ -81,44 +96,40 @@ function AllListingsPage() {
 
             
             
-            
+            let thisImageArr = imgArr?.filter(img => img?.spotId === thisSpot.id)
+            let thisImage = thisImageArr[index]
 
-            let allImages = () => imgArr.map((image) => {
+            // let allImages = () => imgArr.map((image) => {
 
-                // const first = users?.filter(usr => usr?.id === thisSpot.userId)[0]
 
-                // function clickToNext() {
-                //     // document.getElementsByTagName('img')[0].scrollIntoView();
-                //     imgArr.push(imgArr.shift())
-
-                // }
-
-                // function clickToPrev() {
-                //     // document.getElementsByTagName('img')[2].scrollIntoView();
-                //     imgArr.unshift(imgArr.pop())
-                // }
-
-                if (image !== null && parseInt(thisSpot.id) === image.spotId) {
+            //     if (image !== null && parseInt(thisSpot.id) === image.spotId) {
                 
                     
-                    return (
+            //         return (
                         
-                        <div className ='fotodiv' key={image.id}>
-                            {/* <button onClick={clickToPrev} >To Prev</button>
-                            <button onClick={clickToNext} >To Next</button> */}
-                            <img
-                                className='foto'
-                                src={image.url}
-                                alt="new"
-                            />
+            //             <div className ='fotodiv' key={image.id}>
+            //                 {/* <button onClick={clickToPrev} >To Prev</button>
+            //                 <button onClick={clickToNext} >To Next</button> */}
+            //                 <img
+            //                     className='foto'
+            //                     src={image.url}
+            //                     alt="new"
+            //                 />
 
 
-                        </div>
+            //             </div>
 
-                    )
-                }
-            })
-
+            //         )
+            //     }
+            // })
+            const prevNextDiv = () => {
+                return (
+                    <div>
+                        <div className='toPrev'>Previous</div>
+                        <div className='toNext'>Next</div>
+                    </div>
+                )
+            }
             let path = `/spots/${thisSpot.id}`
 
             const handleClick = (e) => {
@@ -130,11 +141,24 @@ function AllListingsPage() {
 
             return (
                 <div className='spotbtndiv' key={thisSpot.id}>
-                    
+                    {prevNextDiv()}
                     <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
                         
                         <div className='imgdiv'>
-                            {allImages()}
+                            {/* {allImages()} */}
+
+                            <div className ='fotodiv' key={thisImage?.id}>
+                            {/* <button onClick={clickToPrev} >To Prev</button>
+                         <button onClick={clickToNext} >To Next</button> */}
+                             <img
+                                 className='foto'
+                                 src={thisImage?.url}
+                                 alt="new"
+                             />
+
+
+                        </div>
+
                         </div>
 
                         <div className='citydiv'>
