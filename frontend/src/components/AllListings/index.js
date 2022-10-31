@@ -72,7 +72,7 @@ function AllListingsPage() {
 
                 if (image !== null && parseInt(thisSpot.id) === image.spotId) {
                 
-
+                    
 
                     return (
 
@@ -97,13 +97,20 @@ function AllListingsPage() {
                 history.push(path);
             };
 
-            function clickToNext() {
-                document.getElementsByTagName('h2')[3].scrollIntoView();
-                // will scroll to 4th h3 element
-            }
+            // function clickToNext() {
+            //     document.getElementsByTagName('img')[0].scrollIntoView();
+            //     // will scroll to 4th h3 element
+            // }
+
+            // function clickToPrev() {
+            //     document.getElementsByTagName('img')[2].scrollIntoView();
+            //     // will scroll to 4th h3 element
+            // }
 
             return (
                 <div className='spotbtndiv'>
+                    {/* <button onClick={clickToPrev} >To Prev</button>
+                    <button onClick={clickToNext} >To Next</button> */}
                     <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
                         
                         <div className='imgdiv'>
