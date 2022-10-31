@@ -97,7 +97,10 @@ function AllListingsPage() {
                 history.push(path);
             };
 
-
+            function clickToNext() {
+                document.getElementsByTagName('h2')[3].scrollIntoView();
+                // will scroll to 4th h3 element
+            }
 
             return (
                 <div className='spotbtndiv'>
