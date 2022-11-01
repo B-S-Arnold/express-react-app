@@ -157,6 +157,24 @@ overflow:auto;
 
 }
 
+/* .spotbtn:hover .inArrowDiv{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 270px;
+    top: 123px;
+    left: 11.5px;
+} */
+
+.toPrev:hover{
+    background-color: white;
+}
+
+.toNext:hover{
+    background-color: white;
+    border-color: white;
+}
+
 .toPrev{
     position: relative;
     
@@ -171,7 +189,7 @@ overflow:auto;
     border: solid 1px black;
     z-index: 5;
 
-    padding: 5px 10px 10px 10px;
+    padding: 5px 12px 10px 12px;
 
 
     height: 40px;
@@ -191,7 +209,7 @@ overflow:auto;
     background-color: rgba(255, 255, 255, 0.819);
     border-radius: 50%;
     border: solid 1px black;
-    padding:  5px 10px 10px 10px;
+    padding:  5px 12px 10px 12px;
     /* justify-self: flex-end; */
     z-index: 5;
     
