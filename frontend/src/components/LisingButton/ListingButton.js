@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getImage } from '../../store/image';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { dot } from '16';
 
 
 
@@ -50,16 +51,50 @@ const ListingButton = ({spot, spotImageArr}) => {
         history.push(path);
     };
 
+    const imagePos = () => {
+
+        const dots = spotImageArr.map(img => {
+
+            if (img === spotImageArr[index]) {
+
+                return (
+                    <div className='iDot'>.</div>
+                )
+            }
+
+            return(
+                <div className='dot'>.</div>
+            )
+        });
+
+        return (
+            <>
+            {spotImageArr?.length > 1 ?
+            <div className='dotsOuter'>
+                <div className='dotsInner'>
+                    {dots}
+                </div>
+            </div>
+            
+            
+            : <></>}
+            </>
+        )
+    }
+
     const arrowDiv = () => {
         return (
             <div className='arrowDiv'>
+                <div className='inArrowDiv'>
                 {index === 0 ? <div /> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
                 {index === spotImageArr.length - 1 ? <div />: <><button onClick={onNext} className='toNext'>&#62;</button></>}
-
+            </div>
 
             </div>
         )
     }
+
+    
 
     return (
         <div className='spotbtndiv' key={spot.id}>
@@ -82,6 +117,8 @@ const ListingButton = ({spot, spotImageArr}) => {
                     </div>
 
                 </div>
+
+                {imagePos()}
 
                 <div className='citydiv'>
                     {spot.city}, {spot.state}
