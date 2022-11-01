@@ -22,7 +22,7 @@ function AllListingsPage() {
 
 
     const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("kjl");
+    const [email, setEmail] = useState("");
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

@@ -50,11 +50,11 @@ const ListingButton = ({spot, spotImageArr}) => {
         history.push(path);
     };
 
-    const prevNextDiv = () => {
+    const arrowDiv = () => {
         return (
-            <div>
-                {index === 0 ? <></> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
-                {index === spotImageArr.length - 1 ? <></> : <><button onClick={onNext} className='toNext'>&#62;</button></>}
+            <div className='arrowDiv'>
+                {index === 0 ? <div /> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
+                {index === spotImageArr.length - 1 ? <div />: <><button onClick={onNext} className='toNext'>&#62;</button></>}
 
 
             </div>
@@ -63,7 +63,7 @@ const ListingButton = ({spot, spotImageArr}) => {
 
     return (
         <div className='spotbtndiv' key={spot.id}>
-            {prevNextDiv()}
+            {arrowDiv()}
             <button className="spotbtn" onClick={handleClick} key={spot.id}>
 
                 <div className='imgdiv'>
