@@ -9,6 +9,7 @@ import { getSpot } from '../../store/spot';
 import ReviewFormModal from '../ReviewModal';
 import { getReview } from '../../store/review';
 import { getImage } from '../../store/image';
+import ListingButton from '../LisingButton/ListingButton';
 
 
 function AllListingsPage() {
@@ -92,12 +93,18 @@ function AllListingsPage() {
 
     const spotMapFunc = () => spotsArr.map((spot) => {
         if (spot !== null) {
-            const thisSpot = spot
 
             
             console.log(index)
-            let thisImageArr = imgArr?.filter(img => img?.spotId === thisSpot.id)
-            let thisImage = thisImageArr[index]
+            let spotImageArr = imgArr?.filter(img => img?.spotId === spot.id)
+
+
+            return (
+                
+                    <ListingButton spot={spot} spotImageArr={spotImageArr} />
+                
+            )
+            // let thisImage = thisImageArr[index]
 
             // let allImages = () => imgArr.map((image) => {
 
@@ -123,71 +130,71 @@ function AllListingsPage() {
             //     }
             // })
 
-            const onNext = (e) => {
-                e.preventDefault()
-                setIndex(index + 1)
-                // setyVal(pointerY)
+            // const onNext = (e) => {
+            //     e.preventDefault()
+            //     setIndex(index + 1)
+            //     // setyVal(pointerY)
 
-            }
+            // }
 
-            const onPrev = (e) => {
-                e.preventDefault()
-                setIndex(index - 1)
-                // setyVal(pointerY)
+            // const onPrev = (e) => {
+            //     e.preventDefault()
+            //     setIndex(index - 1)
+            //     // setyVal(pointerY)
 
-            }
-            const prevNextDiv = () => {
-                return (
-                    <div>
-                        {index === 0 ? <></> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
-                        {index === thisImageArr.length - 1 ? <></> : <><button onClick={onNext} className='toNext'>&#62;</button></>}
+            // }
+            // const prevNextDiv = () => {
+            //     return (
+            //         <div>
+            //             {index === 0 ? <></> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
+            //             {index === thisImageArr.length - 1 ? <></> : <><button onClick={onNext} className='toNext'>&#62;</button></>}
                         
                         
-                    </div>
-                )
-            }
-            let path = `/spots/${thisSpot.id}`
+            //         </div>
+            //     )
+            // }
+            // let path = `/spots/${spot.id}`
 
-            const handleClick = (e) => {
-                e.preventDefault();
-                history.push(path);
-            };
+            // const handleClick = (e) => {
+            //     e.preventDefault();
+            //     history.push(path);
+            // };
 
             
 
-            return (
-                <div className='spotbtndiv' key={thisSpot.id}>
-                    {prevNextDiv()}
-                    <button className= "spotbtn" onClick={handleClick} key={thisSpot.id}>
+            // return (
+            //     <div className='spotbtndiv' key={spot.id}>
+            //         {prevNextDiv()}
+            //         <button className= "spotbtn" onClick={handleClick} key={spot.id}>
                         
-                        <div className='imgdiv'>
-                            {/* {allImages()} */}
+            //             <div className='imgdiv'>
+            //                 {/* {allImages()} */}
 
-                            <div className ='fotodiv' key={thisImage?.id}>
-                            {/* <button onClick={clickToPrev} >To Prev</button>
-                         <button onClick={clickToNext} >To Next</button> */}
-                             <img
-                                 className='foto'
-                                 src={thisImage?.url}
-                                 alt="new"
-                             />
+            //                 <div className ='fotodiv' key={thisImage?.id}>
+            //                 {/* <button onClick={clickToPrev} >To Prev</button>
+            //              <button onClick={clickToNext} >To Next</button> */}
+            //                  <img
+            //                      className='foto'
+            //                      src={thisImage?.url}
+            //                      alt="new"
+            //                  />
 
 
-                        </div>
+            //             </div>
 
-                        </div>
+            //             </div>
 
-                        <div className='citydiv'>
-                            {spot.city}, {spot.state}
-                        </div>
-                        <div className='pricediv'>
-                            <div className='price'>${spot.price} </div>
-                            night
-                        </div>
+            //             <div className='citydiv'>
+            //                 {spot.city}, {spot.state}
+            //             </div>
+            //             <div className='pricediv'>
+            //                 <div className='price'>${spot.price} </div>
+            //                 night
+            //             </div>
 
-                    </button >
-                </div>
-            )
+            //         </button >
+            //     </div>
+            // )
         }
 
     })
