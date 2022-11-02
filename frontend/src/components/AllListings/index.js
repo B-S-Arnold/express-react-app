@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpot } from '../../store/spot';
 import { getImage } from '../../store/image';
-import ListingButton from '../LisingButton/ListingButton';
+import ListingButton from '../ListingButton/ListingButton';
 
 
 function AllListingsPage() {

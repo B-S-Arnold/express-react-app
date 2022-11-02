@@ -9,7 +9,7 @@
 }
 
 .blurb {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,6 +114,11 @@
         align-self: center;
         justify-self: center;        
     }
+}
+
+.allListings{
+    position: relative;
+    margin-top: 700px;
 }
 
 

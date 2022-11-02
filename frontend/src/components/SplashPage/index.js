@@ -9,6 +9,7 @@ import { getSpot } from '../../store/spot';
 import ReviewFormModal from '../ReviewModal';
 import { getReview } from '../../store/review';
 import { getImage } from '../../store/image';
+import AllListingsPage from '../AllListings';
 
 
 function SplashPage() {
@@ -130,8 +131,9 @@ function SplashPage() {
                 <div className='bkdImage'/>
             </div>
             
-
-            
+            <div className='allListings'>
+                <AllListingsPage />
+            </div>
         </div>
     );
 }

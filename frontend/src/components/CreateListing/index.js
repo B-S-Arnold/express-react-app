@@ -82,81 +82,105 @@ function CreateListing() {
     
 
     return (
+        <div className="formpage">
         <form className = "form" onSubmit={handleSubmit}>
-            <div className = "formdiv">
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label>
-                Address
+            
+            <div className="title">
+                Create a listing for people to stay
+            </div>
+            <div className='desc'>
+                 Give a detailed description to increase your listing's appeal.
+            </div>
+
+                {errors?.length ? <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>: <></>}
+                
+            <div className='sindiv'>
+                <label className="sinlab"> ADDRESS </label>
                 <input
+                    className="inloc"
                     type="text"
                     value={address}
                     onChange={updateAddress}
+                    // placeholder='Address'
                     required
                 />
-            </label>
-            <label>
-                City
+            
+            </div>
+            <div className='sindiv'>
+                <label className="sinlab"> CITY </label>
                 <input
+                    className="inloc"
                     type="text"
                     value={city}
                     onChange={updateCity}
                     required
                 />
-            </label>
-            <label>
-                State
-                <input
-                    type="text"
-                    value={state}
-                    onChange={updateState}
-                    required
-                />
-            </label>
-            <label>
-                Country
-                <input
-                    type="text"
-                    value={country}
-                    onChange={updateCountry}
-                    required
-                />
-            </label>
-            <label>
-                Name
-                <input
-                    type="text"
-                    value={name}
-                    onChange={updateName}
-                    required
-                />
-            </label>
-            <label>
-                Price $
-                <input
-                    type="number"
-                    min="0"
-                    step=".01"
-                    value={price}
-                    onChange={updatePrice}
-                    required
-                />
-            </label>
-            <label>
-                Description
-                <input
-                    type="text"
-                    value={description}
-                    onChange={updateDescription}
-                />
-            </label>
+            </div>
+            <div className='sindiv'>
+                    <label className="sinlab"> STATE </label>
+                    <input
+                        className="inloc"
+                        type="text"
+                        value={state}
+                        onChange={updateState}
+                        required
+                    />
+                
+            </div>
+            <div className='sindiv'>
+                    <label className="sinlab"> COUNTRY </label>
+                    <input
+                        className="inloc"
+                        type="text"
+                        value={country}
+                        onChange={updateCountry}
+                        required
+                    />
+                
+            </div>
+            <div className='sindiv'>
+                    <label className="sinlab"> NAME </label>
+                    <input
+                        className="inloc"
+                        type="text"
+                        value={name}
+                        onChange={updateName}
+                        required
+                    />
+                
+            </div>
+            <div className='sindiv'>
+                    <label className="sinlab"> PRICE </label>
+                    <input
+                        className="inloc"
+                        type="number"
+                        min="0"
+                        step=".01"
+                        value={price}
+                        onChange={updatePrice}
+                        required
+                    />
+                
+            </div>
+            <div className='descdiv'>
+                    <label className="sinlab"> DESCRIPTION </label>
+                    <textarea
+                        className="descin"
+                        type="text"
+                        value={description}
+                        onChange={updateDescription}
+                    />
+                
+            </div>
             <div className = "btndiv">
-                <button className = 'btn' type="submit">Create Listing</button>
-                <button className='btn' type="button" onClick={handleCancelClick}>Cancel</button>
+                <button className = 'formbtn' type="submit">Create Listing</button>
+                <button className='formbtn' type="button" onClick={handleCancelClick}>Cancel</button>
             </div>
-            </div>
+            
         </form>
+        </div>
     );
 }
 
