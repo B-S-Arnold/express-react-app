@@ -41,30 +41,35 @@ function LoginForm() {
     return (
         
         <form className='loginform'onSubmit={handleSubmit}>
-            <ul>
+            {errors?.length ? <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}
-            </ul>
-            <label>
-                Username or Email
+            </ul> : <></>}
+            <div className="title">
+                Welcome to PopPilgrim
+            </div>
+            <div className='sindiv'>
+                <label className="sinlab"> USERNAME or EMAIL </label>
                 <input
+                    className="inloc"
                     type="text"
                     value={credential}
                     onChange={(e) => setCredential(e.target.value)}
                     required
                 />
-            </label>
-            <label>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button className="btn" type="submit">Log In</button>
+            </div>
+            <div className='sindiv'>
+                <label className="sinlab"> PASSWORD </label>
+                    <input
+                        className="inloc"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+            </div>
+            <button className="sbtn" type="submit">Log In</button>
             
         </form>
 

@@ -21,23 +21,6 @@ function SplashPage() {
         dispatch(getImage())
     }, [dispatch])
 
-
-    const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("kjl");
-
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-
-    const { spotId } = useParams();
-
-    const history = useHistory();
-    // const sessionUser = useSelector(state => state.session.user);
-
-
-
-
     return (
         <div className='splashpage'>
             <div className="blurb">
@@ -48,7 +31,7 @@ function SplashPage() {
                     Discover entire homes and private rooms perfect for any trip.
                 </div>
                 <div className='sindiv'>
-                    <label className='sinlab' for='loc' >LOCATION</label>
+                    <label className='sinlab' >LOCATION</label>
                     <input
                     id='loc'
                     placeholder='Anywhere'
@@ -57,7 +40,7 @@ function SplashPage() {
                 </div>
                 <div className='sindiv2'>
                     <div className='insindiv'>
-                        <label className='sinlab' for='cin'>CHECK IN</label>
+                        <label className='sinlab' >CHECK IN</label>
                         <input
                         // placeholder='Add Date'
                         id='cin'
@@ -66,7 +49,7 @@ function SplashPage() {
                         </input>
                     </div>
                     <div className='insindiv'>
-                        <label className='sinlab' for='cout'>CHECKOUT</label>
+                        <label className='sinlab' >CHECKOUT</label>
                         <input
                             id='cout'
                             type='date'
@@ -76,13 +59,14 @@ function SplashPage() {
                 </div>
                 <div className='sindiv2'>
                     <div className='insindiv'>
-                        <label className='sinlab' for='ads'>ADULTS</label>
+                        <label className='sinlab' >ADULTS</label>
                         <select
+                            defaultValue={2}
                             id='ads'
                             type='select'
                             className='insel'>
                                 <option value='1'>1</option>
-                                <option value='2' selected>2</option>
+                                <option value='2'>2</option>
                                 <option value='3'>3</option>
                                 <option value='4'>4</option>
                                 <option value='5'>5</option>
@@ -100,7 +84,7 @@ function SplashPage() {
                         </select>
                     </div>
                     <div className='insindiv'>
-                        <label className='sinlab' for='kids'>CHILDREN</label>
+                        <label className='sinlab' >CHILDREN</label>
                         <select
                             id='kids'
                             type='select'
@@ -116,7 +100,7 @@ function SplashPage() {
                     </div>
                 </div>
                 <div className='amdiv'>
-                    <label className='sinlab' for='ambtns' lab>AMENITIES</label>
+                    <label className='sinlab' >AMENITIES</label>
                     <div id='ambtns' className='ambtndiv'>
                         <button className='ambtn'>Hot tub</button>
                         <button className='ambtn'>Pool</button>

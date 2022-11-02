@@ -24,13 +24,14 @@
 
 #modal-content {
   /* display: none; */
-  padding: 30px 50px;
+  /* padding: 30px 50px; */
   position: absolute;
   background-color: white;
   border-radius: 17px;
   z-index: 5;
   animation: 0.5s alternate fromBottom;
   top: 14%;
+  background-color: transparent;
 }
 
 @keyframes fromBottom {
