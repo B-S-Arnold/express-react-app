@@ -99,7 +99,7 @@ const ListingButton = ({spot, spotImageArr}) => {
     return (
         <div className='spotbtndiv' key={spot.id}>
             {arrowDiv()}
-            <button className="spotbtn" onClick={handleClick} key={spot.id}>
+            <button className="spotbtn" onClick={handleClick} >
 
                 <div className='imgdiv'>
                     {/* {allImages()} */}
