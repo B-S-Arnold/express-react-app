@@ -58,12 +58,12 @@ const ListingButton = ({spot, spotImageArr}) => {
             if (img === spotImageArr[index]) {
 
                 return (
-                    <div className='iDot'>.</div>
+                    <div key={img.id} className='iDot'>.</div>
                 )
             }
 
             return(
-                <div className='dot'>.</div>
+                <div key={img.id} className='dot'>.</div>
             )
         });
 
@@ -98,21 +98,20 @@ const ListingButton = ({spot, spotImageArr}) => {
 
     return (
         <div className='spotbtndiv' key={spot.id}>
+            <div>
             {arrowDiv()}
+            </div>
             <button className="spotbtn" onClick={handleClick} >
 
                 <div className='imgdiv'>
-                    {/* {allImages()} */}
 
                     <div className='fotodiv' key={image?.id}>
-                        {/* <button onClick={clickToPrev} >To Prev</button>
-                         <button onClick={clickToNext} >To Next</button> */}
+                        
                         <img
                             className='foto'
                             src={image?.url}
                             alt="new"
                         />
-
 
                     </div>
 

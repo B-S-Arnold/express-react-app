@@ -59,10 +59,6 @@ function SpotPage() {
     const spotsArr = Object.values(spots);
     const imgArr = Object.values(images)
     const rvwArr = Object.values(reviews)
-    
-
-    
-    console.log("SPOTTTSSS", spots)
 
     
     const spotMapFunc = () => spotsArr.map((spot) => {
@@ -209,8 +205,6 @@ function SpotPage() {
                         <>
                         </>
                 }
-
-                        // console.log(commenter)
                         return (
                             
                                 <div key={review.id}>
@@ -252,7 +246,7 @@ function SpotPage() {
             }
                     
             const anyrevs = rvwArr?.filter(rvw => rvw?.spotId === thisSpot.id)
-            console.log(anyrevs)
+
             const spotOwner = users?.filter(usr => usr?.id === thisSpot.userId)[0]
             return (
                 
