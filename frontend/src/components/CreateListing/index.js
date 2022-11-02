@@ -6,14 +6,6 @@ import './NewListing.css';
 import * as spotActions from "../../store/spot";
 
 
-// userId: 1,
-// address: "Upper Left Side",
-// city: "Ring Two",
-// state: "Newest New Hampshire",
-// country: "Saturn",
-// name: "Beautiful Ledge",
-// price: 10,
-// description: "Don't fall off..."
 
 function CreateListing() {
     const dispatch = useDispatch();
@@ -27,7 +19,7 @@ function CreateListing() {
 
     
 
-    const [userId, setUserId] = useState(sessionUser.id);
+   
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
@@ -37,9 +29,7 @@ function CreateListing() {
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState([]);
 
-    
 
-    // const updateUserId = (e) => setUserId(sessionUser.id);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
@@ -48,21 +38,7 @@ function CreateListing() {
     const updatePrice = (e) => setPrice(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
     
-
-    
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (password === confirmPassword) {
-    //         setErrors([]);
-    //         return dispatch(sessionActions.signup({ email, username, password }))
-    //             .catch(async (res) => {
-    //                 const data = await res.json();
-    //                 if (data && data.errors) setErrors(data.errors);
-    //             });
-    //     }
-    //     return setErrors(['Confirm Password field must be the same as the Password field']);
-    // };
+    const userId = sessionUser.id
 
     let payload = {
             userId,
@@ -75,8 +51,7 @@ function CreateListing() {
             description
     };
 
-    // let createdSpot =  dispatch(createSpot(payload))
-    
+
     
 
     
@@ -86,7 +61,7 @@ function CreateListing() {
         let path = `/users/${payload.userId}`
         
         
-            // setErrors([]);
+       
         return dispatch(spotActions.createSpot(payload))
                 .then( () => {
                     history.push(path)},
