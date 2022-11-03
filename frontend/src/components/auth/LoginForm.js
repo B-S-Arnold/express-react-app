@@ -50,7 +50,7 @@ function LoginForm() {
                 Welcome to PopPilgrim
             </div>
             <div className='sindiv'>
-                <label className="sinlab"> USERNAME or EMAIL </label>
+                <label className="sinlab"> USERNAME OR EMAIL </label>
                 <input
                     className="inloc"
                     type="text"
