@@ -13,17 +13,19 @@ module.exports = {
     database,
     host,
     dialect: 'postgres',
-    seederStorage: 'sequelize'
+    seederStorage: 'sequelize',
+    logging: false // disables sql logging in backend
   },
   production: {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres',
     seederStorage: 'sequelize',
+    logging: false, // disables sql logging in backend
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false
-      }
-    }
-  }
+        rejectUnauthorized: false,
+      },
+    },
+  },
 };
