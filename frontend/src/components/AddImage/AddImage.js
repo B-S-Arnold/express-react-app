@@ -167,3 +167,6 @@ const AddImageForm = () => {
         </>
     )
 }
+
+
+export default AddImageForm;
