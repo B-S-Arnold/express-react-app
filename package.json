@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/B-S-Arnold/express-react-app#readme",
   "dependencies": {
+    "react-dropzone": "^14.2.3",
     "sequelize": "^6.25.6",
     "sequelize-cli": "^6.5.2"
   }

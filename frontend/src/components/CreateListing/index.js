@@ -4,6 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './NewListing.css';
 import * as spotActions from "../../store/spot";
+import { useDropzone } from 'react-dropzone'
 
 
 
@@ -52,7 +53,7 @@ function CreateListing() {
     };
 
 
-    
+
 
     
 
@@ -178,8 +179,8 @@ function CreateListing() {
                 <button className = 'formbtn' type="submit">Create Listing</button>
                 <button className='formbtn' type="button" onClick={handleCancelClick}>Cancel</button>
             </div>
-            
         </form>
+        
         </div>
     );
 }
