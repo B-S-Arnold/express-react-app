@@ -1,4 +1,6 @@
 import { useDropzone } from 'react-dropzone'
+import React, { useEffect, useState } from "react";
+import * as imageActions from "../../store/image"
 
 
 
@@ -45,7 +47,7 @@ const AddImageForm = () => {
 
 
     function Previews() {
-        const [caption, setCaption] = useState('');
+        // const [caption, setCaption] = useState('');
         const [files, setFiles] = useState([]);
         const [imageLoading, setImageLoading] = useState(false);
 
@@ -54,7 +56,7 @@ const AddImageForm = () => {
             e.preventDefault();
 
             const formData = new FormData();
-            formData.append("caption", caption)
+            // formData.append("caption", caption)
             formData.append("image", files[0]);
 
 
@@ -147,23 +149,6 @@ const AddImageForm = () => {
 
 
                     </aside>
-
-                    <div className='capdiv'>
-
-
-                        <textarea
-                            className='captext'
-                            name='caption'
-                            placeholder='Write a caption...'
-                            value={caption}
-                            onChange={(e) => setCaption(e.target.value)}
-                        />
-
-                    </div>
-
-
-
-
 
                 </form>}
 
