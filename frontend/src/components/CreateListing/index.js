@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import './NewListing.css';
 import * as spotActions from "../../store/spot";
-import AddImageForm from "../AddImage/AddImage";
-import MyDZ from "../AddImage/DropZoneForm";
 import MyDropzone from "../AddImage/DropZoneForm";
 
 
@@ -180,8 +178,9 @@ function CreateListing() {
                 <button className = 'formbtn' type="submit">Create Listing</button>
                 <button className='formbtn' type="button" onClick={handleCancelClick}>Cancel</button>
             </div>
+            
         </form>
-        <MyDropzone />
+            <MyDropzone />
         </div>
     );
 }
