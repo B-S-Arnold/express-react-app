@@ -4,6 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import './NewListing.css';
 import * as spotActions from "../../store/spot";
 import AddImageForm from "../AddImage/AddImage";
+import MyDZ from "../AddImage/DropZoneForm";
 import MyDropzone from "../AddImage/DropZoneForm";
 
 
