@@ -66,7 +66,7 @@ function ProfileButton() {
     if (user) {
         return (
             <>
-                <button className='navbtn' onClick={openMenu}>
+                <div className='navbtn' id='focus' tabIndex="1" >
                     <div className="icondiv1">
                         <i className="fas fa-bars" />
                     </div>
@@ -75,8 +75,8 @@ function ProfileButton() {
                     </div>
 
 
-                </button>
-                {showMenu && (
+                </div>
+                {/* {showMenu && ( */}
                     <div className="dropdown">
 
 
@@ -93,13 +93,13 @@ function ProfileButton() {
                             <button className="dropbtn btmdrop" onClick={logout}>Log out</button>
                         </div>
                     </div>
-                )}
+                {/* )} */}
             </>
         )
     } else {
         return (
             <>
-                <button className='navbtn' onClick={openMenu}>
+                <div className='navbtn' id='focus' tabIndex="1" >
                     <div className="icondiv1">
                         <i className="fas fa-bars" />
                     </div>
@@ -118,8 +118,8 @@ function ProfileButton() {
                         </Modal>
                     )}
 
-                </button>
-                {showMenu && (
+                </div>
+                {/* {showMenu && ( */}
                     <div className="dropdown">
                         {/* <div className="dropdiv">
                             <LoginFormModal  />
@@ -145,7 +145,7 @@ function ProfileButton() {
                         </div>
                     </div>
 
-                )}
+                {/* )} */}
             </>
         )
 

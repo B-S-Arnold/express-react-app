@@ -1,5 +1,5 @@
 .dropdown {
-    display: block;
+    display: none;
 
     position: absolute;
     /* align-items: center; */
@@ -26,10 +26,9 @@
     /* right: 100px; */
 
 }
-/* 
-.userbtn:focus .dropdown {
-    position: absolute;
-    background-color: red;
+
+.navbtn:focus .dropdown {
+    
     display: block;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +37,7 @@
     border: none;
 
 
-} */
+}
 
 /* .nodrop {
     display: none;
