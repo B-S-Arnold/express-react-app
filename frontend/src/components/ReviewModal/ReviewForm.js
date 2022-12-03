@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import * as reviewActions from "../../store/review"
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './ReviewForm.css'
 
 
 
 function ReviewForm() {
 
-    
+
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
     const { spotId } = useParams();
-    const history = useHistory();
-    
+    const navigate = useNavigate();
+
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -29,28 +29,28 @@ function ReviewForm() {
         let path = `/users/${payload.userId}`
         // setErrors([]);
         return dispatch(reviewActions.createReview(payload))
-        .then( () => {
-            window.location.reload();
-        },
+            .then(() => {
+                window.location.reload();
+            },
                 async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
                 }
-                
-        );
+
+            );
     };
 
     return (
         <form onSubmit={handleSubmit} className='revform'>
             {errors?.length ?
-            < ul >
-            {
-                errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))
-            }
-            </ul> : <></>}
-                
+                < ul >
+                    {
+                        errors.map((error, idx) => (
+                            <li key={idx}>{error}</li>
+                        ))
+                    }
+                </ul> : <></>}
+
             <textarea
                 className="revin"
                 type="text"
@@ -59,9 +59,9 @@ function ReviewForm() {
                 onChange={(e) => setContent(e.target.value)}
                 required
             />
-            
+
             <button className="subbtn" type="submit">Submit</button>
-            
+
         </form>
     );
 }

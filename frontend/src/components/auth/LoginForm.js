@@ -32,15 +32,15 @@ function LoginForm() {
     //     return req.session.save(() => res.redirect('/'))
     // }));
     const demoLogin = () => {
-        
+
         setCredential('Demo-lition');
         setPassword('password');
-        // history.push(path)
+        // navigate(path)
     }
 
     return (
-        
-        <form className='loginform'onSubmit={handleSubmit}>
+
+        <form className='loginform' onSubmit={handleSubmit}>
             {errors?.length ? <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
@@ -61,16 +61,16 @@ function LoginForm() {
             </div>
             <div className='sindiv'>
                 <label className="sinlab"> PASSWORD </label>
-                    <input
-                        className="inloc"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                <input
+                    className="inloc"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
             </div>
             <button className="sbtn" type="submit">Log In</button>
-            
+
         </form>
 
     );

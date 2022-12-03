@@ -3,22 +3,22 @@ import '../AllListings/AllListings.css'
 import React, { useEffect, useState } from "react";
 import { getImage } from '../../store/image';
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 
-const ListingButton = ({spot, spotImageArr}) => {
+const ListingButton = ({ spot, spotImageArr }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch(getImage())
     }, [dispatch])
 
 
     const [index, setIndex] = useState(0)
-    
+
     let image = spotImageArr[index]
 
 
@@ -47,7 +47,7 @@ const ListingButton = ({spot, spotImageArr}) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        history.push(path);
+        navigate(path);
     };
 
     const imagePos = () => {
@@ -61,22 +61,22 @@ const ListingButton = ({spot, spotImageArr}) => {
                 )
             }
 
-            return(
+            return (
                 <div key={img.id} className='dot'>.</div>
             )
         });
 
         return (
             <>
-            {spotImageArr?.length > 1 ?
-            <div className='dotsOuter'>
-                <div className='dotsInner'>
-                    {dots}
-                </div>
-            </div>
-            
-            
-            : <></>}
+                {spotImageArr?.length > 1 ?
+                    <div className='dotsOuter'>
+                        <div className='dotsInner'>
+                            {dots}
+                        </div>
+                    </div>
+
+
+                    : <></>}
             </>
         )
     }
@@ -85,27 +85,27 @@ const ListingButton = ({spot, spotImageArr}) => {
         return (
             <div className='arrowDiv'>
                 <div className='inArrowDiv'>
-                {index === 0 ? <div /> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
-                {index === spotImageArr.length - 1 ? <div />: <><button onClick={onNext} className='toNext'>&#62;</button></>}
-            </div>
+                    {index === 0 ? <div /> : <><button onClick={onPrev} className='toPrev'>&#60;</button></>}
+                    {index === spotImageArr.length - 1 ? <div /> : <><button onClick={onNext} className='toNext'>&#62;</button></>}
+                </div>
 
             </div>
         )
     }
 
-    
+
 
     return (
         <div className='spotbtndiv' key={spot.id}>
             <div>
-            {arrowDiv()}
+                {arrowDiv()}
             </div>
             <button className="spotbtn" onClick={handleClick} >
 
                 <div className='imgdiv'>
 
                     <div className='fotodiv' key={image?.id}>
-                        
+
                         <img
                             className='foto'
                             src={image?.url}

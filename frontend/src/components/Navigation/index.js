@@ -41,10 +41,10 @@ function Navigation({ isLoaded }) {
     return (
         <nav className = "nav">
             <div>
-                <NavLink className="home" exact to="/"></NavLink>
+                <NavLink className="home" to="/"></NavLink>
             </div>
             <div>
-                <NavLink className="link" exact to="/allCurrentListings">available listings</NavLink>
+                <NavLink className="link"  to="/allCurrentListings">available listings</NavLink>
             </div>
             <div>
                 {isLoaded && sessionLinks}

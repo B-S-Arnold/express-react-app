@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -10,6 +10,7 @@ import UserPage from "./components/UserPage";
 import EditListing from "./components/EditListing";
 import SplashPage from "./components/SplashPage"
 import AllListingsPage from "./components/AllListings";
+import AddImageForm from "./components/AddImage/AddImage";
 
 
 
@@ -21,37 +22,40 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <BrowserRouter>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
-        <Switch>
-          <Route exact path={["/", "/home"]}>
-            <SplashPage />
-          </Route>
-          <Route path={["/signup", "/sign-up"]}>
-            <SignupFormPage />
-          </Route>
-          <Route exact path={"/spots/:spotId"}>
-            <SpotPage />
-          </Route>
-          <Route path={"/users/:userId"}>
-            <UserPage />
-          </Route>
-          <Route path={"/createListing"}>
-            <CreateListingForm />
-          </Route>
-          <Route path={"/spots/:spotId/edit"}>
-            <EditListing />
-          </Route>
-          <Route path={"/allCurrentListings"}>
-            <AllListingsPage />
-          </Route>
-          <Route>
+        <Routes>
+          <Route exact={"true"} path="/" element={<SplashPage />} />
+
+          {/* </Route> */}
+          <Route exact={"true"} path="/signup" element={<SignupFormPage />} />
+          {/* <SignupFormPage />
+          </Route> */}
+          <Route exact={"true"} path="/spots/:spotId" element={<SpotPage />} />
+          {/* <SpotPage />
+          </Route> */}
+          <Route exact={"true"} path="/users/:userId" element={<UserPage />} />
+          {/* <UserPage />
+          </Route> */}
+          <Route exact={"true"} path="/createListing" element={<CreateListingForm />} />
+          {/* <CreateListingForm />
+          </Route> */}
+          <Route exact={"true"} path="/addImage" element={<AddImageForm />} />
+          {/* <AddImageForm />
+          </Route> */}
+          <Route exact={"true"} path="/spots/:spotId/edit" element={<EditListing />} />
+          {/* <EditListing />
+          </Route> */}
+          <Route exact={"true"} path="/allCurrentListings" element={<AllListingsPage />} />
+          {/* <AllListingsPage />
+          </Route> */}
+          {/* <Route>
             404: Page Not Found
-          </Route>
-        </Switch>
+          </Route> */}
+        </Routes>
       )}
-    </>
+    </BrowserRouter>
   );
 }
 

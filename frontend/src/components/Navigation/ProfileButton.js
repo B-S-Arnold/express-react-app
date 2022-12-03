@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { useHistory, Redirect, NavLink } from 'react-router-dom';
+import { useNavigate, Redirect, NavLink } from 'react-router-dom';
 import DemoUser from "../auth/DemoUser";
 import LoginFormModal from "../../modals/LoginFormModal";
 import LoginForm from "../auth/LoginForm";
@@ -14,19 +14,19 @@ function ProfileButton() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
 
-    const history = useHistory();
-    
+    const navigate = useNavigate();
+
     const [showMenu, setShowMenu] = useState(false);
     const [renderModal, setRenderModal] = useState(false);
     const [renderModalTwo, setRenderModalTwo] = useState(false);
 
-    
+
 
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
-    
+
 
     useEffect(() => {
         if (!showMenu) return;
@@ -43,52 +43,28 @@ function ProfileButton() {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
-        history.push('/')
+        navigate('/')
         // window.location.reload()
     };
 
     const createListing = () => {
         let path = '/createListing'
-        history.push(path)
+        navigate(path)
     }
 
     const myListings = () => {
         let path = `/users/${user.id}`
-        history.push(path)
+        navigate(path)
     }
-    
 
-    if (user) {return (
-        <>
-            <button className ='navbtn' onClick={openMenu}>
-                <div className="icondiv1">
-                    <i className="fas fa-bars" />
-                </div>
-                <div className="icondiv2">
-                    <div className="userbtn"></div>
-                </div>
-                
-                
-            </button>
-            {showMenu && (
-                <div className="dropdown">
-                    
-                    
-                    <div className="dropdiv">
-                        <button className = "dropbtn topdrop" onClick={createListing}>Create listing</button>
-                    </div>
-                    <div className="dropdiv">
-                        <button className="dropbtn middrop" onClick={myListings}>My listings</button>
-                    </div>
-                    <div className="dropdiv">
-                        <button className="dropbtn btmdrop" onClick={logout}>Log out</button>
-                    </div>
-                </div>
-             )} 
-        </>
-    )
-    } else {
-        return(
+    const addImage = () => {
+        let path = '/addImage'
+        navigate(path)
+    }
+
+
+    if (user) {
+        return (
             <>
                 <button className='navbtn' onClick={openMenu}>
                     <div className="icondiv1">
@@ -97,18 +73,51 @@ function ProfileButton() {
                     <div className="icondiv2">
                         <div className="userbtn"></div>
                     </div>
-                    
-                {renderModal && (
-                    <Modal onClose={() => setRenderModal(false)}>
-                        <LoginForm />
-                    </Modal>
+
+
+                </button>
+                {showMenu && (
+                    <div className="dropdown">
+
+
+                        <div className="dropdiv">
+                            <button className="dropbtn topdrop" onClick={createListing}>Create listing</button>
+                        </div>
+                        <div className="dropdiv">
+                            <button className="dropbtn topdrop" onClick={addImage}>Add Image Form</button>
+                        </div>
+                        <div className="dropdiv">
+                            <button className="dropbtn middrop" onClick={myListings}>My listings</button>
+                        </div>
+                        <div className="dropdiv">
+                            <button className="dropbtn btmdrop" onClick={logout}>Log out</button>
+                        </div>
+                    </div>
                 )}
-                {renderModalTwo && (
-                    <Modal onClose={() => setRenderModalTwo(false)}>
-                        <SignupFormPage />
-                    </Modal>
-                )}
-                  
+            </>
+        )
+    } else {
+        return (
+            <>
+                <button className='navbtn' onClick={openMenu}>
+                    <div className="icondiv1">
+                        <i className="fas fa-bars" />
+                    </div>
+                    <div className="icondiv2">
+                        <div className="userbtn"></div>
+                    </div>
+
+                    {renderModal && (
+                        <Modal onClose={() => setRenderModal(false)}>
+                            <LoginForm />
+                        </Modal>
+                    )}
+                    {renderModalTwo && (
+                        <Modal onClose={() => setRenderModalTwo(false)}>
+                            <SignupFormPage />
+                        </Modal>
+                    )}
+
                 </button>
                 {showMenu && (
                     <div className="dropdown">
@@ -119,7 +128,7 @@ function ProfileButton() {
                             <button className='dropbtn topdrop' onClick={() => {
                                 // e.preventDefault()
                                 setRenderModal(true)
-                                
+
                             }}>Log in</button>
                         </div>
                         <div className='dropdiv'>
@@ -129,14 +138,14 @@ function ProfileButton() {
 
                             }}>Sign up</button>
                         </div>
-                        
-                        
+
+
                         <div className='dropdiv'>
                             <DemoUser />
                         </div>
                     </div>
-                    
-                 )} 
+
+                )}
             </>
         )
 
