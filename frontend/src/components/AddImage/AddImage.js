@@ -1,4 +1,4 @@
-// import { useDropzone } from 'react-dropzone'
+import { useDropzone } from 'react-dropzone'
 import React, { useEffect, useState } from "react";
 import * as imageActions from "../../store/image"
 
