@@ -1,77 +1,92 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import DemoUser from "../auth/DemoUser";
 import { logout } from "../store/session";
+import * as sessionActions from '../../store/session';
+import { useState } from "react";
+
 
 const Dropdown = () => {
 
     const user = useSelector(state => state.session.user)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [renderModal, setRenderModal] = useState(false);
+    const [renderModalTwo, setRenderModalTwo] = useState(false);
 
-    const LogoutButton = () => {
-        const dispatch = useDispatch()
-        const onLogout = async (e) => {
-            await dispatch(logout());
-            // navigate(`/`)
-        };
-        // navigate(`/`)
-
-        return <div className='dropdownbtn logoutbtn' onClick={onLogout}>Logout</div>;
+    const logout = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.logout());
+        navigate('/')
+        // window.location.reload()
     };
 
-    const ProfileButton = () => {
-
-        const toProfile = () => {
-            navigate(`/${user.username}`);
-        }
-
-        return <div className='dropdownbtn profbtn' onClick={toProfile}>Profile</div>
-        // return <NavLink to={`/${user.username}`} exact={true} activeClassName='active'>
-        //     Profile
-        // </NavLink>
-    };
-
-    const SettingsButton = () => {
-        const toSettings = () => {
-            navigate(`/accounts/edit/`)
-        }
-
-        return <div className='dropdownbtn' onClick={toSettings}>Settings</div>
+    const createListing = () => {
+        let path = '/createListing'
+        navigate(path)
     }
 
-    // const GameButton = () => {
-    //     const toGame = () => {
-    //         navigate(`/game`)
-    //     }
+    const myListings = () => {
+        let path = `/users/${user.id}`
+        navigate(path)
+    }
 
-    //     return <div className='dropdownbtn' onClick={toGame}>Game</div>
-    // }
+    const addImage = () => {
+        let path = '/addImage'
+        navigate(path)
+    }
+
+    if (user){
+        return(
+            <><div className="dropdown">
 
 
-    return (
-        <>
-            <div className='triangle' />
-            <div className="dropdown">
+                <div className="dropdiv">
+                    <button className="dropbtn topdrop" onClick={createListing}>Create listing</button>
+                </div>
+                <div className="dropdiv">
+                    <button className="dropbtn topdrop" onClick={addImage}>Add Image Form</button>
+                </div>
+                <div className="dropdiv">
+                    <button className="dropbtn middrop" onClick={myListings}>My listings</button>
+                </div>
+                <div className="dropdiv">
+                    <button className="dropbtn btmdrop" onClick={logout}>Log out</button>
+                </div>
+            </div></>
+        )
+    } else {
+        return(
+            <>
+                <div className="dropdown">
+                    {/* <div className="dropdiv">
+                            <LoginFormModal  />
+                        </div> */}
+                    <div className="dropdiv">
+                        <button className='dropbtn topdrop' onClick={() => {
+                            // e.preventDefault()
+                            setRenderModal(true)
+
+                        }}>Log in</button>
+                    </div>
+                    <div className='dropdiv'>
+                        <button className='dropbtn middrop' onClick={() => {
+                            // e.preventDefault()
+                            setRenderModalTwo(true)
+
+                        }}>Sign up</button>
+                    </div>
 
 
-                {/* <div> */}
-                <ProfileButton />
+                    <div className='dropdiv'>
+                        <DemoUser />
+                    </div>
+                </div>
+            </>
+        )
+    }
 
-                {/* <NavLink className='dropdownbtn' to={`/${user.username}`} exact={true} activeClassName='active'>
-                    Profile
-                </NavLink> */}
-                {/* </div> */}
-                {/* <div>
-                    <SettingsButton />
-                </div> */}
-                {/* <div> */}
-                {/* <SettingsButton /> */}
-                {/* <GameButton /> */}
-                <LogoutButton />
-                {/* <GameButton /> */}
-                {/* </div> */}
-            </div>
-        </>
-    )
+    
 }
 
 export default Dropdown;
