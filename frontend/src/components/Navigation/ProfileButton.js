@@ -19,6 +19,20 @@ function ProfileButton() {
     const [showMenu, setShowMenu] = useState(false);
     const [renderModal, setRenderModal] = useState(false);
     const [renderModalTwo, setRenderModalTwo] = useState(false);
+    // const [focused, setFocused] = useState(false)
+    // const onFocus = () => setFocused(true)
+
+    function waitASec() {
+        return new Promise(() => {
+            setTimeout(() => {
+                setShowMenu(false)
+            }, 150)
+        })
+    }
+
+    async function defocus(){
+        await waitASec()
+    }
 
 
 
@@ -28,17 +42,17 @@ function ProfileButton() {
     };
 
 
-    useEffect(() => {
-        if (!showMenu) return;
+    // useEffect(() => {
+    //     if (!showMenu) return;
 
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
+    //     const closeMenu = () => {
+    //         setShowMenu(false);
+    //     };
 
-        document.addEventListener('click', closeMenu);
+    //     document.addEventListener('click', closeMenu);
 
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    //     return () => document.removeEventListener("click", closeMenu);
+    // }, [openMenu]);
 
     const logout = (e) => {
         e.preventDefault();
@@ -66,7 +80,7 @@ function ProfileButton() {
     if (user) {
         return (
             <>
-                <div className='navbtn' id='focus' tabIndex="1" >
+                <button className='navbtn' id='focus' tabIndex="1" onFocus={openMenu} onBlur={defocus}>
                     <div className="icondiv1">
                         <i className="fas fa-bars" />
                     </div>
@@ -75,8 +89,8 @@ function ProfileButton() {
                     </div>
 
 
-                </div>
-                {/* {showMenu && ( */}
+                </button>
+                {showMenu && (
                     <div className="dropdown">
 
 
@@ -93,13 +107,13 @@ function ProfileButton() {
                             <button className="dropbtn btmdrop" onClick={logout}>Log out</button>
                         </div>
                     </div>
-                {/* )} */}
+                 )} 
             </>
         )
     } else {
         return (
             <>
-                <div className='navbtn' id='focus' tabIndex="1" >
+                <button className='navbtn' id='focus' tabIndex="1" onFocus={openMenu} onBlur={defocus}  >
                     <div className="icondiv1">
                         <i className="fas fa-bars" />
                     </div>
@@ -118,8 +132,8 @@ function ProfileButton() {
                         </Modal>
                     )}
 
-                </div>
-                {/* {showMenu && ( */}
+                </button>
+                {showMenu && (
                     <div className="dropdown">
                         {/* <div className="dropdiv">
                             <LoginFormModal  />
@@ -145,7 +159,7 @@ function ProfileButton() {
                         </div>
                     </div>
 
-                {/* )} */}
+                 )} 
             </>
         )
 

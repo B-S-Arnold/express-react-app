@@ -1,5 +1,5 @@
 .dropdown {
-    display: none;
+    /* display: none; */
 
     position: absolute;
     /* align-items: center; */
@@ -27,7 +27,7 @@
 
 }
 
-.navbtn:focus .dropdown {
+/* .navbtn:focus .dropdown {
     
     display: block;
     flex-direction: column;
@@ -37,7 +37,7 @@
     border: none;
 
 
-}
+} */
 
 /* .nodrop {
     display: none;
