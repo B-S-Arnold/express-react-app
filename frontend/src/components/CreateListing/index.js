@@ -85,6 +85,9 @@ function CreateListing() {
 
     return (
         <div className="formpage">
+            <div>
+                <MyDropzone />
+            </div>
             <form className="form" onSubmit={handleSubmit}>
 
                 <div className="title">
@@ -180,8 +183,9 @@ function CreateListing() {
                     <button className='formbtn' type="submit">Create Listing</button>
                     <button className='formbtn' type="button" onClick={handleCancelClick}>Cancel</button>
                 </div>
-
+            
             </form>
+            
         </div>
     );
 }
