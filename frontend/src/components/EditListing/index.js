@@ -52,7 +52,7 @@ function EditListing() {
     const [description, setDescription] = useState(spot ? spot.description : "");
     const [errors, setErrors] = useState([]);
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
 
 

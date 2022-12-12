@@ -37,9 +37,9 @@ function Root() {
 }
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Root />
-  </React.StrictMode>,
+  // </React.StrictMode>,
   // document.getElementById('root')
 );
 

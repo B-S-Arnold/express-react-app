@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const ListingButton = ({ spot, spotImageArr }) => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     useEffect(() => {
         dispatch(getImage())
     }, [dispatch])

@@ -13,7 +13,7 @@ function ReviewForm() {
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session.user.id);
     const { spotId } = useParams();
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
