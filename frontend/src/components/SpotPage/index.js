@@ -262,7 +262,7 @@ function SpotPage() {
             const spotOwner = users?.filter(usr => usr?.id === thisSpot.userId)[0]
 
             if (spot?.city) {
-                Geocode.fromAddress(`${spot.city}, ${spot.state}`).then(
+                Geocode.fromAddress(`${'Charleston'}, ${'West Virginia'}`).then(
                     (response) => {
                         const { lat, lng } = response.results[0].geometry.location;
                         setLatitude(lat);
@@ -282,9 +282,9 @@ function SpotPage() {
                     {displayImages()}
 
                     {
-                        longitude &&
-                        <SimpleMap lat={latitude} lng={longitude} />
-                    }
+                            longitude &&
+                            <SimpleMap lat={latitude} lng={longitude} />
+                        }
 
                     <div className="infodiv">
                         
