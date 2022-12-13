@@ -10,8 +10,7 @@ import ReviewFormModal from '../ReviewModal';
 import { getReview } from '../../store/review';
 import { getImage } from '../../store/image';
 import * as reviewActions from "../../store/review"
-import SimpleMap from '../GoogleMap/GoogleMap'
-import Geocode from "react-geocode";
+
 
 
 
@@ -20,8 +19,6 @@ function SpotPage() {
     const [users, setUsers] = useState([]);
     const [latitude, setLatitude] = useState("")
     const [longitude, setLongitude] = useState("")
-
-    Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY);
 
     
 
@@ -261,30 +258,11 @@ function SpotPage() {
 
             const spotOwner = users?.filter(usr => usr?.id === thisSpot.userId)[0]
 
-            if (spot?.city) {
-                Geocode.fromAddress(`${'Charleston'}, ${'West Virginia'}`).then(
-                    (response) => {
-                        const { lat, lng } = response.results[0].geometry.location;
-                        setLatitude(lat);
-                        setLongitude(lng);
-                    },
-                    (error) => {
-                        setLatitude(-36.375381);
-                        setLongitude(-137.682543);
-                    }
-                )
-            }
-
             return (
 
                 <div key={thisSpot.id}>
 
                     {displayImages()}
-
-                    {
-                            longitude &&
-                            <SimpleMap lat={latitude} lng={longitude} />
-                        }
 
                     <div className="infodiv">
                         
